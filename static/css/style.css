@@ -1,0 +1,9 @@
+#this {
+    position: relative;
+}
+
+#that {
+    position: absolute;
+    top: 80px;
+    right: 0;
+}
