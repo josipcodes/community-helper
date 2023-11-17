@@ -1,9 +1,3 @@
-#this {
-    position: relative;
-}
-
-#that {
-    position: absolute;
-    top: 80px;
-    right: 0;
+#bg-title {
+    background-color: white;
 }
