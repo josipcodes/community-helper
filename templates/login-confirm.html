@@ -1,3 +1,5 @@
+<!-- included in base navbar, decides how the user's login is shown -->
+
 {% if profile.user.name is None %}
     <div class="text-success login-confirm">Logged in as {{ user.username }}</div>
 {% else %}
