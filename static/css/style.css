@@ -5,7 +5,7 @@
     border-radius: 50%;
     color: green;
     background-color: green;
-    margin-left: 25%;
+    margin: 0 auto;
   }
 
   .stats {
@@ -19,11 +19,23 @@
   }
 
   .stats-description {
-    text-align: justify;
     font-size: x-large;
-    padding-top: 10%;
+    padding-top: 3%;
+    padding-bottom: 7%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: green;
+  }
+
+  .stats-description:last-child {
+    padding-bottom: 3%;
+  }
+
+  @media screen and (min-width=575px) {
+    .stats-description {
+        padding-top: 10%;
+    }
+
+
   }
