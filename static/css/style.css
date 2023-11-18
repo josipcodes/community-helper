@@ -1,3 +1,29 @@
-#bg-title {
-    background-color: white;
-}
+.large-circle {
+    min-width: 75px;
+    max-width: 120px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    color: green;
+    background-color: green;
+    margin-left: 25%;
+  }
+
+  .stats {
+    color: white;
+    text-align: justify;
+    font-size: xx-large;
+    padding-top: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stats-description {
+    text-align: justify;
+    font-size: x-large;
+    padding-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: green;
+  }
