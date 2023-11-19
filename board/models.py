@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 STATUS = (
     ("Draft", "Draft"),
     ("Published", "Published"),
-    ("Ongoing", "Ongoing"),#
+    ("Ongoing", "Ongoing"),
     ("Archived", "Archived"))
 CATEGORIES = (
     ("Helping the elderly", "Helping the elderly"),
@@ -31,7 +31,7 @@ class Category (models.Model):
 class Task (models.Model):
     title = models.CharField(max_length=50, unique=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasker")
-    description = models.TextField
+    description = models.TextField(blank=True)
     status = models.CharField(choices=STATUS, default="Draft", max_length=100)
     helper = models.ForeignKey(User, on_delete=models.CASCADE, related_name="helper")
     created_date = models.DateTimeField(auto_now_add=True)

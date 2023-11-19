@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if user.is_authenticated %}
-                    <li class="d-md-none">
+                    <li class="d-sm-none">
                         {% include "login-confirm.html" %}
                     </li>
                     {% endif %}
@@ -62,11 +62,6 @@
                 </ul>
                 <span class="d-none d-sm-block">
                 {% include "login-confirm.html" %}
-                <!-- {% if profile.user.name is None %}
-                <div class="text-success login-confirm">Logged in as {{ user.username }}</div>
-                {% else %}
-                <div class="text-success login-confirm">Logged in as {{ profile.user.name }}</div>
-                {% endif %} -->
                 </span>
                 {% else %}
                 <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">

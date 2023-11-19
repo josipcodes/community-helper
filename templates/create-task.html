@@ -7,59 +7,60 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-
-            <form>
+            
+            <form method="POST" action="submission">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="task-title">Task Title</label>
-                    <input type="text" placeholder="Name of your task" id="task-title" required>
+                    <input type="text" placeholder="Name of your task" name="task-title" id="task-title" required>
                 </div>
                 <br>
                 <p>Category:</p>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="category" id="elderly"
-                        value="elderly" checked required>
+                        value="Helping the elderly" checked required>
                     <label class="form-check-label" for="elderly">
                         Helping the elderly
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="category" id="youth"
-                        value="youth">
+                        value="Helping the youth">
                     <label class="form-check-label" for="youth">
                         Helping the youth
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="category" id="disability"
-                        value="disability">
+                        value="Helping the people with disability">
                     <label class="form-check-label" for="disability">
                         Helping the people with disability
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="category" id="groceries"
-                        value="groceries">
+                        value="Grocery run">
                     <label class="form-check-label" for="groceries">
                         Grocery run
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="category" id="diy"
-                        value="diy">
+                        value="DIY, minor home improvements">
                     <label class="form-check-label" for="diy">
                         DIY, minor home improvements
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="category" id="urgent"
-                        value="urgent">
+                        value="Urgent">
                     <label class="form-check-label" for="urgent">
                         Urgent
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="category" id="other"
-                        value="other">
+                        value="Other">
                     <label class="form-check-label" for="other">
                         Other
                     </label>
@@ -67,24 +68,22 @@
                 <br>
                 <div class="form-group">
                     <label for="task-description">Task Description</label>
-                    <textarea class="form-control" id="task-description" rows="7" required></textarea>
+                    <textarea class="form-control" id="task-description" name="task-description" rows="7" required></textarea>
                 </div>
+                <br>
                 <div>
                     <label for="date">Deadline,  if applicable:</label>
-                    <input type="date" id="date">
+                    <input type="date" id="deadline" name="deadline">
                 </div>
                 <br>
                 <div class="row">
                     <div class="col offset-9">
                 <input class="btn btn-success ml-5" type="submit" value="Submit">
             </div>
-            </div>
+            </div> 
             </form>
         </div>
     </div>
 </div>
-
-
-
 
 {%endblock%}
