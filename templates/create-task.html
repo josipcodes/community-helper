@@ -4,68 +4,85 @@
 {% block content %}
 
 <!-- bootstrap form code, customized -->
-<form>
-    <div class="form-group">
-        <label for="formGroupExampleInput">Task Title</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name of your task">
-    </div>
-    <br>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-        <label class="form-check-label" for="exampleRadios1">
-            Helping the elderly
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Helping the youth
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Helping the people with disability
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Grocery run
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            DIY, minor home improvements
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Urgent
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Other
-        </label>
-    </div>
-    <br>
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Task Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
-    </div>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
 
-
-
-
-
-
-
-
+            <form>
+                <div class="form-group">
+                    <label for="task-title">Task Title</label>
+                    <input type="text" placeholder="Name of your task" id="task-title" required>
+                </div>
+                <br>
+                <p>Category:</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="elderly"
+                        value="elderly" checked required>
+                    <label class="form-check-label" for="elderly">
+                        Helping the elderly
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="youth"
+                        value="youth">
+                    <label class="form-check-label" for="youth">
+                        Helping the youth
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="disability"
+                        value="disability">
+                    <label class="form-check-label" for="disability">
+                        Helping the people with disability
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="groceries"
+                        value="groceries">
+                    <label class="form-check-label" for="groceries">
+                        Grocery run
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="diy"
+                        value="diy">
+                    <label class="form-check-label" for="diy">
+                        DIY, minor home improvements
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="urgent"
+                        value="urgent">
+                    <label class="form-check-label" for="urgent">
+                        Urgent
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="other"
+                        value="other">
+                    <label class="form-check-label" for="other">
+                        Other
+                    </label>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="task-description">Task Description</label>
+                    <textarea class="form-control" id="task-description" rows="7" required></textarea>
+                </div>
+                <div>
+                    <label for="date">Deadline,  if applicable:</label>
+                    <input type="date" id="date">
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col offset-9">
+                <input class="btn btn-success ml-5" type="submit" value="Submit">
+            </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 
