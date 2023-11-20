@@ -37,6 +37,7 @@ class Task (models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="sort")
+    # category = models.ManyToOneRel(Category.name, on_delete=models.CASCADE)
     final_date = models.DateField(blank=True)
 
     class Meta:

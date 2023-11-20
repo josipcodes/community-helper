@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-
 {% block content %}
 
 <!-- bootstrap form code, customized -->
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            
+
             <form method="POST" action="submission">
                 {% csrf_token %}
-                <div class="form-group">
+                {{ form.as_p }}
+                <!-- <div class="form-group">
                     <label for="task-title">Task Title</label>
                     <input type="text" placeholder="Name of your task" name="task-title" id="task-title" required>
                 </div>
@@ -74,16 +74,16 @@
                 <div>
                     <label for="date">Deadline,  if applicable:</label>
                     <input type="date" id="deadline" name="deadline">
-                </div>
+                </div> -->
                 <br>
                 <div class="row">
                     <div class="col offset-9">
-                <input class="btn btn-success ml-5" type="submit" value="Submit">
-            </div>
-            </div> 
+                        <input class="btn btn-success ml-5" type="submit" value="Submit">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
-{%endblock%}
+{% endblock %}
