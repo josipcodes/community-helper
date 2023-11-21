@@ -12,17 +12,15 @@ def home(request):
 def new_task(request):
     form = TaskForm()
     if request.method == "POST":
+        form = TaskForm(request.POST)
+        # below lines are a customized code obtained here:
+        # https://www.youtube.com/watch?v=zJWhizYFKP0
+        instance = form.save(commit=False)
         if form.is_valid():
-            # instance = form.save(commit=False)
-            # instance.owner = request.user
-            # instance.save()
-            # form.save()
+            instance.owner = request.user
+            instance.status = "Published"
+            instance.save()
             return redirect('home')
-        # title = request.POST.get('task-title')
-        # description = request.POST.get('task-description')
-        # category = request.POST.get('category')
-        # final_date = request.POST.get('deadline')        
-        # Task.objects.create(title=title, description=description, category=category, final_date=final_date)
     context = {'form': form}
     return render(request, "create-task.html", context)
 

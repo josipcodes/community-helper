@@ -10,6 +10,12 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
+                {% for i in form.errors %}
+                {{i}}
+                {% endfor %}
+                {% if form.errors %}
+                    error!
+                {% endif %}
                 <!-- <div class="form-group">
                     <label for="task-title">Task Title</label>
                     <input type="text" placeholder="Name of your task" name="task-title" id="task-title" required>

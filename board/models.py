@@ -29,14 +29,14 @@ class Category (models.Model):
 
 
 class Task (models.Model):
-    title = models.CharField(max_length=50, unique=True)
+    title = models.CharField(max_length=50)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasker")
-    description = models.TextField(blank=True)
+    description = models.TextField(max_length=2000)
     status = models.CharField(choices=STATUS, default="Draft", max_length=100)
     helper = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="helper")
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="sort")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="sort", null=False)
     # category = models.ManyToOneRel(Category.name, on_delete=models.CASCADE)
     final_date = models.DateField(blank=True, null=True)
 
