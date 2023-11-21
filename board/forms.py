@@ -13,8 +13,9 @@ class TaskForm(ModelForm):
         fields = [
             "title",
             "description",
-            "category",
+            # "category",
             "final_date",
         ]
+
 
         

@@ -10,13 +10,13 @@ STATUS = (
     ("Ongoing", "Ongoing"),
     ("Archived", "Archived"))
 CATEGORIES = (
-    ("Helping the elderly", "Helping the elderly"),
-    ("Helping the youth", "Helping the youth"),
-    ("Helping the people with disability", "Helping the people with disability"),
-    ("Grocery run", "Grocery run"),
-    ("DIY, minor home improvements", "DIY, minor home improvements"),
-    ("Urgent", "Urgent"),
-    ("Other", "Other"),
+    ("1", "Helping the elderly"),
+    ("2", "Helping the youth"),
+    ("3", "Helping the people with disability"),
+    ("4", "Grocery run"),
+    ("5", "DIY, minor home improvements"),
+    ("6", "Urgent"),
+    ("7", "Other"),
     )
 # Create your models here.
 
@@ -33,12 +33,12 @@ class Task (models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasker")
     description = models.TextField(blank=True)
     status = models.CharField(choices=STATUS, default="Draft", max_length=100)
-    helper = models.ForeignKey(User, on_delete=models.CASCADE, related_name="helper")
+    helper = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="helper")
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="sort")
     # category = models.ManyToOneRel(Category.name, on_delete=models.CASCADE)
-    final_date = models.DateField(blank=True)
+    final_date = models.DateField(blank=True, null=True)
 
     class Meta:
         ordering = ['created_date']
