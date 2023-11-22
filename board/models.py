@@ -46,12 +46,22 @@ class Task (models.Model):
     def __str__(self):
         return self.title
 
+
     @property
-    def countdown(self):
-        today = date.today()
-        days_time_left = self.final_date - today
-        days_left = str(days_time_left).split(',', 1)[0]
-        return days_left
+    def task_snippet(self):
+        description_length = len(self.description)
+        if description_length > 150:
+            return self.description[:150] + '(...)'
+        else:
+            return self.description
+
+
+    # @property
+    # def countdown(self):
+    #     today = date.today()
+    #     days_time_left = self.final_date - today
+    #     days_left = str(days_time_left).split(',', 1)[0]
+    #     return days_left
 
 
 class Comment(models.Model):
