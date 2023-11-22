@@ -14,7 +14,7 @@ class TaskForm(ModelForm):
             "title",
             "description",
             "category",
-            "final_date",
+            # "final_date",
         ]
 
 
