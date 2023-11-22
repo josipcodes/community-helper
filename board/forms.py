@@ -7,7 +7,6 @@ class TaskForm(ModelForm):
     class Meta:
         # model used
         model = Task
-        # category = forms.ModelChoice(queryset=Category.objects.all())
  
         # fields used
         fields = [
