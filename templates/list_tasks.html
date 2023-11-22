@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for task in tasks %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card text-success mb-3">
+                <div class="card-header">
+                    <h2>{{ task.title }}</h2>
+                </div>
+                <div class="card-body">
+                    <p>From: {{ task.owner }}</p>
+                    <p class="card-text">{{ task.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    {% endblock %}

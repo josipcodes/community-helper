@@ -25,5 +25,13 @@ def new_task(request):
     return render(request, "create-task.html", context)
 
 
+def get_task_list(request):
+    tasks = Task.objects.all()
+    context = {
+        'tasks': tasks
+    }
+    return render(request, "list_tasks.html", context)
+
+
 
 
