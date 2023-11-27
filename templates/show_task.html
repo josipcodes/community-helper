@@ -11,22 +11,33 @@
         {% if not task.helper %}
         <div class="col-md-8 offset-md-2">
             <h2 class="text-success">{{ task.title }}</h2>
-            <p class="text-success">From: {{ task.owner }}</p>
+            <p class="text-success">From: {{ task.owner }} | {{ task.category }}</p>
             <div>{{ task.description }}</div>
         </div>
-        <!-- task owner check -->
-        {% if request.user == task.owner %} 
-        <div class="col offset-4 offset-sm-7">
-            <input class="btn btn-success ml-5" type="edit" value="Edit the Task">
+        <div>
+            <!-- task owner check -->
+            {% if request.user == task.owner %}
+            <div class="col offset-4 offset-sm-7 mt-5">
+                <a href="{% url 'edit-task' task.id %}">
+                    <input class="btn btn-success ml-5" type="edit" value="Edit the Task">
+                </a>
+            </div>
+            <!-- renders acceptance button if not owner and no helper -->
+            {% else %}
+            <div class="col offset-4 offset-sm-7">
+                <input class="btn btn-success ml-5" type="accept" value="Accept the Task">
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            {% if request.user == task.owner %}
+            <div class="col offset-4 offset-sm-7 mt-5">
+                <a href="{% url 'delete-task' task.id %}">
+                    <input class="btn btn-warning ml-5" type="delete" value="Delete the Task">
+                </a>
+            </div>
+            {% endif %}
         </div>
-        <!-- renders acceptance button if not owner and no helper -->
-        {% else %}
-        <div class="col offset-4 offset-sm-7">
-            <input class="btn btn-success ml-5" type="accept" value="Accept the Task">
-        </div>
-        {% endif %}
-        {% endif %}
-        {% endif %}
     </div>
 </div>
 

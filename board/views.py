@@ -56,7 +56,6 @@ def get_task_list(request):
 def show_task(request, task_id):
     current_user = request.user
     task = get_object_or_404(Task, id=task_id)
-# def show_task(request):
     context = {
         'id': task_id,
         'task': task
@@ -67,11 +66,21 @@ def show_task(request, task_id):
 def edit_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     form = TaskForm(instance=task)
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+        return redirect(show_task, task_id)
     context = {
         'form': form
     }
     return render(request, "edit_task.html", context)
 
+
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    task.delete()
+    return redirect(home)
 
 
 

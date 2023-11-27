@@ -24,23 +24,23 @@
         <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
         {% for task in page_obj %}
-        {% if user.is_authenticated %}
-        <a href="{% url 'display-task' task.id %}">
-        {% else %}
-        <a href="{% url 'account_login' %}">
-        {% endif %}
-            <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4">
+            {% if user.is_authenticated %}
+            <a href="{% url 'display-task' task.id %}">
+            {% else %}
+            <a href="{% url 'account_login' %}">
+            {% endif %}
                 <div class="card text-success mb-3">
                     <div class="card-header">
-                        <h2>{{ task.title }}</h2>
+                         <h2>{{ task.title }}</h2>
                     </div>
                     <div class="card-body">
-                        <p>From: {{ task.owner }}</p>
+                        <p>From: {{ task.owner }} | {{ task.category }}</p>
                         <p class="card-text">{{ task.task_snippet }}</p>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
         <!-- need to test empty clause after deleting tasks -->
         {% empty %}
         <div class="col-md-6 col-lg-4">
@@ -48,9 +48,10 @@
         </div>
         {% endfor %}
     </div>
+    <!-- pagination section -->
     <div class="row">
         <!-- below code has been taken from:
-    https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
+        https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
         <div class="col-4 offset-4 offset-md-5 pt-5 pagination">
             <span class="step-links text-success">
                 {% if page_obj.has_previous %}
