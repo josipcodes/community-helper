@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            {% if request.user == task.owner %} 
+            <h2 class="text-success">{{ task.title }}</h2>
+            <p class="text-success">From: {{ task.owner }}</p>
+            <p>{{ task.description }}</p>
+            {% else %}
+            <p>Ooops, you don't seem to have access to this request</p>
+            {% endif %}
+        </div>
+        <div class="col-md-6">placeholder column</div>
+    </div>
+</div>
+
+    {% endblock %}

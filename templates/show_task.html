@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <!-- authentication check -->
+        {% if user.is_authenticated %}
+        <!-- helper is not assigned check -->
+        {% if not task.helper %}
+        <div class="col-md-8 offset-md-2">
+            <h2 class="text-success">{{ task.title }}</h2>
+            <p class="text-success">From: {{ task.owner }}</p>
+            <div>{{ task.description }}</div>
+        </div>
+        <!-- task owner check -->
+        {% if request.user == task.owner %} 
+        <div class="col offset-4 offset-sm-7">
+            <input class="btn btn-success ml-5" type="edit" value="Edit the Task">
+        </div>
+        <!-- renders acceptance button if not owner and no helper -->
+        {% else %}
+        <div class="col offset-4 offset-sm-7">
+            <input class="btn btn-success ml-5" type="accept" value="Accept the Task">
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+    {% endblock %}

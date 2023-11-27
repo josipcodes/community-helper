@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Task, User
 from .forms import TaskForm
@@ -53,7 +53,24 @@ def get_task_list(request):
     return render(request, "list_tasks.html", context)
 
 
+def show_task(request, task_id):
+    current_user = request.user
+    task = get_object_or_404(Task, id=task_id)
+# def show_task(request):
+    context = {
+        'id': task_id,
+        'task': task
+    }
+    return render(request, "show_task.html", context)
 
+
+def edit_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    form = TaskForm(instance=task)
+    context = {
+        'form': form
+    }
+    return render(request, "edit_task.html", context)
 
 
 

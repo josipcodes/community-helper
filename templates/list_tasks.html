@@ -24,39 +24,50 @@
         <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
         {% for task in page_obj %}
-        <div class="col-md-6 col-lg-4">
-            <div class="card text-success mb-3">
-                <div class="card-header">
-                    <h2>{{ task.title }}</h2>
-                </div>
-                <div class="card-body">
-                    <p>From: {{ task.owner }}</p>
-                    <p class="card-text">{{ task.task_snippet }}</p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'display-task' task.id %}">
+        {% else %}
+        <a href="{% url 'account_login' %}">
+        {% endif %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card text-success mb-3">
+                    <div class="card-header">
+                        <h2>{{ task.title }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>From: {{ task.owner }}</p>
+                        <p class="card-text">{{ task.task_snippet }}</p>
+                    </div>
                 </div>
             </div>
+        </a>
+        <!-- need to test empty clause after deleting tasks -->
+        {% empty %}
+        <div class="col-md-6 col-lg-4">
+            <div>There are currently no available tasks.</div>
         </div>
         {% endfor %}
     </div>
     <div class="row">
-    <!-- below code has been taken from:
+        <!-- below code has been taken from:
     https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-    <div class="col-4 offset-4 offset-md-5 pt-5 pagination">
-        <span class="step-links text-success">
-            {% if page_obj.has_previous %}
-            <a href="?page=1" class="text-success">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}" class="text-success">previous</a>
-            {% endif %}
+        <div class="col-4 offset-4 offset-md-5 pt-5 pagination">
+            <span class="step-links text-success">
+                {% if page_obj.has_previous %}
+                <a href="?page=1" class="text-success">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="text-success">previous</a>
+                {% endif %}
 
-            <span class="current text-success">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                <span class="current text-success">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="text-success">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="text-success">last &raquo;</a>
+                {% endif %}
             </span>
-
-            {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="text-success">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}" class="text-success">last &raquo;</a>
-            {% endif %}
-        </span>
+        </div>
     </div>
-</div>
 
     {% endblock %}
