@@ -32,6 +32,10 @@
     padding-bottom: 3%;
   }
 
+  .task-link {
+    text-decoration: none;
+  }
+
   @media screen and (min-width=575px) {
     .stats-description {
         padding-top: 10%;

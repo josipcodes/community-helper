@@ -36,14 +36,14 @@ def new_task(request):
             instance.save()
             return redirect('home')
     context = {'form': form}
-    return render(request, "create-task.html", context)
+    return render(request, "create_task.html", context)
 
 
 def get_task_list(request):
     task_list = Task.objects.all()
     # paginator logic copied from:
     # https://docs.djangoproject.com/en/4.2/topics/pagination/
-    paginator = Paginator(task_list, 6)
+    paginator = Paginator(task_list, 9)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     context = {
@@ -83,4 +83,11 @@ def delete_task(request, task_id):
     return redirect(home)
 
 
-
+def list_own_tasks(request):
+    current_user = request.user
+    own_tasks = Task.objects.filter(owner=current_user)
+    context = {
+        'current_user': current_user,
+        'own_tasks': own_tasks
+    }
+    return render(request, "list_own_tasks.html", context)
