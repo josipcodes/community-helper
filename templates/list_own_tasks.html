@@ -6,6 +6,7 @@
     <div class="row">
         <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
+        <h2 class="text-success mb-4">Your open tasks:</h2>
         {% for own_task in own_tasks %}
         <div class="col-md-6 col-lg-4">
             {% if user.is_authenticated %}
@@ -15,14 +16,20 @@
             {% endif %}
                 <div class="card mb-3">
                     <div class="card-header">
-                         <h2 class="text-success">
+                         <h3 class="text-success">
                             {{ own_task.title }}
-                        </h2>
+                        </h3>
                     </div>
                     <div class="card-body">
+                        {% if not own_task.helper %}
                         <p class="text-success">
-                            From: {{ own_task.owner }} | <em>{{ own_task.category }}</em>
+                            <em>{{ own_task.category }}</em>
                         </p>
+                        {% else %}
+                        <p class="text-success"></p>
+                            Helper: {{ own_task.helper }} | <em>{{ own_task.category }}</em>
+                        </p>
+                        {% endif %}
                         <p class="card-text">
                             {{ own_task.task_snippet }}
                         </p>

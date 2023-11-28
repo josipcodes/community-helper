@@ -40,7 +40,7 @@ def new_task(request):
 
 
 def get_task_list(request):
-    task_list = Task.objects.all()
+    task_list = Task.objects.filter(status="Published")
     # paginator logic copied from:
     # https://docs.djangoproject.com/en/4.2/topics/pagination/
     paginator = Paginator(task_list, 9)
