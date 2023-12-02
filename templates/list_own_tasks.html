@@ -6,7 +6,7 @@
     <div class="row">
         <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <h2 class="text-success mb-4">Your open tasks:</h2>
+        <h2 class="text-success mb-4">Tasks you created:</h2>
         {% for own_task in own_tasks %}
         <div class="col-md-6 col-lg-4">
             {% if user.is_authenticated %}
@@ -37,20 +37,20 @@
                 </div>
             </a>
         </div>
-        <!-- need to test empty clause after deleting tasks -->
+        <!-- empty clause in case no tasks are ongoing -->
         {% empty %}
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
             <div>
-                There are currently no available tasks.
+                Looks like all your problems are solved. But if you need a hand, <a href="{% url 'submission' %}">we're here for you</a>!
             </div>
         </div>
         {% endfor %}
     </div>
     <!-- pagination section -->
-    <div class="row">
+    <!-- <div class="row"> -->
         <!-- below code has been taken from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <div class="col-4 offset-4 offset-md-5 pt-5 pagination">
+        <!-- <div class="col-4 offset-4 offset-md-5 pt-5 pagination">
             <span class="step-links text-success">
                 {% if page_obj.has_previous %}
                 <a href="?page=1" class="text-success">&laquo; first</a>
@@ -67,6 +67,6 @@
                 {% endif %}
             </span>
         </div>
-    </div>
+    </div> -->
 
     {% endblock %}
