@@ -11,6 +11,14 @@
             <p class="text-success">Task by: {{ task.owner }}</p>
             <p class="text-success">Helper: {{ task.helper }}</p>
             <p>{{ task.description }}</p>
+            {% if request.user == task.owner %}
+            <div class="col offset-4 offset-sm-7 mt-5">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input class="btn btn-success ml-5" type="submit" value="Mark task as finished">
+                </form>
+            </div>
+            {% endif %}
             {% else %}
             <p>Ooops, you don't seem to have access to this request</p>
             {% endif %}

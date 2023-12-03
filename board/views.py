@@ -58,10 +58,6 @@ def get_task_list(request):
 def show_task(request, task_id):
     current_user = request.user
     task = get_object_or_404(Task, id=task_id)
-    context = {
-        'id': task_id,
-        'task': task
-    }
     if request.method == "POST":
         # below lines are a customized code obtained here:
         # https://www.youtube.com/watch?v=zJWhizYFKP0
@@ -70,10 +66,10 @@ def show_task(request, task_id):
         task.save()
         # return render(request, "show_ongoing_task.html", context)
         return show_ongoing_task(request, task_id)
-    # context = {
-    #     'id': task_id,
-    #     'task': task
-    # }
+    context = {
+        'id': task_id,
+        'task': task
+    }
     return render(request, "show_task.html", context)
 
 
@@ -100,9 +96,11 @@ def delete_task(request, task_id):
 def list_own_tasks(request):
     current_user = request.user
     own_tasks = Task.objects.filter(owner=current_user)
+    helper_tasks = Task.objects.filter(helper=current_user)
     context = {
         'current_user': current_user,
-        'own_tasks': own_tasks
+        'own_tasks': own_tasks,
+        'helper_tasks': helper_tasks
     }
     return render(request, "list_own_tasks.html", context)
 
@@ -114,4 +112,14 @@ def show_ongoing_task(request, task_id):
             'id': task_id,
             'task': task
         }
+    if request.method == "POST":
+        if current_user == task.owner:
+        # below lines are a customized code obtained here:
+        # https://www.youtube.com/watch?v=zJWhizYFKP0
+            task.status = "Archived"
+            task.save()
+        # return render(request, "show_ongoing_task.html", context)
+        return get_task_list(request)
     return render(request, "show_ongoing_task.html", context)
+
+
