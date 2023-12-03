@@ -1,43 +1,54 @@
+.brand-color {
+  color: #286638;
+}
+
 .large-circle {
-    min-width: 75px;
-    max-width: 120px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    color: green;
-    background-color: green;
-    margin: 0 auto;
-  }
+  min-width: 75px;
+  max-width: 120px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  /* color: green; */
+  background-color: #286638;
+  margin: 0 auto;
+}
 
-  .stats {
-    color: white;
-    text-align: justify;
-    font-size: xx-large;
-    padding-top: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.stats {
+  color: white;
+  text-align: justify;
+  font-size: xx-large;
+  padding-top: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.stats-description {
+  font-size: x-large;
+  padding-top: 3%;
+  padding-bottom: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: green;
+}
+
+.stats-description:last-child {
+  padding-bottom: 3%;
+}
+
+.task-link {
+  text-decoration: none;
+}
+
+/* aligns task height if more rendered in a row */
+@media screen and (min-width: 767px) {
+  .card-body {
+    min-height: 192px;
+  }
+}
+
+/* @media screen and (max-width: 575px) {
   .stats-description {
-    font-size: x-large;
-    padding-top: 3%;
-    padding-bottom: 7%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: green;
+    padding-bottom: 10%;
   }
-
-  .stats-description:last-child {
-    padding-bottom: 3%;
-  }
-
-  .task-link {
-    text-decoration: none;
-  }
-
-  @media screen and (min-width=575px) {
-    .stats-description {
-        padding-top: 10%;
-    }
-  }
+} */

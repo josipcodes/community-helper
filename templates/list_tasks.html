@@ -23,7 +23,7 @@
     <div class="row">
         <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <h2 class="text-success mb-4">Current open tasks:</h2>
+        <h2 class="brand-color mb-4">Current open tasks:</h2>
         {% for task in page_obj %}
         <div class="col-md-6 col-lg-4">
             {% if user.is_authenticated %}
@@ -33,12 +33,12 @@
             {% endif %}
                 <div class="card mb-3">
                     <div class="card-header">
-                         <h3 class="text-success">
+                         <h3 class="brand-color">
                             {{ task.title }}
                         </h3>
                     </div>
                     <div class="card-body">
-                        <p class="text-success">
+                        <p class="brand-color">
                             From: {{ task.owner }} | <em>{{ task.category }}</em>
                         </p>
                         <p class="card-text">
@@ -61,20 +61,20 @@
     <div class="row">
         <!-- below code has been taken from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <div class="col-4 offset-4 offset-md-5 pt-5 pagination">
-            <span class="step-links text-success">
+        <div class="pt-5 mb-5 pagination justify-content-center fixed-bottom">
+            <span class="step-links brand-color">
                 {% if page_obj.has_previous %}
-                <a href="?page=1" class="text-success">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}" class="text-success">previous</a>
+                <a href="?page=1" class="brand-color">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="brand-color">previous</a>
                 {% endif %}
 
-                <span class="current text-success">
+                <span class="current brand-color">
                     Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                 </span>
 
                 {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="text-success">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}" class="text-success">last &raquo;</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="brand-color">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="brand-color">last &raquo;</a>
                 {% endif %}
             </span>
         </div>

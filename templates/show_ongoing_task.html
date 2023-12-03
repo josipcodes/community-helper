@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col-md-6">
             {% if request.user == task.owner or request.user == task.helper %} 
-            <h2 class="text-success">{{ task.title }}</h2>
-            <p class="text-success">Task by: {{ task.owner }}</p>
-            <p class="text-success">Helper: {{ task.helper }}</p>
+            <h2 class="brand-color">{{ task.title }}</h2>
+            <p class="brand-color">Task by: {{ task.owner }}</p>
+            <p class="brand-color">Helper: {{ task.helper }}</p>
             <p>{{ task.description }}</p>
             {% if request.user == task.owner %}
             <div class="col offset-4 offset-sm-7 mt-5">

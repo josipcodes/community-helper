@@ -8,7 +8,8 @@ from .forms import TaskForm
 # renders index.html
 def home(request):
     # below logic was taken (but custoomized) from:
-    # https://www.learningaboutelectronics.com/Articles/How-to-count-all-objects-of-a-database-table-in-Django.php
+    # https://www.learningaboutelectronics.com/Articles/
+    # How-to-count-all-objects-of-a-database-table-in-Django.php
     published_tasks = Task.objects.filter(status="Published")
     archived_tasks = Task.objects.filter(status="Archived")
     total_published = published_tasks.count()
@@ -88,15 +89,26 @@ def edit_task(request, task_id):
 
 
 def delete_task(request, task_id):
+    current_user = request.user
     task = get_object_or_404(Task, id=task_id)
-    task.delete()
-    return redirect(home)
+    if request.method == "POST":
+        if current_user == task.owner:
+            task.delete()
+            return list_own_tasks(request)
+    context = {
+        'task': task
+    }
+    return render(request, "delete_task.html", context)
 
 
 def list_own_tasks(request):
     current_user = request.user
-    own_tasks = Task.objects.filter(owner=current_user)
-    helper_tasks = Task.objects.filter(helper=current_user)
+    # below filtering by using status__in adopted from:
+    # https://copyprogramming.com/howto/django-filter-multiple-values
+    own_tasks = Task.objects.filter(owner=current_user).filter(
+        status__in=["Published", "Ongoing"]
+        )
+    helper_tasks = Task.objects.filter(helper=current_user, status="Ongoing")
     context = {
         'current_user': current_user,
         'own_tasks': own_tasks,
@@ -119,7 +131,7 @@ def show_ongoing_task(request, task_id):
             task.status = "Archived"
             task.save()
         # return render(request, "show_ongoing_task.html", context)
-        return get_task_list(request)
+            return list_own_tasks(request)
     return render(request, "show_ongoing_task.html", context)
 
 

@@ -6,7 +6,7 @@
     <div class="row">
         <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <h2 class="text-success mb-4">Tasks you created:</h2>
+        <h2 class="brand-color mb-4">Tasks you created:</h2>
         {% for own_task in own_tasks %}
         <div class="col-md-6 col-lg-4">
             {% if user.is_authenticated %}
@@ -20,17 +20,17 @@
             {% endif %}
                 <div class="card mb-3">
                     <div class="card-header">
-                         <h3 class="text-success">
+                         <h3 class="brand-color">
                             {{ own_task.title }}
                         </h3>
                     </div>
                     <div class="card-body">
                         {% if not own_task.helper %}
-                        <p class="text-success">
+                        <p class="brand-color">
                             <em>{{ own_task.category }}</em>
                         </p>
                         {% else %}
-                        <p class="text-success">
+                        <p class="brand-color">
                             Helper: {{ own_task.helper }} | <em>{{ own_task.category }}</em>
                         </p>
                         {% endif %}
@@ -53,7 +53,7 @@
     <div class="row">
         <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <h2 class="text-success mb-4">Tasks you are helping on:</h2>
+        <h2 class="brand-color mb-4 mt-5">Tasks you are helping on:</h2>
         {% for helper_task in helper_tasks %}
         <div class="col-md-6 col-lg-4">
             {% if user.is_authenticated %}
@@ -63,12 +63,12 @@
             {% endif %}
                 <div class="card mb-3">
                     <div class="card-header">
-                         <h3 class="text-success">
+                         <h3 class="brand-color">
                             {{ helper_task.title }}
                         </h3>
                     </div>
                     <div class="card-body">
-                        <p class="text-success">
+                        <p class="brand-color">
                             Helper: {{ helper_task.helper }} | <em>{{ helper_task.category }}</em>
                         </p>
                         <p class="card-text">
