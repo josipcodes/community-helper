@@ -6,9 +6,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            {% if request.user == task.owner %} 
+            {% if request.user == task.owner or request.user == task.helper %} 
             <h2 class="text-success">{{ task.title }}</h2>
-            <p class="text-success">From: {{ task.owner }}</p>
+            <p class="text-success">Task by: {{ task.owner }}</p>
+            <p class="text-success">Helper: {{ task.helper }}</p>
             <p>{{ task.description }}</p>
             {% else %}
             <p>Ooops, you don't seem to have access to this request</p>

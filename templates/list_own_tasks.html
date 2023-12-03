@@ -10,7 +10,11 @@
         {% for own_task in own_tasks %}
         <div class="col-md-6 col-lg-4">
             {% if user.is_authenticated %}
+                {% if not own_task.helper %}
             <a href="{% url 'display-task' own_task.id %}" class="task-link">
+                {% else %}
+            <a href="{% url 'ongoing-task' own_task.id %}" class="task-link">
+                {% endif %}
             {% else %}
             <a href="{% url 'account_login' %}">
             {% endif %}
@@ -26,7 +30,7 @@
                             <em>{{ own_task.category }}</em>
                         </p>
                         {% else %}
-                        <p class="text-success"></p>
+                        <p class="text-success">
                             Helper: {{ own_task.helper }} | <em>{{ own_task.category }}</em>
                         </p>
                         {% endif %}

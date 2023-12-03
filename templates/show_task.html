@@ -24,9 +24,19 @@
             </div>
             <!-- renders acceptance button if not owner and no helper -->
             {% else %}
-            <div class="col offset-4 offset-sm-7">
-                <input class="btn btn-success ml-5" type="accept" value="Accept the Task">
-            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <!-- {{ form.as_p }}
+                {% for i in form.errors %}
+                {{i}}
+                {% endfor %}
+                {% if form.errors %}
+                error!
+                {% endif %} -->
+                <div class="col offset-4 offset-sm-7">
+                    <input class="btn btn-success ml-5" type="submit" value="Accept the Task">
+                </div>
+            </form>
             {% endif %}
             {% endif %}
             {% endif %}

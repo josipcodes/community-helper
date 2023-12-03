@@ -34,7 +34,9 @@ def new_task(request):
             instance.owner = request.user
             instance.status = "Published"
             instance.save()
-            return redirect('home')
+            # decide if this is a good practice + there is no direct confirmation to the user
+            # return redirect('home')
+            return get_task_list(request)
     context = {'form': form}
     return render(request, "create_task.html", context)
 
@@ -60,6 +62,18 @@ def show_task(request, task_id):
         'id': task_id,
         'task': task
     }
+    if request.method == "POST":
+        # below lines are a customized code obtained here:
+        # https://www.youtube.com/watch?v=zJWhizYFKP0
+        task.helper = request.user
+        task.status = "Ongoing"
+        task.save()
+        # return render(request, "show_ongoing_task.html", context)
+        return show_ongoing_task(request, task_id)
+    # context = {
+    #     'id': task_id,
+    #     'task': task
+    # }
     return render(request, "show_task.html", context)
 
 
@@ -91,3 +105,13 @@ def list_own_tasks(request):
         'own_tasks': own_tasks
     }
     return render(request, "list_own_tasks.html", context)
+
+
+def show_ongoing_task(request, task_id):
+    current_user = request.user
+    task = get_object_or_404(Task, id=task_id)
+    context = {
+            'id': task_id,
+            'task': task
+        }
+    return render(request, "show_ongoing_task.html", context)
