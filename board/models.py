@@ -9,6 +9,7 @@ STATUS = (
     ("Published", "Published"),
     ("Ongoing", "Ongoing"),
     ("Archived", "Archived"))
+
 CATEGORIES = (
     ("1", "Helping the elderly"),
     ("2", "Helping the youth"),
@@ -18,7 +19,6 @@ CATEGORIES = (
     ("6", "Urgent"),
     ("7", "Other"),
     )
-# Create your models here.
 
 class Category (models.Model):
     name = models.CharField(choices=CATEGORIES, null=False, blank=False, max_length=100)
@@ -37,7 +37,6 @@ class Task (models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="sort", null=False)
-    # category = models.ManyToOneRel(Category.name, on_delete=models.CASCADE)
     final_date = models.DateField(blank=True, null=True)
 
     class Meta:
@@ -100,3 +99,5 @@ class Profile(models.Model):
 
 #     def karma_points(self):
 #         return self.karma.count() / self.karma.len
+
+

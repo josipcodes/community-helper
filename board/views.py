@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
-from .models import Task, User
+from .models import Task, User, Category
 from .forms import TaskForm
 
 
@@ -135,3 +135,19 @@ def show_ongoing_task(request, task_id):
     return render(request, "show_ongoing_task.html", context)
 
 
+def filter_category(request):
+    categories = Category.objects.all()
+    context = {
+        "categories": categories
+    }
+    if request.method == "POST":
+        published_tasks = Task.objects.filter(status="Published")
+        filtered_category = request.POST.get("category-filter")
+        if filtered_category != "Choose Task Category":
+            filtered_tasks = published_tasks.filter(category=filtered_category)
+            context = {
+                "categories": categories,
+                "filtered_tasks": filtered_tasks
+            }
+            return render(request, "filter_category.html", context)
+    return render(request, "filter_category.html", context)

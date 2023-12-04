@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3 class="brand-color">Filter by Category:</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- below code was adopted and customized from:
+            https://getbootstrap.com/docs/4.0/components/forms/ -->
+            <div class="form-group col-md-4">
+                <label for="category">Category</label>
+                <select id="category" class="form-control" name="category-filter">
+                    <option selected>Choose Task Category</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">
+                        {{ category }}
+                    </option>
+                    {% endfor %}
+                    <!-- <option>Helping the elderly</option>
+                    <option>Helping the youth</option>
+                    <option>Helping the people with disability</option>
+                    <option>Grocery run</option>
+                    <option>DIY, minor home improvements</option>
+                    <option>Urgent</option>
+                    <option>Other</option> -->
+                </select>
+                <div class="row">
+                    <div class="col-1 offset-9">
+                        <input class="btn btn-success mt-2" type="submit" value="Filter">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            {% if filtered_tasks != None %}
+            <!-- line below borrowed and customized from:
+            https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
+            <h4 class="brand-color mb-4 mt-3">Current open tasks:</h4>
+            {% for task in filtered_tasks %}
+            <div class="col-md-6 col-lg-4">
+                {% if user.is_authenticated %}
+                <a href="{% url 'display-task' task.id %}" class="task-link">
+                    {% else %}
+                    <a href="{% url 'account_login' %}">
+                        {% endif %}
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3 class="brand-color">
+                                    {{ task.title }}
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="brand-color">
+                                    From: {{ task.owner }} | <em>{{ task.category }}</em>
+                                </p>
+                                <p class="card-text">
+                                    {{ task.task_snippet }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+            </div>
+            <!-- need to test empty clause after deleting tasks -->
+            {% empty %}
+            <div class="col-md-6 col-lg-4">
+                <div>
+                    There are currently no available tasks in this category.
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+
+
+{%endblock%}
