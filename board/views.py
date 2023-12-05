@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
-from .models import Task, User, Category
-from .forms import TaskForm
+from .models import Task, User, Category, Comment
+from .forms import TaskForm, CommentForm
 
 
 
@@ -82,9 +82,7 @@ def edit_task(request, task_id):
         if form.is_valid():
             form.save()
         return redirect(show_task, task_id)
-    context = {
-        'form': form
-    }
+    context = {'form': form}
     return render(request, "edit_task.html", context)
 
 
@@ -95,9 +93,7 @@ def delete_task(request, task_id):
         if current_user == task.owner:
             task.delete()
             return list_own_tasks(request)
-    context = {
-        'task': task
-    }
+    context = {'task': task}
     return render(request, "delete_task.html", context)
 
 
@@ -118,20 +114,46 @@ def list_own_tasks(request):
 
 
 def show_ongoing_task(request, task_id):
-    current_user = request.user
+    form = CommentForm()
     task = get_object_or_404(Task, id=task_id)
+    # comment = get_object_or_404(Comment, post=task)
+    # comments = Comment.objects.filter(post=task)
+    comments = task.comments.all()
+    current_user = request.user
     context = {
             'id': task_id,
-            'task': task
+            'task': task,
+            'form': form,
+            'comments': comments,
         }
     if request.method == "POST":
-        if current_user == task.owner:
-        # below lines are a customized code obtained here:
-        # https://www.youtube.com/watch?v=zJWhizYFKP0
-            task.status = "Archived"
-            task.save()
-        # return render(request, "show_ongoing_task.html", context)
-            return list_own_tasks(request)
+        # if request.POST["comment"] == "comment":
+        form = CommentForm(request.POST)
+        print(form)
+        if form != None:
+            # below lines are a customized code obtained here:
+            # https://www.youtube.com/watch?v=zJWhizYFKP0
+            instance = form.save(commit=False)
+            if form.is_valid():
+                instance.author = request.user
+                instance.post = task
+                instance.save()
+                context = {
+                    'id': task_id,
+                    'task': task,
+                    'form': form,
+                    "comments": comments,
+                }
+                return render(request, "show_ongoing_task.html", context)
+        else:
+            if current_user == task.owner:
+            # below lines are a customized code obtained here:
+            # https://www.youtube.com/watch?v=zJWhizYFKP0
+                task.status = "Archived"
+                task.save()
+            # return render(request, "show_ongoing_task.html", context)
+                return list_own_tasks(request)
+            
     return render(request, "show_ongoing_task.html", context)
 
 

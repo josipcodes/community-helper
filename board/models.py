@@ -64,6 +64,9 @@ class Task (models.Model):
 
 
 class Comment(models.Model):
+    # post variable line looks almost identical to the 
+    # below, however, it was created without using the source:
+    # https://djangocentral.com/creating-comments-system-with-django/
     post = models.ForeignKey(Task, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
     message = models.TextField()
@@ -75,7 +78,11 @@ class Comment(models.Model):
 
 
     def __str__(self):
-        return f'{self.author.user.profile.name}: "{self.message}"'
+        # return f'{self.author.user.profile.name}: "{self.message}"'
+        if self.author.user.profile.name is None:
+            return f'{self.author}: "{self.message}"'
+        else:
+            return f'{self.author.user.profile.name}: "{self.message}"'
 
 
 class Profile(models.Model):

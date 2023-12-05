@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Task
+from .models import Task, Comment
 
 # TaskForm class
 class TaskForm(ModelForm):
@@ -17,4 +17,15 @@ class TaskForm(ModelForm):
         ]
 
 
-        
+# CommentForm class
+class CommentForm(ModelForm):
+    # meta class
+    class Meta:
+        # model used
+        model = Comment
+ 
+        # fields used
+        fields = [
+            "message",
+        ]
+
