@@ -12,7 +12,7 @@
             {% if user.is_authenticated %}
             <a href="{% url 'display-task' task.id %}" class="task-link">
                 {% else %}
-                <a href="{% url 'account_login' %}">
+                <a href="{% url 'account_login' %}" class="task-link">
                     {% endif %}
                     <div class="card mb-3">
                         <div class="card-header">
