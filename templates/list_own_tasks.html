@@ -87,27 +87,10 @@
         </div>
         {% endfor %}
     </div>
-    <!-- pagination section -->
-    <!-- <div class="row"> -->
-        <!-- below code has been taken from:
-        https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <!-- <div class="col-4 offset-4 offset-md-5 pt-5 pagination">
-            <span class="step-links text-success">
-                {% if page_obj.has_previous %}
-                <a href="?page=1" class="text-success">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}" class="text-success">previous</a>
-                {% endif %}
-
-                <span class="current text-success">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
-
-                {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="text-success">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}" class="text-success">last &raquo;</a>
-                {% endif %}
-            </span>
-        </div>
-    </div> -->
+    <div class="mb-2">
+        <a class="btn btn-success" href="#navigation" aria-label="link">
+            Go To Top
+        </a>
+    </div>
 
     {% endblock %}
