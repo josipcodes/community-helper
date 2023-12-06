@@ -6,7 +6,7 @@
 /* footer content styling */
 .large-circle {
   min-width: 75px;
-  max-width: 120px;
+  max-width: 100px;
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: #286638;
@@ -24,7 +24,7 @@
 }
 
 .stats-description {
-  font-size: x-large;
+  font-size: large;
   padding-top: 3%;
   padding-bottom: 7%;
   display: flex;
@@ -43,9 +43,25 @@
 }
 
 /* media queries */
-/* aligns task height */
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
+  /* aligns task height */
   .card-body {
     min-height: 192px;
+  }
+
+  /* sets footer content styling on larger devices */
+  .stats-description {
+    font-size: x-large;
+  }
+
+  .large-circle {
+    max-width: 120px;
+  }
+}
+
+@media screen and (min-width: 761px) and (max-width: 991px) {
+  /* sets footer styling on medium devices */
+  #footer {
+    margin: 230px;
   }
 }
