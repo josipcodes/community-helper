@@ -18,9 +18,9 @@
 
 <body>
     <!-- Boostrap navbar, customized code -->
-    <nav class="navbar navbar-expand-sm bg-body-tertiary">
+    <nav class="navbar navbar-expand-sm bg-body-tertiary" id="navigation">
         <div class="container-fluid">
-        <a class="navbar-brand brand-color" href="{% url 'home' %}">Community Helper</a>
+            <a class="navbar-brand brand-color" href="{% url 'home' %}">Community Helper</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                     </li>
                 </ul>
                 <span class="d-none d-sm-block">
-                {% include "login_confirm.html" %}
+                    {% include "login_confirm.html" %}
                 </span>
                 {% else %}
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -76,18 +76,20 @@
             </div>
         </div>
     </nav>
-    <!-- Main image -->
-    <div class="container text-left position-relative">
-        <div class="row position-absolute top-50 start-0 brand-color">
-            <h1 class="bg-white bg-opacity-50 pt-2 pb-2">Community Helper</h1>
-        </div>
-        <div class="row">
-            <div class="col-xl-8 offset-xl-2">
-                <img src="{% static 'images/hands-cropped.png' %}" class="img-fluid" alt="...">
+    <!-- Header -->
+    <header>
+        <div class="container text-left position-relative">
+            <div class="row position-absolute top-50 start-0 brand-color">
+                <h1 class="bg-white bg-opacity-50 pt-2 pb-2">Community Helper</h1>
             </div>
-            
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2">
+                    <img src="{% static 'images/hands-cropped.png' %}" class="img-fluid" alt="hands collaborating">
+                </div>
+
+            </div>
         </div>
-    </div>
+    </header>
     <br>
     {% block content %}
 
