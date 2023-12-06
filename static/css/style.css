@@ -40,15 +40,21 @@
   text-decoration: none;
 }
 
-/* aligns task height if more rendered in a row */
+#back-up-button {
+  display: none;
+}
+
+/* media queries */
+/* aligns task height */
 @media screen and (min-width: 767px) {
   .card-body {
     min-height: 192px;
   }
 }
 
-/* @media screen and (max-width: 575px) {
-  .stats-description {
-    padding-bottom: 10%;
+/* renders back-up button on small devices */
+@media screen and (max-width: 767px) {
+  #back-up-button {
+    display: block;
   }
-} */
+}
