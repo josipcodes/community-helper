@@ -1,13 +1,14 @@
+/* brand color user throughout the project */
 .brand-color {
   color: #286638;
 }
 
+/* footer content styling */
 .large-circle {
   min-width: 75px;
   max-width: 120px;
   aspect-ratio: 1;
   border-radius: 50%;
-  /* color: green; */
   background-color: #286638;
   margin: 0 auto;
 }
@@ -36,12 +37,9 @@
   padding-bottom: 3%;
 }
 
+/* task link styling */
 .task-link, .filter-link {
   text-decoration: none;
-}
-
-#back-up-button {
-  display: none;
 }
 
 /* media queries */
@@ -49,12 +47,5 @@
 @media screen and (min-width: 767px) {
   .card-body {
     min-height: 192px;
-  }
-}
-
-/* renders back-up button on small devices */
-@media screen and (max-width: 767px) {
-  #back-up-button {
-    display: block;
   }
 }

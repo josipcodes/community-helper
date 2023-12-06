@@ -5,50 +5,51 @@
 
 <div class="container">
     <div class="row">
-        <!-- <section id="task-section"> -->
-            <div class="col-md-6">
-                {% if request.user == task.owner or request.user == task.helper %}
-                <h2 class="brand-color">{{ task.title }}</h2>
-                <p class="brand-color">Task by: {{ task.owner }}</p>
-                <p class="brand-color">Helper: {{ task.helper }}</p>
-                <p>{{ task.description }}</p>
-                {% if request.user == task.owner %}
-                <div class="col offset-4 offset-sm-7 mt-5">
-                    <!-- currently broken, and no user confirrmation -->
-                    <form method="POST">
-                        {% csrf_token %}
-                        <input class="btn btn-success ml-5" type="submit" value="Mark task as finished">
-                    </form>
-                </div>
-                {% endif %}
-                {% else %}
-                <p>Ooops, you don't seem to have access to this request</p>
-                {% endif %}
-            </div>
-            <div class="col-md-6">
-                <h2 class="brand-color">Comment section</h2>
-                <form method="POST" id="comment">
+        <div class="col-md-6">
+            <!-- rendering task if the user is owner or helper -->
+            {% if request.user == task.owner or request.user == task.helper %}
+            <h2 class="brand-color">{{ task.title }}</h2>
+            <p class="brand-color">Task by: {{ task.owner }}</p>
+            <p class="brand-color">Helper: {{ task.helper }}</p>
+            <p>{{ task.description }}</p>
+            {% if request.user == task.owner %}
+            <div class="col offset-4 offset-sm-7 mt-5">
+                <!-- currently broken, and no user confirmation -->
+                <form method="POST">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type='hidden' value='comment' name='comment'>
-                    <div class="row">
-                        <div class="col offset-9">
-                            <input class="btn btn-success ml-5" type="submit" value="Comment">
-                        </div>
-                    </div>
+                    <input class="btn btn-success ml-5" type="submit" value="Mark task as finished">
                 </form>
-                {% for comment in comments %}
-                <p class="brand-color">
-                    From: {{ comment.author }} | On: {{ comment.created_date }}</em>
-                </p>
-                <p>{{ comment.message }}</p>
-                <hr>
-                {% empty %}
-                    <div>
-                        No comments yet.
-                    </div>
-                {% endfor %}
             </div>
+            {% endif %}
+            {% else %}
+            <p>Ooops, you don't seem to have access to this request</p>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <h2 class="brand-color">Comment section</h2>
+            <!-- comment form -->
+            <form method="POST" id="comment">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type='hidden' value='comment' name='comment'>
+                <div class="row">
+                    <div class="col offset-9">
+                        <input class="btn btn-success ml-5" type="submit" value="Comment">
+                    </div>
+                </div>
+            </form>
+            {% for comment in comments %}
+            <p class="brand-color">
+                From: {{ comment.author }} | On: {{ comment.created_date }}</em>
+            </p>
+            <p>{{ comment.message }}</p>
+            <hr>
+            {% empty %}
+            <div>
+                No comments yet.
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 

@@ -3,9 +3,7 @@ from .models import Task, Comment
 
 # TaskForm class
 class TaskForm(ModelForm):
-    # meta class
     class Meta:
-        # model used
         model = Task
  
         # fields used
@@ -19,9 +17,7 @@ class TaskForm(ModelForm):
 
 # CommentForm class
 class CommentForm(ModelForm):
-    # meta class
     class Meta:
-        # model used
         model = Comment
  
         # fields used

@@ -5,6 +5,7 @@
 <div class="container">
     <div class="row">
         <h3 class="brand-color">Filter by Category:</h3>
+        <!-- category filter form -->
         <form method="POST">
             {% csrf_token %}
             <!-- below code was adopted and customized from:
@@ -18,13 +19,6 @@
                         {{ category }}
                     </option>
                     {% endfor %}
-                    <!-- <option>Helping the elderly</option>
-                    <option>Helping the youth</option>
-                    <option>Helping the people with disability</option>
-                    <option>Grocery run</option>
-                    <option>DIY, minor home improvements</option>
-                    <option>Urgent</option>
-                    <option>Other</option> -->
                 </select>
                 <div class="row">
                     <div class="col-1 offset-9">
@@ -33,11 +27,12 @@
                 </div>
             </div>
         </form>
+        <!-- filtered task display -->
         <div class="row">
+            <!-- if statement ensures empty clause is not called early -->
             {% if filtered_tasks != None %}
-            <!-- line below borrowed and customized from:
-            https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
             <h4 class="brand-color mb-4 mt-3">Current open tasks:</h4>
+            <!-- renders filtered tasks -->
             {% for task in filtered_tasks %}
             <div class="col-md-6 col-lg-4">
                 {% if user.is_authenticated %}
@@ -62,7 +57,6 @@
                         </div>
                     </a>
             </div>
-            <!-- need to test empty clause after deleting tasks -->
             {% empty %}
             <div class="col-md-6 col-lg-4">
                 <div>
@@ -72,10 +66,7 @@
             {% endfor %}
             {% endif %}
         </div>
-
     </div>
 </div>
-
-
 
 {%endblock%}
