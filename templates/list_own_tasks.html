@@ -23,6 +23,9 @@
                          <h3 class="brand-color">
                             {{ own_task.title }}
                         </h3>
+                        <p class="brand-color mb-0">
+                            <em>{{ own_task.created_date }}</em>
+                        </p>
                     </div>
                     <div class="card-body">
                         {% if not own_task.helper %}
