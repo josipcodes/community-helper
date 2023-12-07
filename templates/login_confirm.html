@@ -1,7 +1,7 @@
 <!-- included in base navbar, decides how the user's login is shown -->
 
 {% if profile.user.name is None %}
-    <div class="brand-color login-confirm">Logged in as {{ user.username }}</div>
+    <div class="brand-color">Logged in as {{ user.username }}</div>
 {% else %}
-    <div class="brand-color login-confirm">Logged in as {{ profile.user.name }}</div>
+    <div class="brand-color">Logged in as {{ profile.user.name }}</div>
 {% endif %}

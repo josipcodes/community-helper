@@ -4,10 +4,9 @@ from .models import Task, User, Category, Comment
 from .forms import TaskForm, CommentForm
 
 
-
 # renders index.html
 def home(request):
-    # below logic was taken (but custoomized) from:
+    # below logic was taken (but customized) from:
     # https://www.learningaboutelectronics.com/Articles/
     # How-to-count-all-objects-of-a-database-table-in-Django.php
     published_tasks = Task.objects.filter(status="Published")
@@ -23,6 +22,7 @@ def home(request):
     }
     return render(request, "index.html", context)
 
+
 # @login_required(login_url="")
 def new_task(request):
     form = TaskForm()
@@ -35,9 +35,7 @@ def new_task(request):
             instance.owner = request.user
             instance.status = "Published"
             instance.save()
-            # decide if this is a good practice + there is no direct confirmation to the user
-            # return redirect('home')
-            return get_task_list(request)
+            return list_own_tasks(request)
     context = {'form': form}
     return render(request, "create_task.html", context)
 
@@ -65,7 +63,6 @@ def show_task(request, task_id):
         task.helper = request.user
         task.status = "Ongoing"
         task.save()
-        # return render(request, "show_ongoing_task.html", context)
         return show_ongoing_task(request, task_id)
     context = {
         'id': task_id,
@@ -116,8 +113,6 @@ def list_own_tasks(request):
 def show_ongoing_task(request, task_id):
     form = CommentForm()
     task = get_object_or_404(Task, id=task_id)
-    # comment = get_object_or_404(Comment, post=task)
-    # comments = Comment.objects.filter(post=task)
     comments = task.comments.all()
     current_user = request.user
     context = {
@@ -147,11 +142,8 @@ def show_ongoing_task(request, task_id):
                 return render(request, "show_ongoing_task.html", context)
         else:
             if current_user == task.owner:
-            # below lines are a customized code obtained here:
-            # https://www.youtube.com/watch?v=zJWhizYFKP0
                 task.status = "Archived"
                 task.save()
-            # return render(request, "show_ongoing_task.html", context)
                 return list_own_tasks(request)
             
     return render(request, "show_ongoing_task.html", context)

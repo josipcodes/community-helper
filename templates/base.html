@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <!-- Boostrap navbar, customized code -->
+    <!-- Navbar, customized bootstrap example code -->
     <nav class="navbar navbar-expand-sm bg-body-tertiary" id="navigation">
         <div class="container-fluid">
             <a class="navbar-brand brand-color" href="{% url 'home' %}">Community Helper</a>
@@ -30,6 +30,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if user.is_authenticated %}
                     <li class="d-sm-none">
+                        <!-- navbar confirmation of login -->
                         {% include "login_confirm.html" %}
                     </li>
                     {% endif %}
@@ -60,6 +61,7 @@
                         </ul>
                     </li>
                 </ul>
+                <!-- navbar confirmation of login -->
                 <span class="d-none d-sm-block">
                     {% include "login_confirm.html" %}
                 </span>
