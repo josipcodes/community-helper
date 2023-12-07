@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3 class="brand-color">Are you sure you want to mark this task as done?</h3>
+        <div class="col-md-6 col-lg-4">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h3 class="brand-color">
+                        {{ task.title }}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p class="brand-color">
+                        Helper: {{ task.helper }} | <em>{{ task.category }}</em>
+                    </p>
+                    <p class="card-text">
+                        {{ task.task_snippet }}
+                    </p>
+                </div>
+            </div>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group ml-auto" role="group" aria-label="Archive task">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input class="btn btn-warning" type="submit" value="Mark task as finished">
+                    </form>
+                </div>
+                <div class="btn-group ms-auto" role="group" aria-label="Go to an active task">
+                    <a class="btn btn-success" href="{% url 'ongoing-task' task.id %}">Go back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

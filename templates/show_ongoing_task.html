@@ -14,11 +14,7 @@
             <p>{{ task.description }}</p>
             {% if request.user == task.owner %}
             <div class="col offset-4 offset-sm-7 mt-5">
-                <!-- currently broken, and no user confirmation -->
-                <form method="POST">
-                    {% csrf_token %}
-                    <input class="btn btn-success ml-5" type="submit" value="Mark task as finished">
-                </form>
+                <a class="btn btn-success" href="{% url 'archive-task' task.id %}">Mark Task as Done</a>
             </div>
             {% endif %}
             {% else %}

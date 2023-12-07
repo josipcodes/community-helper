@@ -124,29 +124,37 @@ def show_ongoing_task(request, task_id):
     if request.method == "POST":
         # if request.POST["comment"] == "comment":
         form = CommentForm(request.POST)
-        print(form)
-        if form != None:
+        # if form != None:
             # below lines are a customized code obtained here:
             # https://www.youtube.com/watch?v=zJWhizYFKP0
-            instance = form.save(commit=False)
-            if form.is_valid():
-                instance.author = request.user
-                instance.post = task
-                instance.save()
-                context = {
-                    'id': task_id,
-                    'task': task,
-                    'form': form,
-                    "comments": comments,
-                }
-                return render(request, "show_ongoing_task.html", context)
-        else:
-            if current_user == task.owner:
-                task.status = "Archived"
-                task.save()
-                return list_own_tasks(request)
-            
+        instance = form.save(commit=False)
+        if form.is_valid():
+            instance.author = request.user
+            instance.post = task
+            instance.save()
+            context = {
+                'id': task_id,
+                'task': task,
+                'form': form,
+                "comments": comments,
+            }
+            return render(request, "show_ongoing_task.html", context)
     return render(request, "show_ongoing_task.html", context)
+
+
+def archive_task(request, task_id):
+    current_user = request.user
+    task = get_object_or_404(Task, id=task_id)
+    context = {
+        "task": task,
+        "id": task_id
+    }
+    if request.method == "POST":
+        if current_user == task.owner:
+            task.status = "Archived"
+            task.save()
+            return list_own_tasks(request)
+    return render(request, "archive_task.html", context)
 
 
 def filter_category(request):
