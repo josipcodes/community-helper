@@ -139,12 +139,6 @@ def show_ongoing_task(request, task_id):
                 "comments": comments,
             }
             return render(request, "show_ongoing_task.html", context)
-        # else:
-            # if current_user == task.owner:
-            #     task.status = "Archived"
-            #     task.save()
-            #     return list_own_tasks(request)
-            
     return render(request, "show_ongoing_task.html", context)
 
 
@@ -152,6 +146,7 @@ def archive_task(request, task_id):
     current_user = request.user
     task = get_object_or_404(Task, id=task_id)
     context = {
+        "task": task,
         "id": task_id
     }
     if request.method == "POST":
