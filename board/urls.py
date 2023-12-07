@@ -12,4 +12,5 @@ urlpatterns = [
     path('task-list/', views.list_own_tasks, name='task-list'),
     path('ongoing-task/<task_id>', views.show_ongoing_task, name='ongoing-task'),
     path('filter/', views.filter_category, name='filter-category'),
+    path('archive-task/<task_id>', views.archive_task, name='archive-task'),
 ]

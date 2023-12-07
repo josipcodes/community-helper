@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3 class="brand-color">Are you sure you want to mark the task as done?</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <input class="btn btn-success ml-5" type="submit" value="Mark task as finished">
+        </form>
+    </div>
+</div>
+
+{%endblock%}
