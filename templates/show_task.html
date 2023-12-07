@@ -17,10 +17,17 @@
         <div>
             <!-- task owner check -->
             {% if request.user == task.owner %}
-            <div class="col offset-4 offset-sm-7 mt-5">
-                <a href="{% url 'edit-task' task.id %}">
-                    <input class="btn btn-success ml-5" type="edit" value="Edit the Task">
-                </a>
+            <div class="btn-toolbar mt-3" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group ml-5" role="group" aria-label="Archive task">
+                    <a href="{% url 'edit-task' task.id %}">
+                        <input class="btn btn-success ml-5" type="edit" value="Edit the Task">
+                    </a>
+                </div>
+                <div class="btn-group ms-sm-auto" role="group" aria-label="Go to an active task">
+                    <a href="{% url 'delete-task' task.id %}">
+                        <input class="btn btn-warning ml-5" type="delete" value="Delete the Task">
+                    </a>
+                </div>
             </div>
             <!-- renders acceptance button if not owner and no helper -->
             {% else %}
@@ -40,15 +47,15 @@
             {% endif %}
             {% endif %}
             {% endif %}
-            {% if request.user == task.owner %}
+            <!-- {% if request.user == task.owner %}
             <div class="col offset-4 offset-sm-7 mt-5">
                 <a href="{% url 'delete-task' task.id %}">
                     <input class="btn btn-warning ml-5" type="delete" value="Delete the Task">
                 </a>
             </div>
-            {% endif %}
+            {% endif %} -->
         </div>
     </div>
 </div>
 
-    {% endblock %}
+{% endblock %}
