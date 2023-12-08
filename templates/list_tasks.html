@@ -4,9 +4,9 @@
 
 <div class="container">
     <div class="row">
+        <h2 class="brand-color mb-4">Current open tasks:</h2>
         <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <h2 class="brand-color mb-4">Current open tasks:</h2>
         {% for task in page_obj %}
         <div class="col-md-6 col-lg-4">
             {% if user.is_authenticated %}
@@ -34,7 +34,6 @@
                     </div>
                 </a>
         </div>
-        <!-- need to test empty clause after deleting tasks -->
         {% empty %}
         <div class="col-md-6 col-lg-4">
             <div>
@@ -54,7 +53,7 @@
     <div class="row">
         <!-- below code has been taken from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <div class="pt-5 mb-5 pagination justify-content-center fixed-bottom">
+        <div class="pt-5 mb-5 pagination justify-content-center">
             <span class="step-links brand-color">
                 {% if page_obj.has_previous %}
                 <a href="?page=1" class="brand-color">&laquo; first</a>

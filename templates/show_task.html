@@ -33,13 +33,6 @@
             {% else %}
             <form method="POST">
                 {% csrf_token %}
-                <!-- {{ form.as_p }}
-                {% for i in form.errors %}
-                {{i}}
-                {% endfor %}
-                {% if form.errors %}
-                error!
-                {% endif %} -->
                 <div class="col offset-4 offset-sm-7">
                     <input class="btn btn-success ml-5" type="submit" value="Accept the Task">
                 </div>
@@ -47,13 +40,6 @@
             {% endif %}
             {% endif %}
             {% endif %}
-            <!-- {% if request.user == task.owner %}
-            <div class="col offset-4 offset-sm-7 mt-5">
-                <a href="{% url 'delete-task' task.id %}">
-                    <input class="btn btn-warning ml-5" type="delete" value="Delete the Task">
-                </a>
-            </div>
-            {% endif %} -->
         </div>
     </div>
 </div>
