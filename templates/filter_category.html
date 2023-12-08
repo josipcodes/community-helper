@@ -22,7 +22,7 @@
                 </select>
                 <div class="row">
                     <div class="col-1 offset-9">
-                        <input class="btn btn-success mt-2" type="submit" value="Filter">
+                        <input class="btn btn-success mt-3" type="submit" value="Filter">
                     </div>
                 </div>
             </div>
@@ -64,6 +64,14 @@
                 </div>
             </div>
             {% endfor %}
+            {% if filtered_tasks_count > 3 %}
+            <!-- back to top button -->
+            <div class="mb-2">
+                <a class="btn btn-success" href="#navigation" aria-label="link">
+                    Go To Top
+                </a>
+            </div>
+            {% endif %}
             {% endif %}
         </div>
     </div>

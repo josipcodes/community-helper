@@ -167,9 +167,11 @@ def filter_category(request):
         filtered_category = request.POST.get("category-filter")
         if filtered_category != "Choose Task Category":
             filtered_tasks = published_tasks.filter(category=filtered_category)
+            filtered_tasks_count = filtered_tasks.count()
             context = {
                 "categories": categories,
-                "filtered_tasks": filtered_tasks
+                "filtered_tasks": filtered_tasks,
+                "filtered_tasks_count": filtered_tasks_count
             }
             return render(request, "filter_category.html", context)
     return render(request, "filter_category.html", context)
