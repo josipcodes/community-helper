@@ -10,6 +10,9 @@
         <div class="col-md-8 offset-md-2">
             <h2 class="brand-color">{{ task.title }}</h2>
             <p class="brand-color">From: {{ task.owner }} | {{ task.category }}</p>
+            {% if task.final_date %}
+            <p class="brand-color"><strong>Deadline: {{ task.final_date }}</strong></p>
+            {% endif %}
             <div>{{ task.description }}</div>
         </div>
         <div>

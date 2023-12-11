@@ -16,7 +16,14 @@
                                 {{ task.title }}
                             </h3>
                             <p class="brand-color mb-0">
-                                <em>{{ task.created_date }}</em>
+                                <em>{{ task.created_date }}</em> 
+                            </p>
+                            <p class="brand-color mb-0">
+                                {% if task.final_date %}
+                                <strong> 
+                                    End: {{ task.final_date }}
+                                </strong>
+                                {% endif %}
                             </p>
                         </div>
                         <div class="card-body">
