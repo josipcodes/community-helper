@@ -41,3 +41,10 @@ class CommentForm(ModelForm):
             'message',
         ]
 
+        labels = {
+            'message': '',
+        }
+
+        widgets = {
+            'message': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Enter a Comment'}),
+        }
