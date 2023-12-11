@@ -143,6 +143,7 @@ def show_ongoing_task(request, task_id):
             instance.author = request.user
             instance.post = task
             instance.save()
+            form = CommentForm()
             context = {
                 'id': task_id,
                 'task': task,
