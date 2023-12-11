@@ -10,7 +10,7 @@
             {% csrf_token %}
             <!-- below code was adopted and customized from:
             https://getbootstrap.com/docs/4.0/components/forms/ -->
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6 offset-md-3">
                 <label for="category">Category</label>
                 <select id="category" class="form-control" name="category-filter">
                     <option selected>Choose Task Category</option>
@@ -41,6 +41,9 @@
                                 <h3 class="brand-color">
                                     {{ task.title }}
                                 </h3>
+                                <p class="brand-color mb-0">
+                                    <em>{{ task.created_date }}</em>
+                                </p>
                             </div>
                             <div class="card-body">
                                 <p class="brand-color">

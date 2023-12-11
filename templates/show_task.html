@@ -16,12 +16,12 @@
             <!-- task owner check -->
             {% if request.user == task.owner %}
             <div class="btn-toolbar mt-3" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group ml-5" role="group" aria-label="Archive task">
+                <div class="btn-group ml-5" role="group" aria-label="Edit task">
                     <a href="{% url 'edit-task' task.id %}">
                         <input class="btn btn-success ml-5" type="edit" value="Edit the Task">
                     </a>
                 </div>
-                <div class="btn-group ms-sm-auto" role="group" aria-label="Go to an active task">
+                <div class="btn-group ms-sm-auto" role="group" aria-label="Delete the task">
                     <a href="{% url 'delete-task' task.id %}">
                         <input class="btn btn-warning ml-5" type="delete" value="Delete the Task">
                     </a>

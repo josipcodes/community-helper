@@ -33,6 +33,7 @@ def new_task(request):
         # https://www.youtube.com/watch?v=zJWhizYFKP0
         instance = form.save(commit=False)
         if form.is_valid():
+            # instance saves owner and changes status
             instance.owner = request.user
             instance.status = "Published"
             instance.save()
@@ -61,7 +62,8 @@ def show_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if request.method == "POST":
         # below lines are a customized code obtained here:
-        # https://www.youtube.com/watch?v=zJWhizYFKP0
+        # https://www.youtube.com/watch?v=zJWhizYFKP0#
+        # task saves user as helper, changes status
         task.helper = request.user
         task.status = "Ongoing"
         task.save()
@@ -103,6 +105,7 @@ def list_own_tasks(request):
     current_user = request.user
     # below filtering by using status__in adopted from:
     # https://copyprogramming.com/howto/django-filter-multiple-values
+    # filter for Published and Ongoing tasks
     own_tasks = Task.objects.filter(owner=current_user).filter(
         status__in=["Published", "Ongoing"]
         )
@@ -128,13 +131,12 @@ def show_ongoing_task(request, task_id):
             'comments': comments,
         }
     if request.method == "POST":
-        # if request.POST["comment"] == "comment":
         form = CommentForm(request.POST)
-        # if form != None:
             # below lines are a customized code obtained here:
             # https://www.youtube.com/watch?v=zJWhizYFKP0
         instance = form.save(commit=False)
         if form.is_valid():
+            # instance saves comment author and associated task
             instance.author = request.user
             instance.post = task
             instance.save()
@@ -158,6 +160,7 @@ def archive_task(request, task_id):
     }
     if request.method == "POST":
         if current_user == task.owner:
+            # status change
             task.status = "Archived"
             task.save()
             return list_own_tasks(request)
@@ -175,6 +178,7 @@ def filter_category(request):
         filtered_category = request.POST.get("category-filter")
         if filtered_category != "Choose Task Category":
             filtered_tasks = published_tasks.filter(category=filtered_category)
+            # used to render back-up button if more than 3 tasks exist
             filtered_tasks_count = filtered_tasks.count()
             context = {
                 "categories": categories,
