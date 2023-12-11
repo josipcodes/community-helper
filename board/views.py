@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 from .models import Task, User, Category, Comment
 from .forms import TaskForm, CommentForm
 
@@ -23,7 +24,7 @@ def home(request):
     return render(request, "index.html", context)
 
 
-# @login_required(login_url="")
+@login_required
 def new_task(request):
     form = TaskForm()
     if request.method == "POST":
@@ -54,6 +55,7 @@ def get_task_list(request):
     return render(request, "list_tasks.html", context)
 
 
+@login_required
 def show_task(request, task_id):
     current_user = request.user
     task = get_object_or_404(Task, id=task_id)
@@ -71,6 +73,7 @@ def show_task(request, task_id):
     return render(request, "show_task.html", context)
 
 
+@login_required
 def edit_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     form = TaskForm(instance=task)
@@ -83,6 +86,7 @@ def edit_task(request, task_id):
     return render(request, "edit_task.html", context)
 
 
+@login_required
 def delete_task(request, task_id):
     current_user = request.user
     task = get_object_or_404(Task, id=task_id)
@@ -94,6 +98,7 @@ def delete_task(request, task_id):
     return render(request, "delete_task.html", context)
 
 
+@login_required
 def list_own_tasks(request):
     current_user = request.user
     # below filtering by using status__in adopted from:
@@ -110,6 +115,7 @@ def list_own_tasks(request):
     return render(request, "list_own_tasks.html", context)
 
 
+@login_required
 def show_ongoing_task(request, task_id):
     form = CommentForm()
     task = get_object_or_404(Task, id=task_id)
@@ -142,6 +148,7 @@ def show_ongoing_task(request, task_id):
     return render(request, "show_ongoing_task.html", context)
 
 
+@login_required
 def archive_task(request, task_id):
     current_user = request.user
     task = get_object_or_404(Task, id=task_id)
@@ -157,6 +164,7 @@ def archive_task(request, task_id):
     return render(request, "archive_task.html", context)
 
 
+@login_required
 def filter_category(request):
     categories = Category.objects.all()
     context = {

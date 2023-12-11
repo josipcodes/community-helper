@@ -59,11 +59,7 @@
         <h2 class="brand-color mb-4 mt-5">Tasks you are helping on:</h2>
         {% for helper_task in helper_tasks %}
         <div class="col-md-6 col-lg-4">
-            {% if user.is_authenticated %}
             <a href="{% url 'ongoing-task' helper_task.id %}" class="task-link">
-            {% else %}
-            <a href="{% url 'account_login' %}">
-            {% endif %}
                 <div class="card mb-3">
                     <div class="card-header">
                          <h3 class="brand-color">
