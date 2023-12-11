@@ -49,6 +49,10 @@
     min-height: 192px;
   }
 
+  .card-header {
+    min-height: 106px;
+  }
+
   /* sets footer content styling on larger devices */
   .stats-description {
     font-size: x-large;

@@ -26,6 +26,13 @@
                         <p class="brand-color mb-0">
                             <em>{{ own_task.created_date }}</em>
                         </p>
+                        <p class="brand-color mb-0">
+                            {% if own_task.final_date %}
+                            <strong> 
+                                End: {{ own_task.final_date }}
+                            </strong>
+                            {% endif %}
+                        </p>
                     </div>
                     <div class="card-body">
                         {% if not own_task.helper %}
@@ -65,6 +72,16 @@
                          <h3 class="brand-color">
                             {{ helper_task.title }}
                         </h3>
+                        <p class="brand-color mb-0">
+                            <em>{{ helper_task.created_date }}</em>
+                        </p>
+                        <p class="brand-color mb-0">
+                            {% if helper_task.final_date %}
+                            <strong> 
+                                End: {{ helper_task.final_date }}
+                            </strong>
+                            {% endif %}
+                        </p>
                     </div>
                     <div class="card-body">
                         <p class="brand-color">

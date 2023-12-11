@@ -11,6 +11,15 @@
             <h2 class="brand-color">{{ task.title }}</h2>
             <p class="brand-color">Task by: {{ task.owner }}</p>
             <p class="brand-color">Helper: {{ task.helper }}</p>
+            {% if task.created_date == task.updated_date %}
+            <p class="brand-color">{{ task.created_date }}</p>
+            {% else %}
+            <p class="brand-color">{{ task.updated_date }}</p>
+            {% endif %}
+            {% if task.final_date %}
+            <p class="brand-color"><strong>Deadline: {{ task.final_date }}</strong></p>
+            {% endif %}
+            <hr>
             <p>{{ task.description }}</p>
             {% if request.user == task.owner %}
             <div class="col offset-4 offset-sm-7 mt-5">

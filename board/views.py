@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .models import Task, User, Category, Comment
 from .forms import TaskForm, CommentForm
+from datetime import datetime
 
 
 # renders index.html within base
@@ -81,8 +82,10 @@ def edit_task(request, task_id):
     form = TaskForm(instance=task)
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
+        instance = form.save(commit=False)
         if form.is_valid():
-            form.save()
+            instance.updated_date = datetime.now()
+            instance.save()
         return redirect(show_task, task_id)
     context = {'form': form}
     return render(request, "edit_task.html", context)
