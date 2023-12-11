@@ -9,11 +9,7 @@
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
         {% for task in page_obj %}
         <div class="col-md-6 col-lg-4">
-            {% if user.is_authenticated %}
             <a href="{% url 'display-task' task.id %}" class="task-link">
-                {% else %}
-                <a href="{% url 'account_login' %}" class="task-link">
-                    {% endif %}
                     <div class="card mb-3">
                         <div class="card-header">
                             <h3 class="brand-color">

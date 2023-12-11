@@ -5,8 +5,6 @@
 
 <div class="container">
     <div class="row">
-        <!-- authentication check -->
-        {% if user.is_authenticated %}
         <!-- helper is not assigned check -->
         {% if not task.helper %}
         <div class="col-md-8 offset-md-2">
@@ -37,7 +35,6 @@
                     <input class="btn btn-success ml-5" type="submit" value="Accept the Task">
                 </div>
             </form>
-            {% endif %}
             {% endif %}
             {% endif %}
         </div>
