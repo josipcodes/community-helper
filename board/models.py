@@ -92,8 +92,7 @@ class Profile(models.Model):
     country = CountryField()
     name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
-    person = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = CloudinaryField('image', default='placeholder-avatar')
+    person = models.OneToOneField(User, on_delete=models.CASCADE, related_name="users")
 
     def __str__(self):
         return self.name + ' ' + self.surname

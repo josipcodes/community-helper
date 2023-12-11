@@ -5,7 +5,7 @@ from .models import Task, User, Category, Comment
 from .forms import TaskForm, CommentForm
 
 
-# renders index.html
+# renders index.html within base
 def home(request):
     # below logic was taken (but customized) from:
     # https://www.learningaboutelectronics.com/Articles/

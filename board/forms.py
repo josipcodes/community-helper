@@ -5,7 +5,6 @@ from .models import Task, Comment
 class TaskForm(ModelForm):
     class Meta:
         model = Task
- 
         # fields used
         fields = [
             "title",
@@ -19,7 +18,6 @@ class TaskForm(ModelForm):
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
- 
         # fields used
         fields = [
             "message",
