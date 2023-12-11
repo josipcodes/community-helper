@@ -10,14 +10,21 @@
         <div class="col-md-8 offset-md-2">
             <h2 class="brand-color">{{ task.title }}</h2>
             <p class="brand-color">From: {{ task.owner }} | {{ task.category }}</p>
+            {% if task.created_date == task.updated_date %}
+            <p class="brand-color">{{ task.created_date }}</p>
+            {% else %}
+            <p class="brand-color">{{ task.updated_date }}</p>
+            {% endif %}
             {% if task.final_date %}
             <p class="brand-color"><strong>Deadline: {{ task.final_date }}</strong></p>
             {% endif %}
+            <hr>
             <div>{{ task.description }}</div>
         </div>
         <div>
             <!-- task owner check -->
             {% if request.user == task.owner %}
+            <hr>
             <div class="btn-toolbar mt-3" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group ml-5" role="group" aria-label="Edit task">
                     <a href="{% url 'edit-task' task.id %}">
