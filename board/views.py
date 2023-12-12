@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from .models import Task, User, Category, Comment
-from .forms import TaskForm, CommentForm
+from .models import Task, User, Category, Comment, Profile
+from .forms import TaskForm, CommentForm, ProfileForm
 from datetime import datetime
 
 
@@ -191,3 +191,82 @@ def filter_category(request):
             }
             return render(request, "filter_category.html", context)
     return render(request, "filter_category.html", context)
+
+
+
+# @login_required
+# def view_profile(request, user_id):
+#     current_user = request.user
+#     user = get_object_or_404(User, id=current_user.id)
+#     profile = Profile.objects.filter(person=user)
+#     context = {
+#         "user.id": user.id,
+#         "profile": profile,
+#     }
+#     return render(request, "view_profile.html", context)
+
+
+def create_profile(request, user_id):
+    form = ProfileForm()
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
+        instance = form.save(commit=False)
+        if form.is_valid():
+            instance.person = request.user
+            instance.save()
+            return view_profile(request, user_id)
+    context = {
+        "user.id": user_id,
+        'form': form
+        }
+    return render(request, "create_profile.html", context)
+
+
+# user can currently access anyone's profile
+@login_required
+def edit_profile(request, user_id):
+    current_user = request.user
+    profile = get_object_or_404(Profile, id=user_id)
+    form = ProfileForm(instance=profile)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, instance=profile)
+        # below lines are a customized code obtained here:
+        # https://www.youtube.com/watch?v=zJWhizYFKP0
+        if form.is_valid():
+            form.save()
+            form = ProfileForm(instance=profile)
+            context = {
+                "form": form,
+                "user_id": current_user.id
+            }
+            return render(request, "edit_profile.html", context)
+    context = {
+        "form": form,
+    }
+    return render(request, "edit_profile.html", context)
+
+
+# @login_required
+# def edit_profile(request,):
+#     current_user = request.user
+#     try:
+#         profile = get_object_or_404(Profile, id=user_id)
+#         form = ProfileForm(instance=profile)
+#         if request.method == "POST":
+#             form = ProfileForm(request.POST, instance=profile)
+#             # below lines are a customized code obtained here:
+#             # https://www.youtube.com/watch?v=zJWhizYFKP0
+#             if form.is_valid():
+#                 form.save()
+#                 form = ProfileForm(instance=profile)
+#                 context = {
+#                     "form": form,
+#                     "user_id": current_user.id
+#                 }
+#                 return render(request, "edit_profile.html", context)
+#         context = {
+#         "form": form,
+#                 }
+#         return render(request, "edit_profile.html", context)
+#     except:
+#         return create_profile(request, user_id)

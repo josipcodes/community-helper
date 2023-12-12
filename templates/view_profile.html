@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="brand-color">{{ profile.first_name }}</div>
+            <!-- <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+                <div class="row">
+                    <div class="col offset-9">
+                        <input class="btn btn-success ml-5" type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div>
+        {{ profile.name }}
+        {{ profile.address }} -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

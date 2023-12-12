@@ -13,4 +13,7 @@ urlpatterns = [
     path('ongoing-task/<task_id>', views.show_ongoing_task, name='ongoing-task'),
     path('filter/', views.filter_category, name='filter-category'),
     path('archive-task/<task_id>', views.archive_task, name='archive-task'),
+    # path('profile/<user_id>', views.create_and_edit, name='profile'),
+    path('create-profile/<user_id>', views.create_profile, name='create-profile'),
+    path('edit-profile/<user_id>', views.edit_profile, name='edit-profile'),
 ]

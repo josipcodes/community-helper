@@ -51,8 +51,8 @@
                             Profile
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">User Account</a></li>
-                            <li><a class="dropdown-item" href="#">Check Stats</a></li>
+                            <!-- <li><a class="dropdown-item" href="{% url 'create-profile' user.id %}">Create Profile</a></li> -->
+                            <li><a class="dropdown-item" href="{% url 'edit-profile' user.id %}">Your Profile</a></li>
                             <li><a class="dropdown-item" href="{% url 'task-list' %}">Check Requests</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -86,7 +86,7 @@
             </div>
             <div class="row">
                 <div class="col-xl-8 offset-xl-2">
-                    <img src="{% static 'images/hands-cropped.png' %}" class="img-fluid" alt="hands collaborating">
+                    <img src="{% static 'images/hands-cropped-compressed.png' %}" class="img-fluid" alt="hands collaborating">
                 </div>
             </div>
         </div>

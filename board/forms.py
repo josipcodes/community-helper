@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Task, Comment
+from .models import Task, Comment, Profile
 
 # TaskForm class
 class TaskForm(ModelForm):
@@ -47,4 +47,38 @@ class CommentForm(ModelForm):
 
         widgets = {
             'message': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Enter a Comment'}),
+        }
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        # fields used
+        fields = [
+            'name',
+            'surname',
+            'address',
+            'location',
+            'city',
+            'country',
+        ]
+
+        labels = {
+            'name': 'First Name',
+            'surname': 'Last Name',
+            'address': 'Address',
+            'city': 'City',
+            'location': 'General location',
+            'country': 'Country',
+        }
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}),
+            'surname': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Last Name'}),
+            'address': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Address'}),
+            'city': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your City'}),
+            'location': forms.TextInput(attrs={
+                'class':'form-control', 
+                'placeholder':'Your General Location; this will be visible to all potential helpers'}),
+            'country': forms.Select(attrs={'class':'form-control'}),
         }
