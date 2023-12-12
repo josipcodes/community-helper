@@ -12,7 +12,7 @@
     <!-- Font awesome icon kit -->
     <script src="https://kit.fontawesome.com/75e939ab45.js" crossorigin="anonymous"></script>
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <title>Community Helper</title>
 </head>
 
@@ -51,8 +51,7 @@
                             Profile
                         </a>
                         <ul class="dropdown-menu">
-                            <!-- <li><a class="dropdown-item" href="{% url 'create-profile' user.id %}">Create Profile</a></li> -->
-                            <li><a class="dropdown-item" href="{% url 'edit-profile' user.id %}">Your Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'edit-profile' %}">Your Profile</a></li>
                             <li><a class="dropdown-item" href="{% url 'task-list' %}">Check Requests</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -91,6 +90,16 @@
             </div>
         </div>
     </header>
+    {% if messages %}
+        <section id="alerts">
+            {% for msg in messages %}
+                <!-- all django message tags mirror bootstrap, except error/danger -->
+                <aside class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} text-center" role="alert">
+                    <h3>{{ msg }}</h3>
+                </aside>
+            {% endfor %}
+        </section>
+    {% endif %}
     <br>
     {% block content %}
 
