@@ -194,35 +194,6 @@ def filter_category(request):
     return render(request, "filter_category.html", context)
 
 
-
-# @login_required
-# def view_profile(request, user_id):
-#     current_user = request.user
-#     user = get_object_or_404(User, id=current_user.id)
-#     profile = Profile.objects.filter(person=user)
-#     context = {
-#         "user.id": user.id,
-#         "profile": profile,
-#     }
-#     return render(request, "view_profile.html", context)
-
-
-# def create_profile(request, user_id):
-#     form = ProfileForm()
-#     if request.method == "POST":
-#         form = ProfileForm(request.POST)
-#         instance = form.save(commit=False)
-#         if form.is_valid():
-#             instance.person = request.user
-#             instance.save()
-#             return view_profile(request, user_id)
-#     context = {
-#         "user.id": user_id,
-#         'form': form
-#         }
-#     return render(request, "create_profile.html", context)
-
-
 @login_required
 def edit_profile(request):
     if Profile.objects.filter(person=request.user).exists():
@@ -247,5 +218,5 @@ def edit_profile(request):
     context = {
         "form": form,
     }
-    return render(request, "edit_profile.html", context)
+    return render(request, "profile.html", context)
 

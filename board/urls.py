@@ -14,6 +14,6 @@ urlpatterns = [
     path('filter/', views.filter_category, name='filter-category'),
     path('archive-task/<int:task_id>', views.archive_task, name='archive-task'),
     # path('profile/<int:user_id>', views.create_and_edit, name='profile'),
-    path('create-profile/<int:user_id>', views.create_profile, name='create-profile'),
-    path('edit-profile/', views.edit_profile, name='edit-profile'),
+    # path('create-profile/<int:user_id>', views.create_profile, name='create-profile'),
+    path('profile/', views.edit_profile, name='profile'),
 ]
