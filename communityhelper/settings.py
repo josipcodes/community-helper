@@ -125,6 +125,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# preventing bugs by disabling email verification
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
