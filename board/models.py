@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django_countries.fields import CountryField
+from datetime import datetime
 
 
 STATUS = (
@@ -22,7 +23,7 @@ CATEGORIES = (
 
 class Category (models.Model):
     name = models.CharField(choices=CATEGORIES, null=False, blank=False, max_length=100)
-    image = CloudinaryField('image', default='placeholder')
+    # image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.name
@@ -55,12 +56,12 @@ class Task (models.Model):
             return self.description
 
 
-    @property
-    def countdown(self):
-        today = date.today()
-        days_time_left = self.final_date - today
-        days_left = str(days_time_left).split(',', 1)[0]
-        return days_left
+    # @property
+    # def countdown(self):
+    #     today = datetime.now()
+    #     days_time_left = self.final_date - today
+    #     days_left = str(days_time_left).split(',', 1)[0]
+    #     return days_time_left
 
 
 class Comment(models.Model):
@@ -79,10 +80,10 @@ class Comment(models.Model):
 
     def __str__(self):
         # return f'{self.author.user.profile.name}: "{self.message}"'
-        if self.author.user.profile.name is None:
-            return f'{self.author}: "{self.message}"'
-        else:
-            return f'{self.author.user.profile.name}: "{self.message}"'
+        # if self.author.user.profile.name is None:
+        #     return f'{self.author}: "{self.message}"'
+        # else:
+        return f'{self.author.user.profile.name}: "{self.message}"'
 
 
 class Profile(models.Model):
@@ -97,13 +98,5 @@ class Profile(models.Model):
     def __str__(self):
         return self.name + ' ' + self.surname
 
-
-# class Review(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     karma = models.ManyToManyField(User, related_name='karma_points', blank=True)
-#     post = models.ForeignKey(Task, on_delete=models.CASCADE, related_name="task")
-
-#     def karma_points(self):
-#         return self.karma.count() / self.karma.len
 
 
