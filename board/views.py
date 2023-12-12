@@ -1,9 +1,10 @@
+from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Task, User, Category, Comment, Profile
 from .forms import TaskForm, CommentForm, ProfileForm
-from datetime import datetime
 
 
 # renders index.html within base
@@ -206,67 +207,45 @@ def filter_category(request):
 #     return render(request, "view_profile.html", context)
 
 
-def create_profile(request, user_id):
-    form = ProfileForm()
-    if request.method == "POST":
-        form = ProfileForm(request.POST)
-        instance = form.save(commit=False)
-        if form.is_valid():
-            instance.person = request.user
-            instance.save()
-            return view_profile(request, user_id)
-    context = {
-        "user.id": user_id,
-        'form': form
-        }
-    return render(request, "create_profile.html", context)
+# def create_profile(request, user_id):
+#     form = ProfileForm()
+#     if request.method == "POST":
+#         form = ProfileForm(request.POST)
+#         instance = form.save(commit=False)
+#         if form.is_valid():
+#             instance.person = request.user
+#             instance.save()
+#             return view_profile(request, user_id)
+#     context = {
+#         "user.id": user_id,
+#         'form': form
+#         }
+#     return render(request, "create_profile.html", context)
 
 
-# user can currently access anyone's profile
 @login_required
-def edit_profile(request, user_id):
-    current_user = request.user
-    profile = get_object_or_404(Profile, id=user_id)
-    form = ProfileForm(instance=profile)
+def edit_profile(request):
+    if Profile.objects.filter(person=request.user).exists():
+        profile = get_object_or_404(Profile, person=request.user)
+    else:
+        profile = None
     if request.method == "POST":
-        form = ProfileForm(request.POST, instance=profile)
+        if profile is not None:
+            form = ProfileForm(request.POST, instance=profile)
+        else:
+            form = ProfileForm(request.POST)
         # below lines are a customized code obtained here:
         # https://www.youtube.com/watch?v=zJWhizYFKP0
         if form.is_valid():
+            form.instance.person = request.user
             form.save()
-            form = ProfileForm(instance=profile)
-            context = {
-                "form": form,
-                "user_id": current_user.id
-            }
-            return render(request, "edit_profile.html", context)
+            messages.success(request, "Profile updated")
+    if profile is not None:
+        form = ProfileForm(instance=profile)
+    else:
+        form = ProfileForm()
     context = {
         "form": form,
     }
     return render(request, "edit_profile.html", context)
 
-
-# @login_required
-# def edit_profile(request,):
-#     current_user = request.user
-#     try:
-#         profile = get_object_or_404(Profile, id=user_id)
-#         form = ProfileForm(instance=profile)
-#         if request.method == "POST":
-#             form = ProfileForm(request.POST, instance=profile)
-#             # below lines are a customized code obtained here:
-#             # https://www.youtube.com/watch?v=zJWhizYFKP0
-#             if form.is_valid():
-#                 form.save()
-#                 form = ProfileForm(instance=profile)
-#                 context = {
-#                     "form": form,
-#                     "user_id": current_user.id
-#                 }
-#                 return render(request, "edit_profile.html", context)
-#         context = {
-#         "form": form,
-#                 }
-#         return render(request, "edit_profile.html", context)
-#     except:
-#         return create_profile(request, user_id)
