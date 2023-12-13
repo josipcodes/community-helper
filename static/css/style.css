@@ -53,7 +53,7 @@
     min-height: 106px;
   }
 
-  .intro-header, .intro-body {
+  .intro-header, .intro-body, .submission-header, .submission-body {
     min-height: 0;
   }
 }

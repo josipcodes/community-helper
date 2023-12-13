@@ -29,18 +29,36 @@ def home(request):
 @login_required
 def new_task(request):
     form = TaskForm()
+    if Profile.objects.filter(person=request.user).exists():
+        profile = get_object_or_404(Profile, person=request.user)
+    else:
+        profile = None
     if request.method == "POST":
         form = TaskForm(request.POST)
+        if profile is not None:
+            profile_form = ProfileForm(request.POST, instance=profile)
+        else:
+            profile_form = ProfileForm(request.POST)
         # below lines are a customized code obtained here:
         # https://www.youtube.com/watch?v=zJWhizYFKP0
         instance = form.save(commit=False)
-        if form.is_valid():
+        profile_instance = form.save(commit=False)
+        if form.is_valid() and profile_form.is_valid():
             # instance saves owner and changes status
             instance.owner = request.user
             instance.status = "Published"
             instance.save()
+            profile_form.instance.person = request.user
+            profile_form.save()
             return list_own_tasks(request)
-    context = {'form': form}
+    if profile is not None:
+        profile_form = ProfileForm(instance=profile)
+    else:
+        profile_form = ProfileForm()
+    context = {
+        'form': form,
+        'profile_form': profile_form,
+        }
     return render(request, "create_task.html", context)
 
 
