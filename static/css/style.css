@@ -52,6 +52,10 @@
   .card-header {
     min-height: 106px;
   }
+
+  .intro-header, .intro-body {
+    min-height: 0;
+  }
 }
 
 @media screen and (min-width: 761px) and (max-width: 991px) {
