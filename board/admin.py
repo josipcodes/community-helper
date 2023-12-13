@@ -24,7 +24,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'location', 'city')
+    list_display = ('person', 'name', 'surname', 'location', 'city')
     list_filter = ('location', 'city')
-    search_fields = ['name', 'surname', 'location', 'city', 'country']
+    search_fields = ['person', 'name', 'surname', 'location', 'city', 'country']
 
