@@ -2,35 +2,43 @@
 
 {% block content %}
 
+<form method="POST"></form>
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h2 class="brand-color">New submission</h2>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <hr>
-                <div class="card mb-3">
-                    <div class="card-header submission-header">
-                        <h2 class="brand-color">Your Contact Details</h2>
+        <!-- <div class="col-md-12"> -->
+            <!-- <h2 class="brand-color">New submission</h2> -->
+            <!-- <form method="POST"> -->
+                <div class="col-md-6">
+                    <h2 class="brand-color">New submission</h2>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </div>
+                <!-- <hr> -->
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header submission-header">
+                            <h2 class="brand-color">Your Contact Details</h2>
 
+                        </div>
+                        <div class="card-body submission-body">
+                            <p><em>Make sure to update your contact details.</em></p>
+                            <p>Your general location will be visible to everyone. Remaining details will be visible to
+                                the
+                                user who accepts your task.</p>
+                        </div>
                     </div>
-                    <div class="card-body submission-body">
-                        <p><em>Make sure to update your contact details.</em></p>
-                        <p>Your general location will be visible to everyone. Remaining details will be visible to the
-                            user who accepts your task.</p>
+                    {{ profile_form.as_p }}
+                    <br>
+                    <div class="row">
+                        <div class="col offset-9">
+                            <input class="btn btn-success ml-5" type="submit" value="Submit">
+                        </div>
                     </div>
                 </div>
-                {{ profile_form.as_p }}
-                <br>
-                <div class="row">
-                    <div class="col offset-9">
-                        <input class="btn btn-success ml-5" type="submit" value="Submit">
-                    </div>
-                </div>
-            </form>
-        </div>
+            <!-- </form> -->
+        <!-- </div> -->
     </div>
 </div>
+</form>
 
 {% endblock %}
