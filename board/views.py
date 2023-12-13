@@ -78,8 +78,9 @@ def get_task_list(request):
 
 @login_required
 def show_task(request, task_id):
-    current_user = request.user
+    # current_user = request.user
     task = get_object_or_404(Task, id=task_id)
+    owner_location = Profile.objects.get(person=task.owner).location
     if request.method == "POST":
         # below lines are a customized code obtained here:
         # https://www.youtube.com/watch?v=zJWhizYFKP0#
@@ -87,10 +88,13 @@ def show_task(request, task_id):
         task.helper = request.user
         task.status = "Ongoing"
         task.save()
-        return show_ongoing_task(request, task_id)
+        # return show_ongoing_task(request, task_id)
+        messages.success(request, "Task successfully accepted")
+        return home(request)
     context = {
         'id': task_id,
-        'task': task
+        'task': task,
+        'owner_location': owner_location,
     }
     return render(request, "show_task.html", context)
 
@@ -105,6 +109,7 @@ def edit_task(request, task_id):
         if form.is_valid():
             instance.updated_date = datetime.now()
             instance.save()
+        messages.success(request, "Task updated successfully!")
         return redirect(show_task, task_id)
     context = {'form': form}
     return render(request, "edit_task.html", context)
@@ -144,13 +149,15 @@ def list_own_tasks(request):
 def show_ongoing_task(request, task_id):
     form = CommentForm()
     task = get_object_or_404(Task, id=task_id)
+    owner_details = Profile.objects.filter(person=task.owner).values()
     comments = task.comments.all()
-    current_user = request.user
+    # current_user = request.user
     context = {
             'id': task_id,
             'task': task,
             'form': form,
             'comments': comments,
+            'owner_details': owner_details,
         }
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -186,6 +193,7 @@ def archive_task(request, task_id):
             # status change
             task.status = "Archived"
             task.save()
+            messages.success(request, "Glad it got sorted!")
             return list_own_tasks(request)
     return render(request, "archive_task.html", context)
 
