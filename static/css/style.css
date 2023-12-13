@@ -52,15 +52,6 @@
   .card-header {
     min-height: 106px;
   }
-
-  /* sets footer content styling on larger devices */
-  .stats-description {
-    font-size: x-large;
-  }
-
-  .large-circle {
-    max-width: 120px;
-  }
 }
 
 @media screen and (min-width: 761px) and (max-width: 991px) {
