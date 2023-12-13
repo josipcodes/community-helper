@@ -21,6 +21,16 @@
             {% endif %}
             <hr>
             <p>{{ task.description }}</p>
+            <hr>
+            <h2 class="brand-color">Contact Details</h2>
+            <div>
+                {% for owner_detail in owner_details %}
+                <p>Full Name: {{ owner_detail.name }} {{ owner_detail.surname }}</p>
+                <p>Address: {{ owner_detail.address }}</p>
+                <p>City: {{ owner_detail.city }}</p>
+                <p>Country: {{ owner_detail.country }}</p>
+                {% endfor %}
+            </div>
             {% if request.user == task.owner %}
             <div class="col offset-4 offset-sm-7 mt-5">
                 <a class="btn btn-success" href="{% url 'archive-task' task.id %}">Mark Task as Done</a>

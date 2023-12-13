@@ -16,12 +16,19 @@
             <p class="brand-color">{{ task.updated_date }}</p>
             {% endif %}
             {% if task.final_date %}
-            <p class="brand-color"><strong>Deadline: {{ task.final_date }}</strong></p>
+            <p class="brand-color">
+                <strong>Deadline: {{ task.final_date }}</strong>
+            </p>
+            {% endif %}
+            {% if owner_location %}
+            <p class="brand-color">
+                <strong>
+                    Location: {{ owner_location }}
+                </strong>
+            </p>
             {% endif %}
             <hr>
             <div>{{ task.description }}</div>
-        </div>
-        <div>
             <!-- task owner check -->
             {% if request.user == task.owner %}
             <hr>
