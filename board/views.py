@@ -64,6 +64,7 @@ def new_task(request):
 
 def get_task_list(request):
     task_list = Task.objects.filter(status="Published")
+    print(task_list)
     # paginator logic copied from:
     # https://docs.djangoproject.com/en/4.2/topics/pagination/
     paginator = Paginator(task_list, 9)
@@ -78,7 +79,6 @@ def get_task_list(request):
 
 @login_required
 def show_task(request, task_id):
-    # current_user = request.user
     task = get_object_or_404(Task, id=task_id)
     owner_location = Profile.objects.get(person=task.owner).location
     if request.method == "POST":
@@ -88,7 +88,6 @@ def show_task(request, task_id):
         task.helper = request.user
         task.status = "Ongoing"
         task.save()
-        # return show_ongoing_task(request, task_id)
         messages.success(request, "Task successfully accepted")
         return home(request)
     context = {
@@ -117,10 +116,9 @@ def edit_task(request, task_id):
 
 @login_required
 def delete_task(request, task_id):
-    current_user = request.user
     task = get_object_or_404(Task, id=task_id)
     if request.method == "POST":
-        if current_user == task.owner:
+        if request.user == task.owner:
             task.delete()
             return list_own_tasks(request)
     context = {'task': task}
@@ -129,16 +127,14 @@ def delete_task(request, task_id):
 
 @login_required
 def list_own_tasks(request):
-    current_user = request.user
     # below filtering by using status__in adopted from:
     # https://copyprogramming.com/howto/django-filter-multiple-values
     # filter for Published and Ongoing tasks
-    own_tasks = Task.objects.filter(owner=current_user).filter(
+    own_tasks = Task.objects.filter(owner=request.user).filter(
         status__in=["Published", "Ongoing"]
         )
-    helper_tasks = Task.objects.filter(helper=current_user, status="Ongoing")
+    helper_tasks = Task.objects.filter(helper=request.user, status="Ongoing")
     context = {
-        'current_user': current_user,
         'own_tasks': own_tasks,
         'helper_tasks': helper_tasks
     }
@@ -151,7 +147,6 @@ def show_ongoing_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     owner_details = Profile.objects.filter(person=task.owner).values()
     comments = task.comments.all()
-    # current_user = request.user
     context = {
             'id': task_id,
             'task': task,
@@ -182,14 +177,13 @@ def show_ongoing_task(request, task_id):
 
 @login_required
 def archive_task(request, task_id):
-    current_user = request.user
     task = get_object_or_404(Task, id=task_id)
     context = {
         "task": task,
         "id": task_id
     }
     if request.method == "POST":
-        if current_user == task.owner:
+        if request.user == task.owner:
             # status change
             task.status = "Archived"
             task.save()
@@ -237,6 +231,9 @@ def edit_profile(request):
             form.instance.person = request.user
             form.save()
             messages.success(request, "Profile updated")
+            context={"form": form}
+            return render(request, "profile.html", context)
+        messages.error(request, "Error: Please try again")
     if profile is not None:
         form = ProfileForm(instance=profile)
     else:
