@@ -4,6 +4,10 @@
 }
 
 /* footer content styling */
+#footer {
+  margin-top: 185px;
+}
+
 .large-circle {
   min-width: 75px;
   max-width: 100px;
@@ -55,12 +59,5 @@
 
   .intro-header, .intro-body, .submission-header, .submission-body {
     min-height: 0;
-  }
-}
-
-@media screen and (min-width: 761px) and (max-width: 991px) {
-  /* sets footer styling on medium devices */
-  #footer {
-    margin: 230px;
   }
 }

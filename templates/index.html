@@ -4,56 +4,73 @@
 {% block content %}
 
 <!-- page mission statements -->
-<section>
+<section id="mission-statement">
     <div class="container text-center brand-color">
         <div class="row">
-            <div class="d-none col-sm-2 pt-5 col-md-3 d-sm-block d-lg-none"><i class="fa-solid fa-check fa-2xl"></i>
+            <div class="d-none col-sm-2 pt-5 col-md-3 d-sm-block d-lg-none">
+                <i class="fa-solid fa-check fa-2xl">
+                </i>
             </div>
             <div class="col-sm-10 col-md-9 col-lg-4">
                 <div class="card brand-color mb-3">
                     <div class="card-header intro-header">
-                        <h2>What?</h2>
+                        <h2>
+                            What?
+                        </h2>
                     </div>
                     <div class="card-body intro-body">
-                        <p class="card-text">Love to help out? Or need a hand? Well, that's what we are here for. In
+                        <p class="card-text">
+                            Love to help out? Or need a hand? Well, that's what we are here for. In
                             order
                             to
                             connect to our fellow neighbors, we have developed a site dedicated to just that - lending a
-                            helping hand. It all starts from the comfort of your sofa.</p>
+                            helping hand. It all starts from the comfort of your sofa.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="d-none col-sm-2 pt-5 col-md-3 d-sm-block d-lg-none"><i
-                    class="fa-solid fa-check-double fa-2xl"></i>
+            <div class="d-none col-sm-2 pt-5 col-md-3 d-sm-block d-lg-none">
+                <i class="fa-solid fa-check-double fa-2xl">
+                </i>
             </div>
             <div class="col-sm-10 col-md-9 col-lg-4">
                 <div class="card brand-color mb-3">
                     <div class="card-header intro-header">
-                        <h2>How?</h2>
+                        <h2>
+                            How?
+                        </h2>
                     </div>
                     <div class="card-body intro-body">
-                        <p class="card-text">Sign up and add your details in a few steps. Simply browse through all of
+                        <p class="card-text">
+                            Sign up and add your details in a few steps. Simply browse through all of
                             the
                             our open
-                            requests and accept those that are to yourr liking. Or create one of your own and wait for
+                            requests and accept those that are to your liking. Or create one of your own and wait for
                             one
-                            of our helpers to put on a cape.</p>
+                            of our helpers to put on a cape.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="d-none col-sm-2 pt-5 col-md-3 d-sm-block d-lg-none"><i
-                    class="fa-regular fa-square-check fa-2xl"></i></div>
+            <div class="d-none col-sm-2 pt-5 col-md-3 d-sm-block d-lg-none">
+                <i class="fa-regular fa-square-check fa-2xl">
+                </i>
+            </div>
             <div class="col-sm-10 col-md-9 col-lg-4">
                 <div class="card brand-color mb-3">
                     <div class="card-header intro-header">
-                        <h2>Why?</h2>
+                        <h2>
+                            Why?
+                        </h2>
                     </div>
                     <div class="card-body intro-body">
-                        <p class="card-text">Not everyone has friends or family that can help them in their hour of
+                        <p class="card-text">
+                            Not everyone has friends or family that can help them in their hour of
                             need. In
                             today's fast-paced environment, we tend to forget the power a community has when formed. So,
                             why
-                            not help forming it and make a change?</p>
+                            not help forming it and make a change?
+                        </p>
                     </div>
                 </div>
             </div>
@@ -65,27 +82,42 @@
     <div class="fixed-bottom pt-4 pb-sm-2 text-center bg-body-tertiary">
         <div class="row">
             <div class="col-4 col-md-2 offset-md-3">
+                <!-- shows a total of Published requests -->
                 <div class="large-circle">
-                    <span class="stats">{{ total_published }}</span>
+                    <span class="stats">
+                        {{ total_published }}
+                    </span>
                 </div>
                 <div>
-                    <span class="stats-description">Open requests</span>
+                    <span class="stats-description">
+                        Open requests
+                    </span>
                 </div>
             </div>
             <div class="col-4 col-md-2">
+                <!-- shows a total of Archived requests -->
                 <div class="large-circle">
-                    <span class="stats">{{ total_archived }}</span>
+                    <span class="stats">
+                        {{ total_archived }}
+                    </span>
                 </div>
                 <div>
-                    <span class="stats-description">Successful requests</span>
+                    <span class="stats-description">
+                        Successful requests
+                    </span>
                 </div>
             </div>
             <div class="col-4 col-md-2">
-                <div class="large-circle text-center">
-                    <span class="stats">{{ total_users }}</span>
+                <!-- shows a total of Users -->
+                <div class="large-circle">
+                    <span class="stats">
+                        {{ total_users }}
+                    </span>
                 </div>
                 <div class="stats-description">
-                    <span>Friends</span>
+                    <span>
+                        Friends
+                    </span>
                 </div>
             </div>
         </div>
