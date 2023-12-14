@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import date
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -35,22 +36,49 @@ def new_task(request):
         profile = None
     if request.method == "POST":
         form = TaskForm(request.POST)
-        if profile is not None:
-            profile_form = ProfileForm(request.POST, instance=profile)
+        # obtain final_date, change type and format to compare to today
+        final_date_str = form.data['final_date']
+        if final_date_str != "":
+            date_format = '%Y-%m-%d'
+            final_date = datetime.strptime(final_date_str, date_format).date()
+            today = date.today()
+            # if date in the past, display message, else allow posting
+            if final_date < today:
+                messages.warning(request, "Deadline cannot be in the past")
+            else:
+                if profile is not None:
+                    profile_form = ProfileForm(request.POST, instance=profile)
+                else:
+                    profile_form = ProfileForm(request.POST)
+                # below lines are a customized code obtained here:
+                # https://www.youtube.com/watch?v=zJWhizYFKP0
+                instance = form.save(commit=False)
+                profile_instance = form.save(commit=False)
+                if form.is_valid() and profile_form.is_valid():
+                    # instance saves owner and changes status
+                    instance.owner = request.user
+                    instance.status = "Published"
+                    instance.save()
+                    profile_form.instance.person = request.user
+                    profile_form.save()
+                    return list_own_tasks(request)
         else:
-            profile_form = ProfileForm(request.POST)
-        # below lines are a customized code obtained here:
-        # https://www.youtube.com/watch?v=zJWhizYFKP0
-        instance = form.save(commit=False)
-        profile_instance = form.save(commit=False)
-        if form.is_valid() and profile_form.is_valid():
-            # instance saves owner and changes status
-            instance.owner = request.user
-            instance.status = "Published"
-            instance.save()
-            profile_form.instance.person = request.user
-            profile_form.save()
-            return list_own_tasks(request)
+            if profile is not None:
+                profile_form = ProfileForm(request.POST, instance=profile)
+            else:
+                profile_form = ProfileForm(request.POST)
+            # below lines are a customized code obtained here:
+            # https://www.youtube.com/watch?v=zJWhizYFKP0
+            instance = form.save(commit=False)
+            profile_instance = form.save(commit=False)
+            if form.is_valid() and profile_form.is_valid():
+                # instance saves owner and changes status
+                instance.owner = request.user
+                instance.status = "Published"
+                instance.save()
+                profile_form.instance.person = request.user
+                profile_form.save()
+                return list_own_tasks(request)      
     if profile is not None:
         profile_form = ProfileForm(instance=profile)
     else:
