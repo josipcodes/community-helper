@@ -99,8 +99,12 @@
             {% else %}
             <!-- if user isn't owner or helper, displays message -->
             <div class="col-md-8">
-                <h2 class="brand-color">Ooops, you don't seem to have access to this request</h2>
-                <a class="btn btn-warning mt-4" href="{% url 'home' %}">Go to the Homepage</a>
+                <h2 class="brand-color">
+                    Ooops, you don't seem to have access to this request
+                </h2>
+                <a class="btn btn-warning mt-4" href="{% url 'home' %}">
+                    Go to the Homepage
+                </a>
             </div>
             {% endif %}
         </div>
