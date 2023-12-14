@@ -2,70 +2,109 @@
 
 {% block content %}
 
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <!-- rendering task if the user is owner or helper -->
+<section id="ongoing-task">
+    <div class="container">
+        <div class="row">
+            <!-- rendering task and comments if the user is owner or helper -->
             {% if request.user == task.owner or request.user == task.helper %}
-            <h2 class="brand-color">{{ task.title }}</h2>
-            <p class="brand-color">Task by: {{ task.owner }}</p>
-            <p class="brand-color">Helper: {{ task.helper }}</p>
-            {% if task.created_date == task.updated_date %}
-            <p class="brand-color">{{ task.created_date }}</p>
-            {% else %}
-            <p class="brand-color">{{ task.updated_date }}</p>
-            {% endif %}
-            {% if task.final_date %}
-            <p class="brand-color"><strong>Deadline: {{ task.final_date }}</strong></p>
-            {% endif %}
-            <hr>
-            <p>{{ task.description }}</p>
-            <hr>
-            <h2 class="brand-color">Contact Details</h2>
-            <div>
-                {% for owner_detail in owner_details %}
-                <p>Full Name: {{ owner_detail.name }} {{ owner_detail.surname }}</p>
-                <p>Address: {{ owner_detail.address }}</p>
-                <p>City: {{ owner_detail.city }}</p>
-                <p>Country: {{ owner_detail.country }}</p>
+            <div class="col-md-6">
+                <h2 class="brand-color">
+                    {{ task.title }}
+                </h2>
+                <p class="brand-color">
+                    Task by: {{ task.owner }}
+                </p>
+                <p class="brand-color">
+                    Helper: {{ task.helper }}
+                </p>
+                <!-- renders most up-to-date date, realistically, we could use updated_date only -->
+                {% if task.created_date == task.updated_date %}
+                <p class="brand-color">
+                    {{ task.created_date }}
+                </p>
+                {% else %}
+                <p class="brand-color">
+                    {{ task.updated_date }}
+                </p>
+                {% endif %}
+                <!-- renders deadline if exists -->
+                {% if task.final_date %}
+                <p class="brand-color">
+                    <strong>
+                        Deadline: {{ task.final_date }}
+                    </strong>
+                </p>
+                {% endif %}
+                <hr>
+                <p>
+                    {{ task.description }}
+                </p>
+                <hr>
+                <h3 class="brand-color">
+                    Contact Details
+                </h3>
+                <div>
+                    {% for owner_detail in owner_details %}
+                    <p>
+                        Full Name: {{ owner_detail.name }} {{ owner_detail.surname }}
+                    </p>
+                    <p>
+                        Address: {{ owner_detail.address }}
+                    </p>
+                    <p>
+                        City: {{ owner_detail.city }}
+                    </p>
+                    <p>
+                        Country: {{ owner_detail.country }}
+                    </p>
+                    {% endfor %}
+                </div>
+                <!-- Url to archive task renders if user is the owner,
+            Prerequisite for this is that the task has a helper. -->
+                {% if request.user == task.owner %}
+                <div class="col offset-4 offset-sm-7 mt-5">
+                    <a class="btn btn-success" href="{% url 'archive-task' task.id %}">
+                        Mark Task as Done
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h3 class="brand-color">
+                    Comment section
+                </h3>
+                <!-- comment form -->
+                <form method="POST" id="comment">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type='hidden' value='comment' name='comment'>
+                    <div class="row">
+                        <div class="col offset-9">
+                            <input class="btn btn-success ml-5" type="submit" value="Comment">
+                        </div>
+                    </div>
+                </form>
+                {% for comment in comments %}
+                <p class="brand-color">
+                    From: {{ comment.author }} | On: {{ comment.created_date }}</em>
+                </p>
+                <p>{{ comment.message }}</p>
+                <hr>
+                {% empty %}
+                <div>
+                    No comments yet.
+                </div>
                 {% endfor %}
             </div>
-            {% if request.user == task.owner %}
-            <div class="col offset-4 offset-sm-7 mt-5">
-                <a class="btn btn-success" href="{% url 'archive-task' task.id %}">Mark Task as Done</a>
-            </div>
-            {% endif %}
             {% else %}
-            <p>Ooops, you don't seem to have access to this request</p>
-            {% endif %}
-        </div>
-        <div class="col-md-6">
-            <h2 class="brand-color">Comment section</h2>
-            <!-- comment form -->
-            <form method="POST" id="comment">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type='hidden' value='comment' name='comment'>
-                <div class="row">
-                    <div class="col offset-9">
-                        <input class="btn btn-success ml-5" type="submit" value="Comment">
-                    </div>
-                </div>
-            </form>
-            {% for comment in comments %}
-            <p class="brand-color">
-                From: {{ comment.author }} | On: {{ comment.created_date }}</em>
-            </p>
-            <p>{{ comment.message }}</p>
-            <hr>
-            {% empty %}
-            <div>
-                No comments yet.
+            <!-- if user isn't owner or helper, displays message -->
+            <div class="col-md-8">
+                <h2 class="brand-color">Ooops, you don't seem to have access to this request</h2>
+                <a class="btn btn-warning mt-4" href="{% url 'home' %}">Go to the Homepage</a>
             </div>
-            {% endfor %}
+            {% endif %}
         </div>
     </div>
-</div>
+</section>
 
 {% endblock %}
