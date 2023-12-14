@@ -2,112 +2,132 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <!-- line below borrowed and customized from:
-        https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <h2 class="brand-color mb-4">Tasks you created:</h2>
-        {% for own_task in own_tasks %}
-        <div class="col-md-6 col-lg-4">
-            {% if user.is_authenticated %}
+<section id="own-tasks">
+    <div class="container">
+        <div class="row">
+            <!-- line below borrowed and customized from:
+            https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
+            <h2 class="brand-color mb-4">
+                Tasks you created:
+            </h2>
+            {% for own_task in own_tasks %}
+            <div class="col-md-6 col-lg-4">
                 {% if not own_task.helper %}
-            <a href="{% url 'display-task' own_task.id %}" class="task-link">
-                {% else %}
-            <a href="{% url 'ongoing-task' own_task.id %}" class="task-link">
-                {% endif %}
-            {% else %}
-            <a href="{% url 'account_login' %}">
-            {% endif %}
-                <div class="card mb-3">
-                    <div class="card-header">
-                         <h3 class="brand-color">
-                            {{ own_task.title }}
-                        </h3>
-                        <p class="brand-color mb-0">
-                            <em>{{ own_task.created_date }}</em>
-                        </p>
-                        <p class="brand-color mb-0">
-                            {% if own_task.final_date %}
-                            <strong> 
-                                End: {{ own_task.final_date }}
-                            </strong>
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        {% if not own_task.helper %}
-                        <p class="brand-color">
-                            <em>{{ own_task.category }}</em>
-                        </p>
-                        {% else %}
-                        <p class="brand-color">
-                            Helper: {{ own_task.helper }} | <em>{{ own_task.category }}</em>
-                        </p>
+                <a href="{% url 'display-task' own_task.id %}" class="task-link">
+                    {% else %}
+                    <a href="{% url 'ongoing-task' own_task.id %}" class="task-link">
                         {% endif %}
-                        <p class="card-text">
-                            {{ own_task.task_snippet }}
-                        </p>
-                    </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3 class="brand-color">
+                                    {{ own_task.title }}
+                                </h3>
+                                <p class="brand-color mb-0">
+                                    <em>
+                                        {{ own_task.created_date }}
+                                    </em>
+                                </p>
+                                <p class="brand-color mb-0">
+                                    {% if own_task.final_date %}
+                                    <strong>
+                                        End: {{ own_task.final_date }}
+                                    </strong>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                {% if not own_task.helper %}
+                                <p class="brand-color">
+                                    <em>
+                                        {{ own_task.category }}
+                                    </em>
+                                </p>
+                                {% else %}
+                                <p class="brand-color">
+                                    Helper: {{ own_task.helper }} | 
+                                    <em>
+                                        {{ own_task.category }}
+                                    </em>
+                                </p>
+                                {% endif %}
+                                <p class="card-text">
+                                    {{ own_task.task_snippet }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+            </div>
+            <!-- empty clause in case no tasks are ongoing -->
+            {% empty %}
+            <div class="col">
+                <div>
+                    Looks like all your problems are solved. But if you need a hand, 
+                    <a href="{% url 'submission' %}">
+                        we're here for you!
+                    </a>
                 </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <!-- line below borrowed and customized from:
+            https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
+            <h2 class="brand-color mb-4 mt-5">
+                Tasks you are helping on:
+            </h2>
+            {% for helper_task in helper_tasks %}
+            <div class="col-md-6 col-lg-4">
+                <a href="{% url 'ongoing-task' helper_task.id %}" class="task-link">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h3 class="brand-color">
+                                {{ helper_task.title }}
+                            </h3>
+                            <p class="brand-color mb-0">
+                                <em>
+                                    {{ helper_task.created_date }}
+                                </em>
+                            </p>
+                            <p class="brand-color mb-0">
+                                {% if helper_task.final_date %}
+                                <strong>
+                                    End: {{ helper_task.final_date }}
+                                </strong>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <p class="brand-color">
+                                Task by: {{ helper_task.owner }} | 
+                                <em>
+                                    {{ helper_task.category }}
+                                </em>
+                            </p>
+                            <p class="card-text">
+                                {{ helper_task.task_snippet }}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- empty clause in case no tasks are ongoing -->
+            {% empty %}
+            <div class="col">
+                <div>
+                    Looks like you've finished all your tasks. But if you want to lend a hand, 
+                    <a href="{% url 'open-tasks' %}">here you go!
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- back to top button -->
+        <div class="mb-2 d-md-none">
+            <a class="btn btn-success" href="#navigation" aria-label="link">
+                Go To Top
             </a>
         </div>
-        <!-- empty clause in case no tasks are ongoing -->
-        {% empty %}
-        <div class="col">
-            <div>
-                Looks like all your problems are solved. But if you need a hand, <a href="{% url 'submission' %}">we're here for you</a>!
-            </div>
-        </div>
-        {% endfor %}
     </div>
-    <div class="row">
-        <!-- line below borrowed and customized from:
-        https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <h2 class="brand-color mb-4 mt-5">Tasks you are helping on:</h2>
-        {% for helper_task in helper_tasks %}
-        <div class="col-md-6 col-lg-4">
-            <a href="{% url 'ongoing-task' helper_task.id %}" class="task-link">
-                <div class="card mb-3">
-                    <div class="card-header">
-                         <h3 class="brand-color">
-                            {{ helper_task.title }}
-                        </h3>
-                        <p class="brand-color mb-0">
-                            <em>{{ helper_task.created_date }}</em>
-                        </p>
-                        <p class="brand-color mb-0">
-                            {% if helper_task.final_date %}
-                            <strong> 
-                                End: {{ helper_task.final_date }}
-                            </strong>
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <p class="brand-color">
-                            Helper: {{ helper_task.helper }} | <em>{{ helper_task.category }}</em>
-                        </p>
-                        <p class="card-text">
-                            {{ helper_task.task_snippet }}
-                        </p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- empty clause in case no tasks are ongoing -->
-        {% empty %}
-        <div class="col">
-            <div>
-                Looks like you've finished all your tasks. But if you want to lend a hand, <a href="{% url 'open-tasks' %}">here you go</a>!
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    <!-- back to top button -->
-    <div class="mb-2 d-md-none">
-        <a class="btn btn-success" href="#navigation" aria-label="link">
-            Go To Top
-        </a>
-    </div>
+</section>
 
-    {% endblock %}
+{% endblock %}
