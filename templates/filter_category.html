@@ -44,6 +44,19 @@
                                 <p class="brand-color mb-0">
                                     <em>{{ task.created_date }}</em>
                                 </p>
+                                <p class="brand-color mb-0">
+                                    <strong>
+                                        {% if task.final_date %}
+                                        End: {{ task.final_date }} |
+                                        {% endif %}
+                                        Location:
+                                        {% for profile in profiles %}
+                                        {% if task.owner == profile.person %}
+                                        {{ profile.location }}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </strong>
+                                </p>
                             </div>
                             <div class="card-body">
                                 <p class="brand-color">

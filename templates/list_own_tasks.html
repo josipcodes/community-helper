@@ -28,11 +28,17 @@
                                     </em>
                                 </p>
                                 <p class="brand-color mb-0">
-                                    {% if own_task.final_date %}
                                     <strong>
-                                        End: {{ own_task.final_date }}
+                                        {% if own_task.final_date %}
+                                        End: {{ own_task.final_date }} |
+                                        {% endif %}
+                                        Location:
+                                        {% for profile in profiles %}
+                                        {% if own_task.owner == profile.person %}
+                                        {{ profile.location }}
+                                        {% endif %}
+                                        {% endfor %}
                                     </strong>
-                                    {% endif %}
                                 </p>
                             </div>
                             <div class="card-body">
@@ -89,11 +95,17 @@
                                 </em>
                             </p>
                             <p class="brand-color mb-0">
-                                {% if helper_task.final_date %}
                                 <strong>
-                                    End: {{ helper_task.final_date }}
+                                    {% if helper_task.final_date %}
+                                    End: {{ helper_task.final_date }} |
+                                    {% endif %}
+                                    Location:
+                                    {% for profile in profiles %}
+                                    {% if helper_task.owner == profile.person %}
+                                    {{ profile.location }}
+                                    {% endif %}
+                                    {% endfor %}
                                 </strong>
-                                {% endif %}
                             </p>
                         </div>
                         <div class="card-body">

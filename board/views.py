@@ -163,9 +163,11 @@ def list_own_tasks(request):
         status__in=["Published", "Ongoing"]
         )
     helper_tasks = Task.objects.filter(helper=request.user, status="Ongoing")
+    profiles = Profile.objects.all()
     context = {
         'own_tasks': own_tasks,
-        'helper_tasks': helper_tasks
+        'helper_tasks': helper_tasks,
+        'profiles': profiles,
     }
     return render(request, "list_own_tasks.html", context)
 
@@ -229,6 +231,7 @@ def filter_category(request):
     }
     if request.method == "POST":
         published_tasks = Task.objects.filter(status="Published")
+        profiles = Profile.objects.all()
         filtered_category = request.POST.get("category-filter")
         if filtered_category != "Choose Task Category":
             filtered_tasks = published_tasks.filter(category=filtered_category)
@@ -237,7 +240,8 @@ def filter_category(request):
             context = {
                 "categories": categories,
                 "filtered_tasks": filtered_tasks,
-                "filtered_tasks_count": filtered_tasks_count
+                "filtered_tasks_count": filtered_tasks_count,
+                "profiles": profiles,
             }
             return render(request, "filter_category.html", context)
     return render(request, "filter_category.html", context)
