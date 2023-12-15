@@ -13,8 +13,11 @@ def home(request):
     # below logic was taken (but customized) from:
     # https://www.learningaboutelectronics.com/Articles/
     # How-to-count-all-objects-of-a-database-table-in-Django.php
-    published_tasks = Task.objects.filter(status="Published")
-    archived_tasks = Task.objects.filter(status="Archived")
+    all_tasks = Task.objects.all()
+    # published_tasks = Task.objects.filter(status="Published")
+    # archived_tasks = Task.objects.filter(status="Archived")
+    published_tasks = all_tasks.filter(status="Published")
+    archived_tasks = all_tasks.filter(status="Archived")
     total_published = published_tasks.count()
     total_archived = archived_tasks.count()
     total_users = User.objects.count()
@@ -48,7 +51,7 @@ def new_task(request):
             else:
                 return task_processing(request, profile, form)
         else:
-            return helper_function(request, profile, form)
+            return task_processing(request, profile, form)
     if profile is not None:
         profile_form = ProfileForm(instance=profile)
     else:
