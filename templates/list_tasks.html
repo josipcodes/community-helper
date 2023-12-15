@@ -2,14 +2,17 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <h2 class="brand-color mb-4">Current open tasks:</h2>
-        <!-- line below borrowed and customized from:
+<section id="task-list">
+    <div class="container">
+        <div class="row">
+            <h2 class="brand-color mb-4">
+                Current open tasks:
+            </h2>
+            <!-- line below borrowed and customized from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        {% for task in page_obj %}
-        <div class="col-md-6 col-lg-4">
-            <a href="{% url 'display-task' task.id %}" class="task-link">
+            {% for task in page_obj %}
+            <div class="col-md-6 col-lg-4">
+                <a href="{% url 'display-task' task.id %}" class="task-link">
                     <div class="card mb-3">
                         <div class="card-header">
                             <h3 class="brand-color">
@@ -17,22 +20,26 @@
                             </h3>
                             <p class="brand-color mb-0">
                                 {% if task.created_date == task.updated_date %}
-                                <em>{{ task.created_date }}</em> 
+                                <em>
+                                    {{ task.created_date }}
+                                </em>
                                 {% else %}
-                                <em>{{ task.updated_date }}</em>
+                                <em>
+                                    {{ task.updated_date }}
+                                </em>
                                 {% endif %}
                             </p>
                             <p class="brand-color mb-0">
                                 <strong>
-                                {% if task.final_date %}
-                                    End: {{ task.final_date }} | 
-                                {% endif %}
-                                Location: 
-                                {% for profile in profiles %}
-                                {% if task.owner == profile.person %}
-                                {{ profile.location }}
-                                {% endif %}
-                                {% endfor %}
+                                    {% if task.final_date %}
+                                    End: {{ task.final_date }} |
+                                    {% endif %}
+                                    Location:
+                                    {% for profile in profiles %}
+                                    {% if task.owner == profile.person %}
+                                    {{ profile.location }}
+                                    {% endif %}
+                                    {% endfor %}
                                 </strong>
                             </p>
                         </div>
@@ -40,7 +47,7 @@
                             <p class="brand-color">
                                 From: {{ task.owner }} |
                                 <em>
-                                    {{ task.category }} |
+                                    {{ task.category }}
                                 </em>
                             </p>
                             <p class="card-text">
@@ -49,44 +56,53 @@
                         </div>
                     </div>
                 </a>
+            </div>
+            {% empty %}
+            <div class="col-md-6 col-lg-4">
+                <div>
+                    There are currently no available tasks.
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% empty %}
-        <div class="col-md-6 col-lg-4">
-            <div>
-                There are currently no available tasks.
+        <div class="row">
+            <div class="col-6 mt-2">
+                <a href="{% url 'filter-category' %}" class="btn btn-success">
+                    Filter tasks
+                </a>
             </div>
         </div>
-        {% endfor %}
-    </div>
-    <div class="row">
-        <div class="col-6 mt-2">
-            <a href="{% url 'filter-category' %}" class="btn btn-success">
-                Filter tasks
-            </a>
-        </div>
-    </div>
-    <!-- pagination section -->
-    <div class="row">
-        <!-- below code has been taken from:
+        <!-- pagination section -->
+        <div class="row">
+            <!-- below code has been taken from:
         https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
-        <div class="pt-5 mb-5 pagination justify-content-center">
-            <span class="step-links brand-color">
-                {% if page_obj.has_previous %}
-                <a href="?page=1" class="brand-color">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}" class="brand-color">previous</a>
-                {% endif %}
+            <div class="pt-5 mb-5 pagination justify-content-center">
+                <span class="step-links brand-color">
+                    {% if page_obj.has_previous %}
+                    <a href="?page=1" class="brand-color">
+                        &laquo; first
+                    </a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="brand-color">
+                        previous
+                    </a>
+                    {% endif %}
 
-                <span class="current brand-color">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    <span class="current brand-color">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="brand-color">
+                        next
+                    </a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="brand-color">
+                        last &raquo;
+                    </a>
+                    {% endif %}
                 </span>
-
-                {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="brand-color">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}" class="brand-color">last &raquo;</a>
-                {% endif %}
-            </span>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 {% endblock %}
