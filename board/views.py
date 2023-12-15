@@ -46,39 +46,9 @@ def new_task(request):
             if final_date < today:
                 messages.warning(request, "Deadline cannot be in the past")
             else:
-                if profile is not None:
-                    profile_form = ProfileForm(request.POST, instance=profile)
-                else:
-                    profile_form = ProfileForm(request.POST)
-                # below lines are a customized code obtained here:
-                # https://www.youtube.com/watch?v=zJWhizYFKP0
-                instance = form.save(commit=False)
-                profile_instance = form.save(commit=False)
-                if form.is_valid() and profile_form.is_valid():
-                    # instance saves owner and changes status
-                    instance.owner = request.user
-                    instance.status = "Published"
-                    instance.save()
-                    profile_form.instance.person = request.user
-                    profile_form.save()
-                    return list_own_tasks(request)
+                return task_processing(request, profile, form)
         else:
-            if profile is not None:
-                profile_form = ProfileForm(request.POST, instance=profile)
-            else:
-                profile_form = ProfileForm(request.POST)
-            # below lines are a customized code obtained here:
-            # https://www.youtube.com/watch?v=zJWhizYFKP0
-            instance = form.save(commit=False)
-            profile_instance = form.save(commit=False)
-            if form.is_valid() and profile_form.is_valid():
-                # instance saves owner and changes status
-                instance.owner = request.user
-                instance.status = "Published"
-                instance.save()
-                profile_form.instance.person = request.user
-                profile_form.save()
-                return list_own_tasks(request)      
+            return helper_function(request, profile, form)
     if profile is not None:
         profile_form = ProfileForm(instance=profile)
     else:
@@ -88,6 +58,26 @@ def new_task(request):
         'profile_form': profile_form,
         }
     return render(request, "create_task.html", context)
+
+
+# saves a valid task, function prevents duplication
+def task_processing(request, profile, form):
+    if profile is not None:
+        profile_form = ProfileForm(request.POST, instance=profile)
+    else:
+        profile_form = ProfileForm(request.POST)
+    # below lines are a customized code obtained here:
+    # https://www.youtube.com/watch?v=zJWhizYFKP0
+    instance = form.save(commit=False)
+    profile_instance = form.save(commit=False)
+    if form.is_valid() and profile_form.is_valid():
+        # instance saves owner and changes status
+        instance.owner = request.user
+        instance.status = "Published"
+        instance.save()
+        profile_form.instance.person = request.user
+        profile_form.save()
+        return list_own_tasks(request)      
 
 
 def get_task_list(request):
