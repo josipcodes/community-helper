@@ -23,16 +23,25 @@
                                 {% endif %}
                             </p>
                             <p class="brand-color mb-0">
-                                {% if task.final_date %}
                                 <strong>
-                                    End: {{ task.final_date }}
-                                </strong>
+                                {% if task.final_date %}
+                                    End: {{ task.final_date }} | 
                                 {% endif %}
+                                Location: 
+                                {% for profile in profiles %}
+                                {% if task.owner == profile.person %}
+                                {{ profile.location }}
+                                {% endif %}
+                                {% endfor %}
+                                </strong>
                             </p>
                         </div>
                         <div class="card-body">
                             <p class="brand-color">
-                                From: {{ task.owner }} | <em>{{ task.category }}</em>
+                                From: {{ task.owner }} |
+                                <em>
+                                    {{ task.category }} |
+                                </em>
                             </p>
                             <p class="card-text">
                                 {{ task.task_snippet }}

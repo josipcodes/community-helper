@@ -92,7 +92,7 @@ def new_task(request):
 
 def get_task_list(request):
     task_list = Task.objects.filter(status="Published")
-    print(task_list)
+    profiles = Profile.objects.all()
     # paginator logic copied from:
     # https://docs.djangoproject.com/en/4.2/topics/pagination/
     paginator = Paginator(task_list, 9)
@@ -100,7 +100,8 @@ def get_task_list(request):
     page_obj = paginator.get_page(page_number)
     context = {
         'task_list': task_list,
-        "page_obj": page_obj
+        "page_obj": page_obj,
+        "profiles": profiles,
     }
     return render(request, "list_tasks.html", context)
 
