@@ -3,7 +3,7 @@
 {% block content %}
 
 <!-- task creation form -->
-<section id="task-creation">
+<section id="task-creation" class="mb-5">
     <form method="POST">
         <div class="container">
             <div class="row">
@@ -51,4 +51,14 @@
     </form>
 </section>
 
+{% endblock %}
+<!-- following block disables deadline choice being a past date -->
+<!-- this was provided by my mentor and was not created by me -->
+{% block extrajs %}
+    <script>
+        let now = new Date();
+        let minDate = now.toISOString().substring(0,10);
+        let finalDate = document.getElementById("id_final_date");
+        finalDate.setAttribute("min", minDate);
+    </script>
 {% endblock %}
