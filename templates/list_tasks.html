@@ -8,8 +8,10 @@
             <h2 class="brand-color mb-4">
                 Current open tasks:
             </h2>
-            <!-- line below borrowed and customized from:
-        https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
+            <!-- 
+                line below borrowed and customized from:
+                https://docs.djangoproject.com/en/4.2/topics/pagination/ 
+            -->
             {% for task in page_obj %}
             <div class="col-md-6 col-lg-4">
                 <a href="{% url 'display-task' task.id %}" class="task-link">
@@ -32,13 +34,13 @@
                             <p class="brand-color mb-0">
                                 <strong>
                                     {% if task.final_date %}
-                                    End: {{ task.final_date }} |
+                                        End: {{ task.final_date }} |
                                     {% endif %}
-                                    Location:
+                                        Location:
                                     {% for profile in profiles %}
-                                    {% if task.owner == profile.person %}
-                                    {{ profile.location }}
-                                    {% endif %}
+                                        {% if task.owner == profile.person %}
+                                            {{ profile.location }}
+                                        {% endif %}
                                     {% endfor %}
                                 </strong>
                             </p>
@@ -74,8 +76,11 @@
         </div>
         <!-- pagination section -->
         <div class="row">
-            <!-- below code has been taken from:
-        https://docs.djangoproject.com/en/4.2/topics/pagination/ -->
+            <!-- 
+                Below code has been taken from:
+                https://docs.djangoproject.com/en/4.2/topics/pagination/ 
+                Minor customisation added.
+            -->
             <div class="pt-5 mb-5 pagination justify-content-center">
                 <span class="step-links brand-color">
                     {% if page_obj.has_previous %}
