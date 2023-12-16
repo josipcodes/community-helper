@@ -82,7 +82,7 @@
                     <a href="?page=1" class="brand-color">
                         &laquo; first
                     </a>
-                    <a href="?page={{ page_obj.previous_page_number }}" class="brand-color">
+                    <a href="?page={{ page_obj.previous_page_number }}" class="brand-color ms-1">
                         previous
                     </a>
                     {% endif %}
@@ -92,8 +92,8 @@
                     </span>
 
                     {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}" class="brand-color">
-                        next
+                    <a href="?page={{ page_obj.next_page_number }}" class="brand-color me-1">
+                        next 
                     </a>
                     <a href="?page={{ page_obj.paginator.num_pages }}" class="brand-color">
                         last &raquo;
