@@ -8,14 +8,14 @@ from .models import Task, User, Category, Comment, Profile
 from .forms import TaskForm, CommentForm, ProfileForm
 
 
-# renders index.html within base
 def home(request):
+    '''
+    Renders index.html within base
+    '''
     # below logic was taken (but customized) from:
     # https://www.learningaboutelectronics.com/Articles/
     # How-to-count-all-objects-of-a-database-table-in-Django.php
     all_tasks = Task.objects.all()
-    # published_tasks = Task.objects.filter(status="Published")
-    # archived_tasks = Task.objects.filter(status="Archived")
     published_tasks = all_tasks.filter(status="Published")
     archived_tasks = all_tasks.filter(status="Archived")
     total_published = published_tasks.count()
@@ -32,6 +32,10 @@ def home(request):
 
 @login_required
 def new_task(request):
+    '''
+    Get renders a blank task and profile (blank or prefilled)
+    Post method creates a task and updates profile if needed.
+    '''
     form = TaskForm()
     if Profile.objects.filter(person=request.user).exists():
         profile = get_object_or_404(Profile, person=request.user)
@@ -46,12 +50,14 @@ def new_task(request):
             final_date = datetime.strptime(final_date_str, date_format).date()
             today = date.today()
             # if date in the past, display message, else allow posting
+            # this is a backup for javascript used in task creation and editing
             if final_date < today:
                 messages.warning(request, "Deadline cannot be in the past")
             else:
                 return task_processing(request, profile, form)
         else:
             return task_processing(request, profile, form)
+    # if statement sets ProfileForm depending if it already exists or not
     if profile is not None:
         profile_form = ProfileForm(instance=profile)
     else:
@@ -63,8 +69,11 @@ def new_task(request):
     return render(request, "create_task.html", context)
 
 
-# saves a valid task, function prevents duplication
 def task_processing(request, profile, form):
+    '''
+    Saves a valid task, function prevents duplication of code.
+    Owner, status and person are added before saving.
+    '''
     if profile is not None:
         profile_form = ProfileForm(request.POST, instance=profile)
     else:
@@ -80,10 +89,15 @@ def task_processing(request, profile, form):
         instance.save()
         profile_form.instance.person = request.user
         profile_form.save()
+        # returns user's own task list
         return list_own_tasks(request)      
 
 
 def get_task_list(request):
+    '''
+    Function filters for Published tasks and obtains all profiles.
+    Pagination displays number of pages depending on the number of tasks.
+    '''
     task_list = Task.objects.filter(status="Published")
     profiles = Profile.objects.all()
     # paginator logic copied from:
@@ -96,17 +110,19 @@ def get_task_list(request):
         "page_obj": page_obj,
         "profiles": profiles,
     }
+    # displays the list of tasks
     return render(request, "list_tasks.html", context)
 
 
 @login_required
 def show_task(request, task_id):
+    '''
+    Get method obtains and displays the task.
+    Post method saves the user as a helper.
+    '''
     task = get_object_or_404(Task, id=task_id)
     owner_location = Profile.objects.get(person=task.owner).location
     if request.method == "POST":
-        # below lines are a customized code obtained here:
-        # https://www.youtube.com/watch?v=zJWhizYFKP0#
-        # task saves user as helper, changes status
         task.helper = request.user
         task.status = "Ongoing"
         task.save()
@@ -122,6 +138,10 @@ def show_task(request, task_id):
 
 @login_required
 def edit_task(request, task_id):
+    '''
+    Get method displays the pre-filled task form.
+    Post method saves the updated task and updates time.
+    '''
     task = get_object_or_404(Task, id=task_id)
     form = TaskForm(instance=task)
     if request.method == "POST":
@@ -131,6 +151,7 @@ def edit_task(request, task_id):
             instance.updated_date = datetime.now()
             instance.save()
         messages.success(request, "Task updated successfully!")
+        # redirects to show_task as edit is only available when there is no helper associated
         return redirect(show_task, task_id)
     context = {'form': form}
     return render(request, "edit_task.html", context)
@@ -138,10 +159,16 @@ def edit_task(request, task_id):
 
 @login_required
 def delete_task(request, task_id):
+    '''
+    Get method asks for confirmation of deletion.
+    Post method deletes the task.
+    '''
     task = get_object_or_404(Task, id=task_id)
     if request.method == "POST":
         if request.user == task.owner:
             task.delete()
+            messages.success(request, "Task deleted!")
+            # returns user's list of task for a secondary deletion confirmation
             return list_own_tasks(request)
     context = {'task': task}
     return render(request, "delete_task.html", context)
@@ -149,6 +176,9 @@ def delete_task(request, task_id):
 
 @login_required
 def list_own_tasks(request):
+    '''
+    Function filters for user's active tasks and displays them.
+    '''
     # below filtering by using status__in adopted from:
     # https://copyprogramming.com/howto/django-filter-multiple-values
     # filter for Published and Ongoing tasks
@@ -167,17 +197,14 @@ def list_own_tasks(request):
 
 @login_required
 def show_ongoing_task(request, task_id):
+    '''
+    Get method displays the task, comment form and existing comments if any.
+    Post method adds a comment and shows empty comment form again.
+    '''
     form = CommentForm()
     task = get_object_or_404(Task, id=task_id)
     owner_details = Profile.objects.filter(person=task.owner).values()
     comments = task.comments.all()
-    context = {
-            'id': task_id,
-            'task': task,
-            'form': form,
-            'comments': comments,
-            'owner_details': owner_details,
-        }
     if request.method == "POST":
         form = CommentForm(request.POST)
             # below lines are a customized code obtained here:
@@ -189,18 +216,24 @@ def show_ongoing_task(request, task_id):
             instance.post = task
             instance.save()
             form = CommentForm()
-            context = {
-                'id': task_id,
-                'task': task,
-                'form': form,
-                "comments": comments,
-            }
-            return render(request, "show_ongoing_task.html", context)
+            messages.success(request, "Your comment was posted!")
+            return redirect(show_ongoing_task, task_id)
+    context = {
+        'id': task_id,
+        'task': task,
+        'form': form,
+        'comments': comments,
+        'owner_details': owner_details,
+    }
     return render(request, "show_ongoing_task.html", context)
 
 
 @login_required
 def archive_task(request, task_id):
+    '''
+    Get method asks for confirmation of archiving.
+    Post method updates the task as archived.
+    '''
     task = get_object_or_404(Task, id=task_id)
     context = {
         "task": task,
@@ -212,12 +245,16 @@ def archive_task(request, task_id):
             task.status = "Archived"
             task.save()
             messages.success(request, "Glad it got sorted!")
-            return list_own_tasks(request)
+            return redirect(list_own_tasks)
     return render(request, "archive_task.html", context)
 
 
 @login_required
 def filter_category(request):
+    '''
+    Get method allows user to filter a task.
+    Post method displays tasks based on filtering.
+    '''
     categories = Category.objects.all()
     context = {
         "categories": categories
@@ -242,6 +279,10 @@ def filter_category(request):
 
 @login_required
 def edit_profile(request):
+    '''
+    Get method displays a blank or pre-filled form if exists.
+    Post method creates/edits it.
+    '''
     if Profile.objects.filter(person=request.user).exists():
         profile = get_object_or_404(Profile, person=request.user)
     else:
