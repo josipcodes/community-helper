@@ -2,11 +2,14 @@ from django import forms
 from django.forms import ModelForm
 from .models import Task, Comment, Profile
 
-# TaskForm class
+
 class TaskForm(ModelForm):
+    '''
+    Task form class with fields, labels and widgets
+    '''
     class Meta:
         model = Task
-        # fields used
+
         fields = [
             'title',
             'description',
@@ -32,11 +35,13 @@ class TaskForm(ModelForm):
         }
 
 
-# CommentForm class
 class CommentForm(ModelForm):
+    '''
+    Comment form class with a field, label and a widget
+    '''
     class Meta:
         model = Comment
-        # fields used
+
         fields = [
             'message',
         ]
@@ -51,9 +56,14 @@ class CommentForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
+    '''
+    Profile form class with a fields, labels and widgets
+    '''
     class Meta:
         model = Profile
-        # fields used
+
+        # We are not using person as it's a foreign key pointing to a User.
+        # instead of removing person, I've decided that it's wiser to list needed fields.
         fields = [
             'name',
             'surname',
@@ -71,7 +81,7 @@ class ProfileForm(ModelForm):
             'location': 'General location',
             'country': 'Country',
         }
-
+        
         widgets = {
             'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}),
             'surname': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Last Name'}),
