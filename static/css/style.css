@@ -61,3 +61,10 @@
     min-height: 0;
   }
 }
+
+@media screen and (max-width: 575px) {
+  /* display centered buttons */
+  .center-button {
+    margin: 0 auto;
+  }
+}
