@@ -62,13 +62,14 @@
                 <!-- Url to archive task renders if user is the owner,
             Prerequisite for this is that the task has a helper. -->
                 {% if request.user == task.owner %}
-                <div class="col offset-4 offset-sm-7 mt-5">
+                <div class="col offset-4 offset-sm-7 m2-5">
                     <a class="btn btn-success" href="{% url 'archive-task' task.id %}">
                         Mark Task as Done
                     </a>
                 </div>
                 {% endif %}
             </div>
+            <hr class="d-md-none mt-2 mb-2">
             <div class="col-md-6">
                 <h3 class="brand-color">
                     Comment section
@@ -77,10 +78,10 @@
                 <form method="POST" id="comment">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input type='hidden' value='comment' name='comment'>
+                    <!-- <input type='hidden' value='comment' name='comment'> -->
                     <div class="row">
-                        <div class="col offset-9">
-                            <input class="btn btn-success ml-5" type="submit" value="Comment">
+                        <div class="col-4 ms-auto mb-2">
+                            <input class="btn btn-success" type="submit" value="Comment">
                         </div>
                     </div>
                 </form>
