@@ -2,40 +2,41 @@
 
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <h3 class="brand-color">Filter by Category:</h3>
-        <!-- category filter form -->
-        <form method="POST">
-            {% csrf_token %}
-            <!-- below code was adopted and customized from:
+<section class="mb-3">
+    <div class="container">
+        <div class="row">
+            <h3 class="brand-color">Filter by Category:</h3>
+            <!-- category filter form -->
+            <form method="POST">
+                {% csrf_token %}
+                <!-- below code was adopted and customized from:
             https://getbootstrap.com/docs/4.0/components/forms/ -->
-            <div class="form-group col-md-6 offset-md-3">
-                <label for="category">Category</label>
-                <select id="category" class="form-control" name="category-filter">
-                    <option selected>Choose Task Category</option>
-                    {% for category in categories %}
-                    <option value="{{ category.id }}">
-                        {{ category }}
-                    </option>
-                    {% endfor %}
-                </select>
-                <div class="row">
-                    <div class="col-1 offset-9">
-                        <input class="btn btn-success mt-3" type="submit" value="Filter">
+                <div class="form-group col-md-6 offset-md-3">
+                    <label for="category">Category</label>
+                    <select id="category" class="form-control" name="category-filter">
+                        <option selected>Choose Task Category</option>
+                        {% for category in categories %}
+                        <option value="{{ category.id }}">
+                            {{ category }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <div class="row">
+                        <div class="col-1 offset-9">
+                            <input class="btn btn-success mt-3" type="submit" value="Filter">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-        <!-- filtered task display -->
-        <div class="row">
-            <!-- if statement ensures empty clause is not called early -->
-            {% if filtered_tasks != None %}
-            <h4 class="brand-color mb-4 mt-3">Current open tasks:</h4>
-            <!-- renders filtered tasks -->
-            {% for task in filtered_tasks %}
-            <div class="col-md-6 col-lg-4">
-                <a href="{% url 'display-task' task.id %}" class="task-link">
+            </form>
+            <!-- filtered task display -->
+            <div class="row">
+                <!-- if statement ensures empty clause is not called early -->
+                {% if filtered_tasks != None %}
+                <h4 class="brand-color mb-4 mt-3">Current open tasks:</h4>
+                <!-- renders filtered tasks -->
+                {% for task in filtered_tasks %}
+                <div class="col-md-6 col-lg-4">
+                    <a href="{% url 'display-task' task.id %}" class="task-link">
                         <div class="card mb-3">
                             <div class="card-header">
                                 <h3 class="brand-color">
@@ -68,25 +69,26 @@
                             </div>
                         </div>
                     </a>
-            </div>
-            {% empty %}
-            <div class="col-md-6 col-lg-4">
-                <div>
-                    There are currently no available tasks in this category.
                 </div>
+                {% empty %}
+                <div class="col-md-6 col-lg-4">
+                    <div>
+                        There are currently no available tasks in this category.
+                    </div>
+                </div>
+                {% endfor %}
+                {% if filtered_tasks_count > 3 %}
+                <!-- back to top button -->
+                <div>
+                    <a class="btn btn-success" href="#navigation" aria-label="link">
+                        Go To Top
+                    </a>
+                </div>
+                {% endif %}
+                {% endif %}
             </div>
-            {% endfor %}
-            {% if filtered_tasks_count > 3 %}
-            <!-- back to top button -->
-            <div class="mb-2">
-                <a class="btn btn-success" href="#navigation" aria-label="link">
-                    Go To Top
-                </a>
-            </div>
-            {% endif %}
-            {% endif %}
         </div>
     </div>
-</div>
+</section>
 
 {%endblock%}

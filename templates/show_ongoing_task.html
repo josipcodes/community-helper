@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<section id="ongoing-task">
+<section id="ongoing-task" class="mb-3">
     <div class="container">
         <div class="row">
             <!-- rendering task and comments if the user is owner or helper -->
@@ -62,6 +62,7 @@
                 <!-- Url to archive task renders if user is the owner,
             Prerequisite for this is that the task has a helper. -->
                 {% if request.user == task.owner %}
+                <hr>
                 <div class="col offset-4 offset-sm-7 m2-5">
                     <a class="btn btn-success" href="{% url 'archive-task' task.id %}">
                         Mark Task as Done
