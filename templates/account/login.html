@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="container">
-  <h1>{% trans "Sign In" %}</h1>
+  <h1 class="brand-color">{% trans "Sign In" %}</h1>
 </div>
 
 {% get_providers as socialaccount_providers %}
@@ -41,7 +41,6 @@
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
-    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
     <button class="primaryAction btn btn-success" type="submit">{% trans "Sign In" %}</button>
   </form>
 </div>
