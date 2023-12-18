@@ -5,17 +5,33 @@
 <section class="mb-3" id="archive-task">
     <div class="container">
         <div class="row">
-            <h3 class="brand-color">Are you sure you want to mark this task as done?</h3>
+            <h3 class="brand-color">
+                Are you sure you want to mark this task as done?
+            </h3>
             <div class="col-md-6 col-lg-4">
                 <div class="card mb-3">
                     <div class="card-header">
                         <h3 class="brand-color">
                             {{ task.title }}
                         </h3>
+                        <p class="brand-color mb-0">
+                            {% if task.created_date == task.updated_date %}
+                            <em>
+                                {{ task.created_date }}
+                            </em>
+                            {% else %}
+                            <em>
+                                {{ task.updated_date }}
+                            </em>
+                            {% endif %}
+                        </p>
                     </div>
                     <div class="card-body">
                         <p class="brand-color">
-                            Helper: {{ task.helper }} | <em>{{ task.category }}</em>
+                            Helper: {{ task.helper }} |
+                            <em>
+                                {{ task.category }}
+                            </em>
                         </p>
                         <p class="card-text">
                             {{ task.task_snippet }}
@@ -30,7 +46,9 @@
                         </form>
                     </div>
                     <div class="btn-group ms-auto" role="group" aria-label="Go to an active task">
-                        <a class="btn btn-success" href="{% url 'ongoing-task' task.id %}">Go back</a>
+                        <a class="btn btn-success" href="{% url 'ongoing-task' task.id %}">
+                            Go back
+                        </a>
                     </div>
                 </div>
             </div>

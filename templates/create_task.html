@@ -55,10 +55,10 @@
 <!-- following block disables deadline choice being a past date -->
 <!-- this was provided by my mentor and was not created by me -->
 {% block extrajs %}
-    <script>
-        let now = new Date();
-        let minDate = now.toISOString().substring(0,10);
-        let finalDate = document.getElementById("id_final_date");
-        finalDate.setAttribute("min", minDate);
-    </script>
+<script>
+    let now = new Date();
+    let minDate = now.toISOString().substring(0, 10);
+    let finalDate = document.getElementById("id_final_date");
+    finalDate.setAttribute("min", minDate);
+</script>
 {% endblock %}

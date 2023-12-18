@@ -3,23 +3,23 @@
 {% block content %}
 <!-- task deletion template -->
 <section id="task-deletion">
-  <div class="container">
-    <h2 class="brand-color">
-      Deleting your task
-    </h2>
-    <p>
-      Are you sure you want to delete the task:
-    </p>
-    <h3 class="brand-color">
-      {{ task.title }}
-    </h3>
-    <form method="post">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-success mt-3">
-        I am sure, delete it
-      </button>
-    </form>
-  </div>
+    <div class="container">
+        <h2 class="brand-color">
+            Deleting your task
+        </h2>
+        <p>
+            Are you sure you want to delete the task:
+        </p>
+        <h3 class="brand-color">
+            {{ task.title }}
+        </h3>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success mt-3">
+                I am sure, delete it
+            </button>
+        </form>
+    </div>
 </section>
 
 

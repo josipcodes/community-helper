@@ -3,33 +3,32 @@
 {% block content %}
 
 <section id="edit-task" class="mb-5">
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <br>
-                <div class="row">
-                    <div class="col offset-9">
-                        <input class="btn btn-success ml-5" type="submit" value="Update">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br>
+                    <div class="row">
+                        <div class="col offset-9">
+                            <input class="btn btn-success ml-5" type="submit" value="Update">
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </section>
 
 {% endblock %}
 <!-- following block disables deadline choice being a past date -->
 <!-- this was provided by my mentor and was not created by me -->
 {% block extrajs %}
-    <script>
-        let now = new Date();
-        let minDate = now.toISOString().substring(0,10);
-        let finalDate = document.getElementById("id_final_date");
-        finalDate.setAttribute("min", minDate);
-    </script>
+<script>
+    let now = new Date();
+    let minDate = now.toISOString().substring(0, 10);
+    let finalDate = document.getElementById("id_final_date");
+    finalDate.setAttribute("min", minDate);
+</script>
 {% endblock %}

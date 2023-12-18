@@ -60,7 +60,7 @@
                     {% endfor %}
                 </div>
                 <!-- Url to archive task renders if user is the owner,
-            Prerequisite for this is that the task has a helper. -->
+                Prerequisite for this is that the task has a helper. -->
                 {% if request.user == task.owner %}
                 <hr>
                 <div class="col offset-4 offset-sm-7 m2-5">
@@ -79,7 +79,6 @@
                 <form method="POST" id="comment">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <!-- <input type='hidden' value='comment' name='comment'> -->
                     <div class="row">
                         <div class="col-4 ms-auto mb-2">
                             <input class="btn btn-success" type="submit" value="Comment">
@@ -88,9 +87,14 @@
                 </form>
                 {% for comment in comments %}
                 <p class="brand-color">
-                    From: {{ comment.author }} | On: {{ comment.created_date }}</em>
+                    From: {{ comment.author }} | 
+                    <em>
+                        {{ comment.created_date }}
+                    </em>
                 </p>
-                <p>{{ comment.message }}</p>
+                <p>
+                    {{ comment.message }}
+                </p>
                 <hr>
                 {% empty %}
                 <div>

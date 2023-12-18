@@ -12,6 +12,9 @@
             </h2>
             {% for own_task in own_tasks %}
             <div class="col-md-6 col-lg-4">
+                <!-- if statement orrganises if link leads to a task display or an ongoing task.
+                There is a closing </a> seemingly missing, however, 
+                this is to due with one tag closing either of the two, depending on the bool value of the if statement. -->
                 {% if not own_task.helper %}
                 <a href="{% url 'display-task' own_task.id %}" class="task-link">
                     {% else %}
@@ -50,7 +53,7 @@
                                 </p>
                                 {% else %}
                                 <p class="brand-color">
-                                    Helper: {{ own_task.helper }} | 
+                                    Helper: {{ own_task.helper }} |
                                     <em>
                                         {{ own_task.category }}
                                     </em>
@@ -67,7 +70,7 @@
             {% empty %}
             <div class="col">
                 <div>
-                    Looks like all your problems are solved. But if you need a hand, 
+                    Looks like all your problems are solved. But if you need a hand,
                     <a href="{% url 'submission' %}">
                         we're here for you!
                     </a>
@@ -110,7 +113,7 @@
                         </div>
                         <div class="card-body">
                             <p class="brand-color">
-                                Task by: {{ helper_task.owner }} | 
+                                Task by: {{ helper_task.owner }} |
                                 <em>
                                     {{ helper_task.category }}
                                 </em>
@@ -126,7 +129,7 @@
             {% empty %}
             <div class="col">
                 <div>
-                    Looks like you've finished all your tasks. But if you want to lend a hand, 
+                    Looks like you've finished all your tasks. But if you want to lend a hand,
                     <a href="{% url 'open-tasks' %}">here you go!
                     </a>
                 </div>

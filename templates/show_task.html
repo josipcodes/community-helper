@@ -8,16 +8,26 @@
             <!-- helper is not assigned check -->
             {% if not task.helper %}
             <div class="col-md-8 offset-md-2">
-                <h2 class="brand-color">{{ task.title }}</h2>
-                <p class="brand-color">From: {{ task.owner }} | {{ task.category }}</p>
+                <h2 class="brand-color">
+                    {{ task.title }}
+                </h2>
+                <p class="brand-color">
+                    From: {{ task.owner }} | {{ task.category }}
+                </p>
                 {% if task.created_date == task.updated_date %}
-                <p class="brand-color">{{ task.created_date }}</p>
+                <p class="brand-color">
+                    {{ task.created_date }}
+                </p>
                 {% else %}
-                <p class="brand-color">{{ task.updated_date }}</p>
+                <p class="brand-color">
+                    {{ task.updated_date }}
+                </p>
                 {% endif %}
                 {% if task.final_date %}
                 <p class="brand-color">
-                    <strong>Deadline: {{ task.final_date }}</strong>
+                    <strong>
+                        Deadline: {{ task.final_date }}
+                    </strong>
                 </p>
                 {% endif %}
                 {% if owner_location %}
@@ -28,7 +38,9 @@
                 </p>
                 {% endif %}
                 <hr>
-                <div>{{ task.description }}</div>
+                <div>
+                    {{ task.description }}
+                </div>
                 <!-- task owner check -->
                 {% if request.user == task.owner %}
                 <hr>

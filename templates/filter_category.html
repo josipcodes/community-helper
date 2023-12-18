@@ -2,19 +2,25 @@
 
 
 {% block content %}
-<section class="mb-3">
+<section id="filter-category" class="mb-3">
     <div class="container">
         <div class="row">
-            <h3 class="brand-color">Filter by Category:</h3>
+            <h3 class="brand-color">
+                Filter by Category:
+            </h3>
             <!-- category filter form -->
             <form method="POST">
                 {% csrf_token %}
                 <!-- below code was adopted and customized from:
             https://getbootstrap.com/docs/4.0/components/forms/ -->
                 <div class="form-group col-md-6 offset-md-3">
-                    <label for="category">Category</label>
+                    <label for="category">
+                        Category
+                    </label>
                     <select id="category" class="form-control" name="category-filter">
-                        <option selected>Choose Task Category</option>
+                        <option selected>
+                            Choose Task Category
+                        </option>
                         {% for category in categories %}
                         <option value="{{ category.id }}">
                             {{ category }}
@@ -32,7 +38,9 @@
             <div class="row">
                 <!-- if statement ensures empty clause is not called early -->
                 {% if filtered_tasks != None %}
-                <h4 class="brand-color mb-4 mt-3">Current open tasks:</h4>
+                <h4 class="brand-color mb-4 mt-3">
+                    Current open tasks:
+                </h4>
                 <!-- renders filtered tasks -->
                 {% for task in filtered_tasks %}
                 <div class="col-md-6 col-lg-4">
@@ -43,7 +51,9 @@
                                     {{ task.title }}
                                 </h3>
                                 <p class="brand-color mb-0">
-                                    <em>{{ task.created_date }}</em>
+                                    <em>
+                                        {{ task.created_date }}
+                                    </em>
                                 </p>
                                 <p class="brand-color mb-0">
                                     <strong>
@@ -61,7 +71,10 @@
                             </div>
                             <div class="card-body">
                                 <p class="brand-color">
-                                    From: {{ task.owner }} | <em>{{ task.category }}</em>
+                                    From: {{ task.owner }} | 
+                                    <em>
+                                        {{ task.category }}
+                                    </em>
                                 </p>
                                 <p class="card-text">
                                     {{ task.task_snippet }}
