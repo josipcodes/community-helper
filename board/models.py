@@ -1,12 +1,12 @@
+from datetime import datetime # unneccessary?
+# from cloudinary.models import CloudinaryField # unneccessary?
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
 from django_countries.fields import CountryField
-from datetime import datetime
 
 
 STATUS = (
-    ("Draft", "Draft"),
+    # ("Draft", "Draft"), # unneccessary?
     ("Published", "Published"),
     ("Ongoing", "Ongoing"),
     ("Archived", "Archived"))
@@ -21,7 +21,7 @@ CATEGORIES = (
     ("7", "Other"),
     )
 
-class Category (models.Model):
+class Category(models.Model):
     name = models.CharField(choices=CATEGORIES, null=False, blank=False, max_length=100)
     # image = CloudinaryField('image', default='placeholder')
 
@@ -29,7 +29,7 @@ class Category (models.Model):
         return self.name
 
 
-class Task (models.Model):
+class Task(models.Model):
     title = models.CharField(max_length=50)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasker")
     description = models.TextField(max_length=2000)
@@ -46,7 +46,6 @@ class Task (models.Model):
     def __str__(self):
         return self.title
 
-
     @property
     def task_snippet(self):
         description_length = len(self.description)
@@ -54,7 +53,6 @@ class Task (models.Model):
             return self.description[:150] + '(...)'
         else:
             return self.description
-
 
     # @property
     # def countdown(self):
@@ -73,17 +71,11 @@ class Comment(models.Model):
     message = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
 
-
     class Meta:
         ordering = ['created_date']
 
-
     def __str__(self):
-        # return f'{self.author.user.profile.name}: "{self.message}"'
-        # if self.author.user.profile.name is None:
-        #     return f'{self.author}: "{self.message}"'
-        # else:
-        return f'{self.author.user.profile.name}: "{self.message}"'
+        return f'{self.author}: "{self.message}"'
 
 
 class Profile(models.Model):
@@ -97,6 +89,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name + ' ' + self.surname
-
-
-
