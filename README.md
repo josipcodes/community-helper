@@ -1,138 +1,84 @@
 # [COMMUNITY HELPER](https://community-h3lp3r-3eca282c4ffe.herokuapp.com)
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+Need a hand? Have two? Or...at least one?
 
-In this section, you will include a few paragraphs providing an overview of your project.
-Essentially, this part is your "sales pitch".
+Let us try this again...have you ever played Stardew Valley and never got tired of bringing Willy 5 albacores in 2 days?
 
-At this stage, you should have a name for your project so use it!
-Don't introduce the project as a "portfolio project" for the diploma.
+Well, in that case, our Community Helper is just the right thing for you.
 
-In this section, describe what the project hopes to accomplish, who it is intended to target, and how it will be useful to the target audience.
+If you need help with something, or if you can help someone, why not do it?
 
-Consider adding a mockup image using the "Am I Responsive" website.
-Here's your deployed site as an example:
-https://ui.dev/amiresponsive?url=https://community-h3lp3r-3eca282c4ffe.herokuapp.com
+Simply post a task, or accept one, and you're ready to go!
 
-Screenshots for the README and testing should not be inside of `assets/` or `static/` image folders.
-(reminder: `assets/` and `static/` are for files used on the live site, not documentation)
-Consider adding a new folder called `documentation`, and add the amiresponsive screenshot inside of that folder.
-To add the image into your README, use this format:
-(assuming you have a new folder called `documentation` with an image called "mockup.png")
+![screenshot](documentation/readme/amiresponsive.png)
 
-![screenshot](documentation/mockup.png)
-
-Note: Markdown files (.md) should not contain HTML elements like `img`, `br`, `div`, `a`, etc, only Markdown formatting.
-Find out more about using Markdown elements here:
-https://pandao.github.io/editor.md/en.html
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 ## UX
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-In this section, you will briefly explain your design processes.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 ### Colour Scheme
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+Colour scheme was kept simple, with dominant dark green being used for text on otherwise white background.
 
-Explain your colours and the colour scheme.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-- `#000000` used for primary text.
-- `#E84610` used for primary highlights.
-- `#4A4A4F` used for secondary text.
-- `#009FE3` used for secondary highlights.
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Consider adding a link and screenshot for your colour scheme using "coolors".
-https://coolors.co/generate
-
-When you add a colour to the palette, the URL is dynamically updated, making it easier for you to return back to your colour palette later if needed.
-
-Example:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-I used [coolors.co](https://coolors.co/e84610-009fe3-4a4a4f-445261-d63649-e6ecf0-000000) to generate my colour palette.
-
-![screenshot](documentation/coolors.png)
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-If you've used CSS `:root` variables, consider also including a code snippet here!
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-I've used CSS `:root` variables to easily update the global colour scheme by changing only one value, instead of everywhere in the CSS file.
-
-```css
-:root {
-    /* P = Primary | S = Secondary */
-    --p-text: #000000;
-    --p-highlight: #E84610;
-    --s-text: #4A4A4F;
-    --s-highlight: #009FE3;
-    --white: #FFFFFF;
-    --black: #000000;
-}
-```
+- `#286638` used for primary text.
 
 ### Typography
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+We have used Popping and Montserrat fonts throughout the website to create, both, familiarity using the similarities of the fonts, but also distinction between different types of text.
 
-Explain any fonts and icon libraries used, like Google Fonts and/or Font Awesome.
+Their combination shows a kind of strict playfulness that fits perfectly with what we are trying to achieve.
 
-Consider adding a link to each font used, and the Font Awesome site if used (or similar icon library).
+- [Poppins](https://fonts.google.com/specimen/Poppins) was used for the headers.
 
-Example:
+- [Montserrat](https://fonts.google.com/specimen/Montserrat) was used for all other secondary text.
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-- [Montserrat](https://fonts.google.com/specimen/Montserrat) was used for the primary headers and titles.
-
-- [Lato](https://fonts.google.com/specimen/Lato) was used for all other secondary text.
-
-- [Font Awesome](https://fontawesome.com) icons were used throughout the site, such as the social media icons in the footer.
+- [Font Awesome](https://fontawesome.com) icons were used throughout on the homepage.
 
 ## User Stories
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-In this section, list all of your user stories for the project.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 ### New Site Users
 
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
+- As a user, I can read about the website goal so that I can decide if I want to sign up.
+- As a potential user, I can view how many users/requests the website has so that I know if it's a real deal before signing up.
+- As a user, I can register so that I can accepted or post tasks/requests.
+- As a user, I can categorize my request so that I can receive help quicker.
+- As a user, I can choose a deadline of my request so that I don't receive help when not needed.
+- As a user, I can only choose future date for a deadline so that I don't accidentally choose a past date.
+- As a user, I can submit a request so that I can receive help from the community.
+- As a user, I can browse through requests so that I find a suitable one.
+- As a user, I can navigate through pages of requests so that I can find a suitable one in order to accept it.
+- As a user, I can see the correct date of task creation/editing so that I know when the last change was made.
+- As a user, I can accept someone's request so that I can help the community.
+
+### Mobile Users
+
+- As a mobile user, I can click a 'go back up' button so that I can return to the top of the page instantly and not have to scroll.
+- As a user using a smaller desktop screen, I can clearly see the mission statement so that I know what the page is about.
 
 ### Returning Site Users
 
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
+- As a user, I can instantly recognise the Community Helper tab by it's favicon so that I avoid unnecessary clicks.
+- As a user, I can login so that I can check on the progress of my task/request or accept a task/request.
+- As a user, I can log out from the site so that I don't jeopardize my or someone else's information.
+- As a user, I can ensure my own privacy with login being required for any sensitive areas of the website so that I can be at easy with my information and information of others.
+- As a user, I can filter through requests so that I save time while looking for a suitable one.
+- As a user, I can see the location of the owner so that I can decide if I want to open the task to read more about it and accept it.
+- As a user, I can open an active request so that I can view it in full and decide if I want to accept it.
+- As a user, I can see the same information when filtering as I would in a general task list so that I don't have to unnecessarily open all tasks to find out if they have an end date and their location.
+- As a user, I can clearly see when I'm logged in so that I know to logout when necessary.
+- As a user, I can navigate to a page with my active requests so that I can update them or be reminded of what needs doing.
+- As a user who submitted the request, I can mark it as done so that I can keep better track of my requests.
+- As a submitter/helper, I can comment on the request so that I can request an update/info.
+- As a user, I can see that the comment form is visually similar to the task form so that I don't break the illusion of the brand.
+- As a user who published a task, I can edit it so that I provide up to date information to a future helper.
+- As a user who published a task, I can delete it so that I don't clog request list with something that is outdated/unneccessary.
+- As a user, I can confirm that I want to delete my request so that I don't do it on accident.
+- As a user, I can confirm that I want to mark a task as closed so that I don't do it accidentally.
+- As a user, I can enter relevant information in my profile so that I don't have to repeat myself later on.
+- As a user, I can see a notification that I've opened a page that doesn't exist so that I can navigate to where I actually wanted to go.
 
 ### Site Admin
 
-- As a site administrator, I should be able to ____________, so that I can ____________.
-- As a site administrator, I should be able to ____________, so that I can ____________.
-- As a site administrator, I should be able to ____________, so that I can ____________.
-- As a site administrator, I should be able to ____________, so that I can ____________.
-- As a site administrator, I should be able to ____________, so that I can ____________.
+- As an administrator, I can access admin panel so that I can monitor my page and edit necessary items.
 
 ## Wireframes
 
@@ -658,15 +604,4 @@ by sending yourself the following command: `!freemedia`.
 
 ### Acknowledgements
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Use this space to provide attribution to any supports that helped, encouraged, or supported you throughout the development stages of this project.
-A few examples have been provided below to give you some ideas.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-- I would like to thank my Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN) for their support throughout the development of this project.
-- I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
-- I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and imposter syndrome.
-- I would like to thank my partner (John/Jane), for believing in me, and allowing me to make this transition into software development.
-- I would like to thank my employer, for supporting me in my career development change towards becoming a software developer.
+- I would like to thank my Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN) for their support throughout the development of this project, especially when self-doubt kicked in.
