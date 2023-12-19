@@ -23,7 +23,7 @@ Colour scheme was kept simple, with dominant dark green being used for text on o
 
 ### Typography
 
-We have used Popping and Montserrat fonts throughout the website to create, both, familiarity using the similarities of the fonts, but also distinction between different types of text.
+We have used `Poppins` and `Montserrat` fonts throughout the website to create, both, familiarity using the similarities of the fonts, but also distinction between different types of text.
 
 Their combination shows a kind of strict playfulness that fits perfectly with what we are trying to achieve.
 
@@ -82,92 +82,61 @@ Their combination shows a kind of strict playfulness that fits perfectly with wh
 
 ## Wireframes
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-In this section, display your wireframe screenshots using a Markdown `table`.
-Instructions on how to do Markdown `tables` start on line #213 on this site: https://pandao.github.io/editor.md/en.html
-
-Alternatively, dropdowns are a way to condense several wireframes into a collapsible menu to save space.
-Dropdowns in Markdown are considered some of the only acceptable HTML components that are allowed for assessment purposes.
-
-**IMPORTANT**! **IMPORTANT**! **IMPORTANT**!
-The example below uses the `details` and `summary` code elements.
-However, for these scripts to work, I've had to add spaces within the `< >` elements.
-
-You MUST remove these spaces for it to work properly on your own README/TESTING files.
-Remove the spaces within the `< >` brackets for the `details` and `summary` code elements,
-for the Mobile, Tablet, and Desktop wireframes.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 To follow best practice, wireframes were developed for mobile, tablet, and desktop sizes.
-I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
+We've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
 
 ### Mobile Wireframes
 
-< details >
-< summary > Click here to see the Mobile Wireframes < / summary >
+<details>
+<summary> Click here to see the Mobile Wireframes </summary>
 
 Home
-  - ![screenshot](documentation/wireframes/mobile-home.png)
+  - ![screenshot](documentation/readme/wireframes/mobile-homepage.png)
 
-About
-  - ![screenshot](documentation/wireframes/mobile-about.png)
+Create a Request
+  - ![screenshot](documentation/readme/wireframes/mobile-make-a-request.png)
 
-Contact
-  - ![screenshot](documentation/wireframes/mobile-contact.png)
+Ongoing Request
+  - ![screenshot](documentation/readme/wireframes/mobile-ongoing-request.png)
 
-Gallery
-  - ![screenshot](documentation/wireframes/mobile-gallery.png)
+Request List
+  - ![screenshot](documentation/readme/wireframes/mobile-request-list.png)
 
-etc.
-  - repeat for any remaining mobile wireframes
+Open Request
+  - ![screenshot](documentation/readme/wireframes/mobile-specific-request.png)
 
-< / details >
-
-### Tablet Wireframes
-
-< details >
-< summary > Click here to see the Tablet Wireframes < / summary >
-
-Home
-  - ![screenshot](documentation/wireframes/tablet-home.png)
-
-About
-  - ![screenshot](documentation/wireframes/tablet-about.png)
-
-Contact
-  - ![screenshot](documentation/wireframes/tablet-contact.png)
-
-Gallery
-  - ![screenshot](documentation/wireframes/tablet-gallery.png)
-
-etc.
-  - repeat for any remaining tablet wireframes
-
-< / details >
+</details>
 
 ### Desktop Wireframes
 
-< details >
-< summary > Click here to see the Desktop Wireframes < / summary >
+<details>
+<summary> Click here to see the Desktop Wireframes </summary>
 
 Home
-  - ![screenshot](documentation/wireframes/desktop-home.png)
+  - ![screenshot](documentation/readme/wireframes/desktop-homepage.png)
 
-About
-  - ![screenshot](documentation/wireframes/desktop-about.png)
+Create a Request
+  - ![screenshot](documentation/readme/wireframes/desktop-make-a-request.png)
 
-Contact
-  - ![screenshot](documentation/wireframes/desktop-contact.png)
+Ongoing Request
+  - ![screenshot](documentation/readme/wireframes/desktop-ongoing-request.png)
 
-Gallery
-  - ![screenshot](documentation/wireframes/desktop-gallery.png)
+Request List
+  - ![screenshot](documentation/readme/wireframes/desktop-request-list.png)
 
-etc.
-  - repeat for any remaining desktop wireframes
+Open Request
+  - ![screenshot](documentation/readme/wireframes/desktop-specific-request.png)
 
-< / details >
+</details>
+
+### Deviation from the Wireframes
+
+- Footer was originally planned as a constant feature present across all pages, however, as it only serves the purpose of validating the website for newer users, we have decided to remove it in order to maximise space.
+- Subheading (Need a hand? Give a hand) was ommited to preserve a cleaner look.
+- Special Instructions/directions were streamlined into user profile to prevent repetition.
+- Mobile version of the request list is only slightly different, in order to maximise space.
+- Mobile version of the homepage does not have fontawesome icons in order to maximise space - they are, however, available for the desktop users.
+- Private messages, as noted within the wireframes, were not a part of the MVP, however, comment section was added to the ongoing tasks to compensate.
 
 ## Features
 
