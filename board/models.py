@@ -1,12 +1,11 @@
-from datetime import datetime # unneccessary?
-# from cloudinary.models import CloudinaryField # unneccessary?
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
 
 STATUS = (
-    # ("Draft", "Draft"), # unneccessary?
+    # Draft is only available to the staff within the admin panel
+    ("Draft", "Draft"),
     ("Published", "Published"),
     ("Ongoing", "Ongoing"),
     ("Archived", "Archived"))
@@ -22,14 +21,19 @@ CATEGORIES = (
     )
 
 class Category(models.Model):
+    '''
+    Category contains a name, with 7 choices.
+    '''
     name = models.CharField(choices=CATEGORIES, null=False, blank=False, max_length=100)
-    # image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.name
 
 
 class Task(models.Model):
+    '''
+    Task model used to create task.
+    '''
     title = models.CharField(max_length=50)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasker")
     description = models.TextField(max_length=2000)
@@ -41,28 +45,34 @@ class Task(models.Model):
     final_date = models.DateField(blank=True, null=True)
 
     class Meta:
+        '''
+        Ordering from oldest to newest.
+        '''
         ordering = ['created_date']
 
     def __str__(self):
+        '''
+        Function task returns a task title.
+        '''
         return self.title
 
     @property
     def task_snippet(self):
+        '''
+        Task snippet displays 150 characters followed by '...',
+        if there are sufficient characters.
+        '''
         description_length = len(self.description)
         if description_length > 150:
             return self.description[:150] + '(...)'
         else:
             return self.description
 
-    # @property
-    # def countdown(self):
-    #     today = datetime.now()
-    #     days_time_left = self.final_date - today
-    #     days_left = str(days_time_left).split(',', 1)[0]
-    #     return days_time_left
-
 
 class Comment(models.Model):
+    '''
+    Comment model used to create a comment.
+    '''
     # post variable line looks almost identical to the 
     # below, however, it was created without using the source:
     # https://djangocentral.com/creating-comments-system-with-django/
@@ -72,13 +82,22 @@ class Comment(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        '''
+        Ordering from oldest to newest.
+        '''
         ordering = ['created_date']
 
     def __str__(self):
+        '''
+        Functionn returns author and their comment.
+        '''
         return f'{self.author}: "{self.message}"'
 
 
 class Profile(models.Model):
+    '''
+    Profile model used to create a profile.
+    '''
     address = models.CharField(max_length=100)
     location = models.CharField(max_length=60)
     city = models.CharField(max_length=50)
@@ -88,4 +107,7 @@ class Profile(models.Model):
     person = models.OneToOneField(User, on_delete=models.CASCADE, related_name="users")
 
     def __str__(self):
+        '''
+        Function returns the first and the last name of a user.
+        '''
         return self.name + ' ' + self.surname
