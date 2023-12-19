@@ -1,18 +1,16 @@
 from django.contrib import admin
 from .models import Category, Task, Profile, Comment
-from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Task)
-class TaskAdmin(SummernoteModelAdmin):
+class TaskAdmin(admin.ModelAdmin):
     '''
     Register TaskAdmin.
-    TaskAdmin class organises display, search, filter and summernote field
+    TaskAdmin class organises display, search and filter fields
     '''
     list_display = ('title', 'owner', 'created_date', 'status')
     search_fields = ['title', 'description']
     list_filter = ('status', 'created_date')
-    summernote_fields = ('description',)
 
 
 @admin.register(Comment)
