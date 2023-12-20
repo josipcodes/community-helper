@@ -7,42 +7,30 @@
 
 {% block content %}
 <div class="container">
-  <h1 class="brand-color">{% trans "Sign In" %}</h1>
-</div>
-
-{% get_providers as socialaccount_providers %}
-
-{% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-  of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-  for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
-<div class="socialaccount_ballot">
-
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
-
-</div>
-
-{% include "socialaccount/snippets/login_extra.html" %}
-
-{% else %}
-<div class="container">
-  <p>{% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-  {% endif %}
-
-  <form class="login" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <button class="primaryAction btn btn-success" type="submit">{% trans "Sign In" %}</button>
-  </form>
+  <div class="row justify-content-center">
+    <div class="col-sm-10 col-md-8">
+      <h1 class="brand-color">
+        {% trans "Sign In" %}
+      </h1>
+  <p>
+    {% blocktrans %}If you have not created an account yet, then please
+    <a href="{{ signup_url }}">
+      sign up
+    </a> 
+    first.{% endblocktrans %}
+  </p>
+      <form class="login" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button class="primaryAction btn btn-success" type="submit">
+          {% trans "Sign In" %}
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
