@@ -140,20 +140,7 @@ Open Request
 
 ## Features
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-In this section, you should go over the different parts of your project,
-and describe each in a sentence or so.
-
-You will need to explain what value each of the features provides for the user,
-focusing on who this website is for, what it is that they want to achieve,
-and how your project is the best way to help them achieve these things.
-
-For some/all of your features, you may choose to reference the specific project files that implement them.
-
-IMPORTANT: Remember to always include a screenshot of each individual feature!
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+We have implemented a number of features for users' benefit with security and logic at the forefront.
 
 ### Existing Features
 
@@ -270,211 +257,279 @@ IMPORTANT: Remember to always include a screenshot of each individual feature!
 
 ![screenshot](documentation/readme/features/accept-task.png)
 
-- **Title for feature #3**
+- **Signup page**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+    - User can register to be a part of Community Helper community.
 
-![screenshot](documentation/readme/features/profile.png)
+![screenshot](documentation/readme/features/signup.png)
 
-- **Title for feature #1**
+- **Log in page**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+    - User can log in.
 
-![screenshot](documentation/readme/features/profile.png)
+![screenshot](documentation/readme/features/sign-in.png)
 
-- **Title for feature #2**
+- **Logout page**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+    - User can log out.
 
-![screenshot](documentation/readme/features/profile.png)
+![screenshot](documentation/readme/features/sign-out.png)
 
-- **Title for feature #3**
+- **Messages**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+    - Messages are displayed based on users' actions in order to help with action validation or to inform them of a lack of privileges.
 
-![screenshot](documentation/readme/features/profile.png)
+![screenshot](documentation/readme/features/messages.png)
 
-- **Title for feature #1**
+- **404 page**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+    - Should user stumble upon a page that doesn't exist, they will be informed.
 
-![screenshot](documentation/readme/features/profile.png)
+![screenshot](documentation/readme/features/404.png)
 
-- **Title for feature #2**
-
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
-
-![screenshot](documentation/readme/features/profile.png)
-
-- **Title for feature #3**
-
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
-
-![screenshot](documentation/readme/features/profile.png)
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Repeat as necessary for as many features as your site contains.
-
-Hint: the more, the merrier!
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 ### Future Features
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Do you have additional ideas that you'd like to include on your project in the future?
-Fantastic! List them here!
-It's always great to have plans for future improvements!
-Consider adding any helpful links or notes to help remind you in the future, if you revisit the project in a couple years.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-- Title for future feature #1
-    - Any additional notes about this feature.
-- Title for future feature #2
-    - Any additional notes about this feature.
-- Title for future feature #3
-    - Any additional notes about this feature.
+- User avatar
+    - User's should be able to upload their avatar.
+    - Avatar should be displated next to user's name in tasks and comments in its miniature form.
+- User satisfaction
+    - With time, users' will most likely get bored with the concept. At that time, we would introduce user satisfaction.
+    - Task owner would be able to rate the helper. Average user rating would be displayed next to each user's name.
+- Handling outdated tasks
+    - Outdated tasks should either be displayed differently, or not be visible in the overall list.
+    - This would, however, require to scope the number of such tasks and survey average users to understand the best approach.
 
 ## Tools & Technologies Used
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-In this section, you should explain the various tools and technologies used to develop the project.
-Make sure to put a link (where applicable) to the source, and explain what each was used for.
-Some examples have been provided, but this is just a sample only, your project might've used others.
-Feel free to delete any unused items below as necessary.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 - [HTML](https://en.wikipedia.org/wiki/HTML) used for the main site content.
-- [CSS](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout.
-- [CSS :root variables](https://www.w3schools.com/css/css3_variables.asp) used for reusable styles throughout the site.
+- [CSS](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout
 - [CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp) used for an enhanced responsive layout.
-- [CSS Grid](https://www.w3schools.com/css/css_grid.asp) used for an enhanced responsive layout.
-- [JavaScript](https://www.javascript.com) used for user interaction on the site.
+- [JavaScript](https://www.javascript.com) used for message display and intervention into calendar.
 - [Python](https://www.python.org) used as the back-end programming language.
 - [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
 - [GitHub](https://github.com) used for secure online code storage.
 - [GitHub Pages](https://pages.github.com) used for hosting the deployed front-end site.
 - [Gitpod](https://gitpod.io) used as a cloud-based IDE for development.
-- [Codeanywhere](https://codeanywhere.com) used as a cloud-based IDE for development.
 - [Bootstrap](https://getbootstrap.com) used as the front-end CSS framework for modern responsiveness and pre-built components.
-- [Materialize](https://materializecss.com) used as the front-end CSS framework for modern responsiveness and pre-built components.
-- [Flask](https://flask.palletsprojects.com) used as the Python framework for the site.
 - [Django](https://www.djangoproject.com) used as the Python framework for the site.
-- [MongoDB](https://www.mongodb.com) used as the non-relational database management with Flask.
-- [SQLAlchemy](https://www.sqlalchemy.org) used as the relational database management with Flask.
 - [PostgreSQL](https://www.postgresql.org) used as the relational database management.
 - [ElephantSQL](https://www.elephantsql.com) used as the Postgres database.
 - [Heroku](https://www.heroku.com) used for hosting the deployed back-end site.
 - [Cloudinary](https://cloudinary.com) used for online static file storage.
-- [Stripe](https://stripe.com) used for online secure payments of ecommerce products/services.
-- [AWS S3](https://aws.amazon.com/s3) used for online static file storage.
+- [ScreenToGif](https://www.screentogif.com/) used for creation of examples for README and TESTING files.
 
 ## Database Design
 
-Entity Relationship Diagrams (ERD) help to visualize database architecture before creating models.
-Understanding the relationships between different tables can save time later in the project.
+This project used 4 models - Category, Task, Comment and Profile:
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Using your defined models (one example below), create an ERD with the relationships identified.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+<details>
+<summary> Click here to see the Category model </summary>
 
 ```python
-class Product(models.Model):
-    category = models.ForeignKey(
-        "Category", null=True, blank=True, on_delete=models.SET_NULL)
-    sku = models.CharField(max_length=254, null=True, blank=True)
-    name = models.CharField(max_length=254)
-    description = models.TextField()
-    has_sizes = models.BooleanField(default=False, null=True, blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(
-        max_digits=6, decimal_places=2, null=True, blank=True)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+class Category(models.Model):
+    '''
+    Category contains a name, with 7 choices.
+    '''
+    name = models.CharField(choices=CATEGORIES, null=False, blank=False, max_length=100)
 
     def __str__(self):
         return self.name
+
+CATEGORIES = (
+    ("1", "Helping the elderly"),
+    ("2", "Helping the youth"),
+    ("3", "Helping the people with disability"),
+    ("4", "Grocery run"),
+    ("5", "DIY, minor home improvements"),
+    ("6", "Urgent"),
+    ("7", "Other"),
+    )
 ```
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+</details>
 
-A couple recommendations for building free ERDs:
-- [Draw.io](https://draw.io)
-- [Lucidchart](https://www.lucidchart.com/pages/ER-diagram-symbols-and-meaning)
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+<details>
+<summary> Click here to see the Task model </summary>
 
-![screenshot](documentation/erd.png)
+```python
+class Task(models.Model):
+    '''
+    Task model used to create task.
+    '''
+    title = models.CharField(max_length=50)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasker")
+    description = models.TextField(max_length=2000)
+    status = models.CharField(choices=STATUS, default="Draft", max_length=100)
+    helper = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="helper")
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now_add=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="sort", null=False)
+    final_date = models.DateField(blank=True, null=True)
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+    class Meta:
+        '''
+        Ordering from oldest to newest.
+        '''
+        ordering = ['created_date']
 
-Using Markdown formatting to represent an example ERD table using the Product model above:
+    def __str__(self):
+        '''
+        Function task returns a task title.
+        '''
+        return self.title
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+    @property
+    def task_snippet(self):
+        '''
+        Task snippet displays 150 characters followed by '...',
+        if there are sufficient characters.
+        '''
+        description_length = len(self.description)
+        if description_length > 150:
+            return self.description[:150] + '(...)'
+        else:
+            return self.description
 
-- Table: **Product**
+STATUS = (
+    ("Draft", "Draft"),
+    ("Published", "Published"),
+    ("Ongoing", "Ongoing"),
+    ("Archived", "Archived"))
+```
+
+</details>
+
+
+<details>
+<summary> Click here to see the Comment model </summary>
+
+```python
+class Comment(models.Model):
+    post = models.ForeignKey(Task, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    message = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        '''
+        Ordering from oldest to newest.
+        '''
+        ordering = ['created_date']
+
+    def __str__(self):
+        '''
+        Functionn returns author and their comment.
+        '''
+        return f'{self.author}: "{self.message}"'
+```
+</details>
+
+
+<details>
+<summary> Click here to see the Profile model </summary>
+
+```python
+class Profile(models.Model):
+    address = models.CharField(max_length=100)
+    location = models.CharField(max_length=60)
+    city = models.CharField(max_length=50)
+    country = CountryField()
+    name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
+    person = models.OneToOneField(User, on_delete=models.CASCADE, related_name="users")
+
+    def __str__(self):
+        return self.name + ' ' + self.surname
+```
+
+</details>
+
+---
+- Table: **Category**
 
     | **PK** | **id** (unique) | Type | Notes |
     | --- | --- | --- | --- |
+    | | name | CharField | choices=CATEGORIES, null=False, blank=False, max_length=100 |
+
+- Table: **Task**
+
+    | **PK** | **id** (unique) | Type | Notes |
+    | --- | --- | --- | --- |
+    | | title | CharField | max_length=50 |
+    | **FK** | owner | CharField | FK to **User** model |
+    | | description | TextField | max_length=2000 |
+    | | status | CharField | choices=STATUS, default="Draft", max_length=100 |
+    | **FK** | helper | BooleanField | FK to **User** model |
+    | | created_date | DateTimeField | auto_now_add=True |
+    | | updated_date | DateTimeField | auto_now_add=True |
     | **FK** | category | ForeignKey | FK to **Category** model |
-    | | sku | CharField | |
-    | | name | CharField | |
-    | | description | TextField | |
-    | | has_sizes | BooleanField | |
-    | | price | DecimalField | |
-    | | rating | DecimalField | |
-    | | image_url | URLField | |
-    | | image | ImageField | |
+    | | final_date | DateField | blank=True, null=True |
+
+
+- Table: **Comment**
+
+    | **PK** | **id** (unique) | Type | Notes |
+    | --- | --- | --- | --- |
+    | **FK** | post | ForeignKey | FK to **Task** model |
+    | **FK** | author | ForeignKey | FK to **User** model  |
+    | | message | TextField | |
+    | | created_date | DateTimeField | auto_now_add=True |
+
+
+- Table: **Profile**
+
+    | **PK** | **id** (unique) | Type | Notes |
+    | --- | --- | --- | --- |
+    | | address | CharField | max_length=100 |
+    | | location | CharField | max_length=60 |
+    | | city | CharField | max_length=50 |
+    | | country | CountryField | |
+    | | name | CharField | max_length=50 |
+    | | surname | CharField | max_length=50 |
+    | **FK** | person | DecimalField | FK to **User** model |
+
 
 ## Agile Development Process
 
 ### GitHub Projects
 
 [GitHub Projects](https://github.com/josipcodes/community-helper/projects) served as an Agile tool for this project.
-It isn't a specialized tool, but with the right tags and project creation/issue assignments, it can be made to work.
+Although it isn't a specialised tool, utilising milestones and labels, it helped us to organise our work and notice opportunities for improvement.
 
-Through it, user stories, issues, and milestone tasks were planned, then tracked on a weekly basis using the basic Kanban board.
+Through it, user stories, issues, and milestone tasks were planned, then tracked on a regular basis using the basic Kanban board.
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
-Consider adding a basic screenshot of your Projects Board.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-![screenshot](documentation/gh-projects.png)
+![screenshot](documentation/readme/agile/kanban.png)
 
 ### GitHub Issues
 
 [GitHub Issues](https://github.com/josipcodes/community-helper/issues) served as an another Agile tool.
-There, I used my own **User Story Template** to manage user stories.
+There, I used my own **User Story Templates** to manage user stories as well as **Bug Report** to manage bugs.
 
-It also helped with milestone iterations on a weekly basis.
+![screenshot](documentation/readme/agile/user-story.png)
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+![screenshot](documentation/readme/agile/user-story-criteria.png)
 
-Consider adding a screenshot of your Open and Closed Issues.
+![screenshot](documentation/readme/agile/bug-report.png)
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+It also helped with milestone iterations on a regular basis.
 
 - [Open Issues](https://github.com/josipcodes/community-helper/issues)
 
-    ![screenshot](documentation/gh-issues-open.png)
+    ![screenshot](documentation/readme/agile/open-issues.png)
 
 - [Closed Issues](https://github.com/josipcodes/community-helper/issues?q=is%3Aissue+is%3Aclosed)
 
-    ![screenshot](documentation/gh-issues-closed.png)
+    ![screenshot](documentation/readme/agile/closed-issues.png)
 
 ### MoSCoW Prioritization
 
 I've decomposed my Epics into stories prior to prioritizing and implementing them.
 Using this approach, I was able to apply the MoSCow prioritization and labels to my user stories within the Issues tab.
+
+I have attempted to achieve the following percentages when deciding on the prioritisation of each user story:
 
 - **Must Have**: guaranteed to be delivered (*max 60% of stories*)
 - **Should Have**: adds significant value, but not vital (*the rest ~20% of stories*)
@@ -486,16 +541,6 @@ Using this approach, I was able to apply the MoSCow prioritization and labels to
 For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
 ## Deployment
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-**IMPORTANT:**
-
-- ⚠️ DO NOT update the environment variables to your own! These should NOT be included in this file; just demo values! ⚠️
-- ⚠️ DO NOT update the environment variables to your own! These should NOT be included in this file; just demo values! ⚠️
-- ⚠️ DO NOT update the environment variables to your own! These should NOT be included in this file; just demo values! ⚠️
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 The live deployed application can be found deployed on [Heroku](https://community-h3lp3r-3eca282c4ffe.herokuapp.com).
 
@@ -539,6 +584,7 @@ Deployment steps are as follows, after account setup:
 | `DATABASE_URL` | user's own value |
 | `DISABLE_COLLECTSTATIC` | 1 (*this is temporary, and can be removed for the final deployment*) |
 | `SECRET_KEY` | user's own value |
+| `PORT` | 8000 |
 
 Heroku needs two additional files in order to deploy properly.
 
@@ -573,6 +619,10 @@ Or:
 
 The project should now be connected and deployed to Heroku!
 
+If you experience issues creating Heroku account:
+- Make sure you have accepted cookies.
+- Try using an email address from a different provider.
+
 ### Local Deployment
 
 This project can be cloned or forked in order to make a local copy on your own system.
@@ -589,9 +639,9 @@ Sample `env.py` file:
 ```python
 import os
 
-os.environ.setdefault("CLOUDINARY_URL", "user's own value")
 os.environ.setdefault("DATABASE_URL", "user's own value")
 os.environ.setdefault("SECRET_KEY", "user's own value")
+os.environ.setdefault("CLOUDINARY_URL", "user's own value")
 
 # local environment only (do not include these in production/deployment!)
 os.environ.setdefault("DEBUG", "True")
@@ -646,67 +696,62 @@ Use this space to discuss any differences between the local version you've devel
 
 ## Credits
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-In this section you need to reference where you got your content, media, and extra help from.
-It is common practice to use code from other repositories and tutorials,
-however, it is important to be very specific about these sources to avoid plagiarism.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 ### Content
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Use this space to provide attribution links to any borrowed code snippets, elements, or resources.
-A few examples have been provided below to give you some ideas.
-
-Ideally, you should provide an actual link to every resource used, not just a generic link to the main site!
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 | Source | Location | Notes |
 | --- | --- | --- |
 | [Markdown Builder](https://tim.2bn.dev/markdown-builder) | README and TESTING | tool to help generate the Markdown files |
 | [Chris Beams](https://chris.beams.io/posts/git-commit) | version control | "How to Write a Git Commit Message" |
-| [W3Schools](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp) | entire site | responsive HTML/CSS/JS navbar |
-| [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp) | contact page | interactive pop-up (modal) |
-| [W3Schools](https://www.w3schools.com/css/css3_variables.asp) | entire site | how to use CSS :root variables |
-| [Flexbox Froggy](https://flexboxfroggy.com/) | entire site | modern responsive layouts |
-| [Grid Garden](https://cssgridgarden.com) | entire site | modern responsive layouts |
-| [StackOverflow](https://stackoverflow.com/a/2450976) | quiz page | Fisher-Yates/Knuth shuffle in JS |
-| [YouTube](https://www.youtube.com/watch?v=YL1F4dCUlLc) | leaderboard | using `localStorage()` in JS for high scores |
-| [YouTube](https://www.youtube.com/watch?v=u51Zjlnui4Y) | PP3 terminal | tutorial for adding color to the Python terminal |
-| [strftime](https://strftime.org) | CRUD functionality | helpful tool to format date/time from string |
+| [Django](https://docs.djangoproject.com/en/4.2/topics/db/models/) | model creation | creating models |
+| [Medium](https://medium.com/@olamidunkolapo/model-relationships-in-django-c4a7ffce9e5d) | model creation | model relationship |
+| [GeeksForGeeks](https://www.geeksforgeeks.org/datefield-django-models/) | model creation | using DateField |
+| [Django](https://docs.djangoproject.com/en/4.2/ref/models/options/) | model creation | Meta options |
+| [StackOverflow](https://stackoverflow.com/questions/13044814/how-to-register-multiple-models-with-the-admin) | registering models | registering multiple models |
+| [StackOverflow](https://stackoverflow.com/questions/36665889/collectstatic-error-while-deploying-django-app-to-heroku) | deployment issues | collectstatic issue during deployment |
+| [django-countries](https://pypi.org/project/django-countries/) | profile form | country dropdown |
+| [getbootstrap](https://getbootstrap.com/docs/5.3/components/navbar/) | entire site | navbar |
+| [getbootstrap](https://getbootstrap.com/docs/5.3/customize/color/) | entire site | header and footer background color |
+| [getbootstrap](https://getbootstrap.com/docs/5.3/content/images/) | entire site | header image |
+| [GeeksForGeeks](https://www.geeksforgeeks.org/bootstrap-5-flex-auto-margins/) | entire site | margins |
+| [getbootstrap](https://getbootstrap.com/docs/5.3/layout/grid/) | entire site | grid system |
+| [getbootstrap](https://getbootstrap.com/docs/5.3/layout/columns/) | entire site | columns |
+| [getbootstrap](https://getbootstrap.com/docs/5.0/utilities/position/) | footer | fixed position |
+| [getbootstrap](https://getbootstrap.com/docs/5.3/layout/containers/) | entire site | containers |
+| [getbootstrap](https://getbootstrap.com/docs/5.3/components/card/) | task display | cards |
+| [getbootstrap](https://getbootstrap.com/docs/5.0/utilities/display/) | entire site | d-none |
+| [W3Schools](https://www.w3schools.com/django/django_tags_include.php) | entire site | Django Include tag |
+| [getbootstrap](https://getbootstrap.com/docs/5.0/forms/overview/) | forms | bootstrap forms |
+| [getbootstrap](https://getbootstrap.com/docs/5.0/components/buttons/) | buttons | button design |
+| [Youtube](https://www.youtube.com/watch?v=Zzd4sL7drKQ) | form rendering | Form creation |
+| [Youtube](https://www.youtube.com/watch?v=zJWhizYFKP0) | views | Using instance.save() |
+| [StackOverflow](https://stackoverflow.com/questions/51013909/django-modelform-not-saving-data-to-database-form-save-is-not-working) | form errors | Not used in production |
+| [StackOverflow](https://stackoverflow.com/questions/17291192/django-form-errors-in-template) | form errors | Not used in production |
+| [Let's Code More](https://www.letscodemore.com/blog/how-to-add-date-input-widget-in-django-forms/) | calendar widget | Creating date input widget |
+| [StackOverflow](https://stackoverflow.com/questions/7610694/python-how-to-keep-only-first-50-char-of-a-string) | task snippets | cutting strings to a fixed length |
+| [StackOverflow](https://stackoverflow.com/questions/53243835/django-how-to-display-number-of-items) | views | displaying .count() |
+| [Django](https://docs.djangoproject.com/en/4.2/topics/pagination/) | task list display | pagination |
+| [Django](https://docs.djangoproject.com/en/4.2/ref/templates/builtins/) | list displays | using {% empty %} |
+| [CopyProgramming](https://copyprogramming.com/howto/django-filter-multiple-values) | views | filtering with status__in |
+| [Youtube](https://www.youtube.com/watch?v=zl_jsCLo4eo) | filtering | creating a filter feature |
+| [Djangocentral](https://djangocentral.com/creating-comments-system-with-django/) | comment section | Troubleshooting comment rendering |
+| [getbootstrap](https://getbootstrap.com/docs/5.0/components/button-group/) | buttons | button groups |
+| [Studygyaan](https://studygyaan.com/django/how-to-restrict-access-with-django-login-required-decorator-function#:~:text=login_required%20is%20a%20decorator%20in,them%20to%20the%20login%20page.) | views | login_required decorator |
+| [Youtube](https://www.youtube.com/watch?v=CVEKe39VFu8) | forms | applying bootstrap classes on forms |
+| [StackOverflow](https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django) | calendar | creating a datepicker |
+| [datetime](https://docs.python.org/3/library/datetime.html) | views, models | handling dates |
 | [WhiteNoise](http://whitenoise.evans.io) | entire site | hosting static files on Heroku temporarily |
+| [django-allauth](https://docs.allauth.org/en/latest/account/configuration.html) | settings | making emails optional |#
+| [StackOverflow](https://stackoverflow.com/questions/25015711/time-data-does-not-match-format) | views | date handling between different formats |
+| [StackOverflow](https://stackoverflow.com/questions/51567878/how-do-i-attach-a-field-from-a-related-object-to-a-django-queryset) | entire site | troubleshooting location not displaying in tasks |
 
 ### Media
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Use this space to provide attribution links to any images, videos, or audio files borrowed from online.
-A few examples have been provided below to give you some ideas.
-
-If you're the owner (or a close acquaintance) of all media files, then make sure to specify this.
-Let the assessors know that you have explicit rights to use the media files within your project.
-
-Ideally, you should provide an actual link to every media file used, not just a generic link to the main site!
-The list below is by no means exhaustive. Within the Code Institute Slack community, you can find more "free media" links
-by sending yourself the following command: `!freemedia`.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 | Source | Location | Type | Notes |
 | --- | --- | --- | --- |
-| [Pexels](https://www.pexels.com) | entire site | image | favicon on all pages |
-| [Lorem Picsum](https://picsum.photos) | home page | image | hero image background |
-| [Unsplash](https://unsplash.com) | product page | image | sample of fake products |
-| [Pixabay](https://pixabay.com) | gallery page | image | group of photos for gallery |
-| [Wallhere](https://wallhere.com) | footer | image | background wallpaper image in the footer |
-| [This Person Does Not Exist](https://thispersondoesnotexist.com) | testimonials | image | headshots of fake testimonial images |
-| [Audio Micro](https://www.audiomicro.com/free-sound-effects) | game page | audio | free audio files to generate the game sounds |
-| [Videvo](https://www.videvo.net/) | home page | video | background video on the hero section |
+| [Font Awesome](https://fontawesome.com/) | homepage | icons | icon database |
+| [Pixabay](https://pixabay.com/photos/hands-team-united-together-people-1917895/) | entire site | image | main heading image, favicon image |
 | [TinyPNG](https://tinypng.com) | entire site | image | tool for image compression |
+| [ResizePixel](https://www.resizepixel.com/) | entire site | image | tool for image compression |
 
 ### Acknowledgements
 
