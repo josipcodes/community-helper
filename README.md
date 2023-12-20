@@ -157,23 +157,160 @@ IMPORTANT: Remember to always include a screenshot of each individual feature!
 
 ### Existing Features
 
-- **Title for feature #1**
+- **Navbar**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+    - Responsive navbar adjusts to the user's screen and maximises space saved all while allowing user to have everything available in up to two clicks.
 
-![screenshot](documentation/feature01.png)
+![screenshot](documentation/readme/features/navbar.png)
 
-- **Title for feature #2**
+- **Footer**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+    - Footer displays the number of available tasks, successfully resolved tasks and a total number of users.
+    - This is validating the website for a future user, all the while making current users' feel like they're contributing.
 
-![screenshot](documentation/feature02.png)
+![screenshot](documentation/readme/features/footer.png)
+
+- **Homepage**
+
+    - Homepage allows the future user to understand the goal of the website.
+
+![screenshot](documentation/readme/features/homepage.png)
+
+- **Login confirmation**
+
+    - Login confirmation allows users to know which account they are currently using, to ensure they don't mix up their accounts.
+
+![screenshot](documentation/readme/features/login-confirm.png)
+
+- **Task List**
+
+    - Clicking on `Browse Requests` opens up a list of currently available tasks sorted from oldest to the newest.
+    - Available tasks display title, 150 characters of user's request, as well as task category, deadline (when applicable) and location.
+
+![screenshot](documentation/readme/features/open-tasks.png)
+
+- **New Task**
+
+    - User can create their own task. Should they forget to enter value in mandatory fields, they will be reminded. 
+    - If user already created their profile, it will be auto-filled, but available for changes during task-creation.
+
+![screenshot](documentation/readme/features/new-task.png)
+
+- **User Profile**
+
+    - Clicking on `Profile`, followed by `Your Profile`, user can create or update their profile.
+    - This way, the user won't necessarily need to input all their details whenever they need to  create a task.
+    - If user updates their profile after creating a task, the change will be visible on the already-created task(s).
+
+![screenshot](documentation/readme/features/profile.png)
+
+- **Own tasks**
+
+    - Clicking on `Profile`, followed by `Check Requests`, user has access to all open tasks they have created or are helping on.
+    - These tasks are separated into `Tasks you created` and `Tasks you are helping on` sections.
+
+![screenshot](documentation/readme/features/own-tasks.png)
+
+- **Pagination**
+
+    - When browsing tasks, user can navigate between multiple pages easily in order to find a suitable task.
+
+![screenshot](documentation/readme/features/pagination.png)
+
+- **Task Filtering**
+
+    - In order to facilitate quicker task-hunt, we have developed filtering option based on the task category.
+
+![screenshot](documentation/readme/features/task-filtering.png)
+
+- **Back To Top button**
+
+    - When there are more than three filtered tasks on a smaller screen, back to top button is displayed.
+    - Same feature is available when user is reviewing their own tasks, regardless of their number.
+
+![screenshot](documentation/readme/features/back-to-top.png)
+
+- **Edit Task**
+
+    - Owner can update their task as long as there is no helper associated with it.
+    - Date of update will be displayed from now on, however, task will remain sorted by the creation time to not punish the user for making changes.
+
+![screenshot](documentation/readme/features/edit-task.gif)
+
+- **Delete Task**
+
+    - Owner can delete their task as long as there is no helper associated with it.
+
+![screenshot](documentation/readme/features/delete-task.gif)
+
+- **Ongoing task**
+
+    - Task that has a helper but has not been archived yet is considered an ongoing one.
+    - Owner and helper are the only ones with access to it, as it displays user's profile details.
+
+![screenshot](documentation/readme/features/ongoing-task.png)
+
+- **Comment**
+
+    - Owner and helper can comment on a task. Along the comment, they can see when the comment was made.
+
+![screenshot](documentation/readme/features/comment.gif)
+
+- **Archive Task**
+
+    - Once the task is done, owner can archive it.
+    - This task is then counted in the footer under successful requests.
+
+![screenshot](documentation/readme/features/archive-task.gif)
+
+- **Accept a task**
+
+    - User who is not task owner can accept a task. 
+    - This way they get access to full task details and can communicate with the owner.
+
+![screenshot](documentation/readme/features/accept-task.png)
 
 - **Title for feature #3**
 
     - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
 
-![screenshot](documentation/feature03.png)
+![screenshot](documentation/readme/features/profile.png)
+
+- **Title for feature #1**
+
+    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+
+![screenshot](documentation/readme/features/profile.png)
+
+- **Title for feature #2**
+
+    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+
+![screenshot](documentation/readme/features/profile.png)
+
+- **Title for feature #3**
+
+    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+
+![screenshot](documentation/readme/features/profile.png)
+
+- **Title for feature #1**
+
+    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+
+![screenshot](documentation/readme/features/profile.png)
+
+- **Title for feature #2**
+
+    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+
+![screenshot](documentation/readme/features/profile.png)
+
+- **Title for feature #3**
+
+    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+
+![screenshot](documentation/readme/features/profile.png)
 
 🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
