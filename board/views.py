@@ -245,7 +245,7 @@ def show_ongoing_task(request, task_id):
     # check if helper exists
     if task.helper != None:
         # check if user is owner or helper
-        if request.user == task.owner or request.user == task.helper:
+        if (request.user == task.owner or request.user == task.helper) and task.status == "Published":
             # POST request
             if request.method == "POST":
                 form = CommentForm(request.POST)
