@@ -118,45 +118,6 @@ To note, during Lighthouse Audit, Lighthouse was providing bingo-like numbers wi
 
 🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
-Defensive programming (defensive design) is extremely important!
-
-When building projects that accept user inputs or forms, you should always test the level of security for each.
-Examples of this could include (not limited to):
-
-Forms:
-- Users cannot submit an empty form
-- Users must enter valid email addresses
-
-PP3 (Python-only):
-- Users must enter a valid letter/word/string when prompted
-- Users must choose from a specific list only
-
-MS3 (Flask) | MS4/PP4/PP5 (Django):
-- Users cannot brute-force a URL to navigate to a restricted page
-- Users cannot perform CRUD functionality while logged-out
-- User-A should not be able to manipulate data belonging to User-B, or vice versa
-- Non-Authenticated users should not be able to access pages that require authentication
-- Standard users should not be able to access pages intended for superusers
-
-You'll want to test all functionality on your application, whether it's a standard form,
-or uses CRUD functionality for data manipulation on a database.
-Make sure to include the `required` attribute on any form-fields that should be mandatory.
-Try to access various pages on your site as different user types (User-A, User-B, guest user, admin, superuser).
-
-You should include any manual tests performed, and the expected results/outcome.
-
-Testing should be replicable.
-Ideally, tests cases should focus on each individual section of every page on the website.
-Each test case should be specific, objective, and step-wise replicable.
-
-Instead of adding a general overview saying that everything works fine,
-consider documenting tests on each element of the page
-(ie. button clicks, input box validation, navigation links, etc.) by testing them in their happy flow,
-and also the bad/exception flow, mentioning the expected and observed results,
-and drawing a parallel between them where applicable.
-
-Consider using the following format for manual test cases:
-
 Expected Outcome / Test Performed / Result Received / Fixes Implemented
 
 - **Expected**: "Feature is expected to do X when the user does Y."
@@ -165,51 +126,95 @@ Expected Outcome / Test Performed / Result Received / Fixes Implemented
 - (or) **Result**: "The feature did not respond to A, B, or C."
 - **Fix**: "I did Z to the code because something was missing."
 
-Use the table below as a basic start, and expand on it using the logic above.
 
 🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 Defensive programming was manually tested with the below user acceptance testing:
 
-| Page | Expectation | Test | Result | Fix | Screenshot |
+| Page | User Action | Expected Result | Pass/Fail | Screenshot | Comments |
 | --- | --- | --- | --- | --- | --- |
 | Home | | | | | |
-| | Feature is expected to do X when the user does Y | Tested the feature by doing Y | The feature behaved as expected, and it did Y | Test concluded and passed | ![screenshot](documentation/feature01.png) |
-| | Feature is expected to do X when the user does Y | Tested the feature by doing Y | The feature did not respond to A, B, or C. | I did Z to the code because something was missing | ![screenshot](documentation/feature02.png) |
-| About | | | | | |
-| | Feature is expected to do X when the user does Y | Tested the feature by doing Y | The feature behaved as expected, and it did Y | Test concluded and passed | ![screenshot](documentation/feature03.png) |
-| | Feature is expected to do X when the user does Y | Tested the feature by doing Y | The feature did not respond to A, B, or C. | I did Z to the code because something was missing | ![screenshot](documentation/feature04.png) |
-| Gallery | | | | | |
-| | Feature is expected to do X when the user does Y | Tested the feature by doing Y | The feature behaved as expected, and it did Y | Test concluded and passed | ![screenshot](documentation/feature05.png) |
-| | Feature is expected to do X when the user does Y | Tested the feature by doing Y | The feature did not respond to A, B, or C. | I did Z to the code because something was missing | ![screenshot](documentation/feature06.png) |
+| | Click on Logo | Redirection to Home page | Pass | ![screenshot](documentation/testing/features/logo.gif) | |
+| | Click on Register | Redirection to signup page | Pass | ![screenshot](documentation/testing/features/register.gif) | |
+| | Click on Login | Redirection to signup page | Pass | ![screenshot](documentation/testing/features/login.gif) | |
+| | Click on Browse Requests | Redirection to task list | Pass | ![screenshot](documentation/testing/features/browse.gif) | |
+| | Create a task | Updates Open requests in footer, adds a success message below the header image | Pass | ![screenshot](documentation/testing/features/new-task-footer.gif) | |
+| | Archive Task | Updates Successful requests in footer | Pass | ![screenshot](documentation/testing/features/successful-task-footer.gif) | |
+| | Create a User | Updates Friends in footer | Pass | ![screenshot](documentation/testing/features/new-user.gif) | |
+| | Delete a Task | Updates Open requests in footer, adds a success message below the header image | Pass | ![screenshot](documentation/testing/features/deleted-task-footer.gif) | |
+| | Delete a User | Updates Open and Successful requests, Friends | Pass | ![screenshot](documentation/testing/features/deleted-user-footer.gif) | |
+| | Click on Your Profile | Redirection to the profile | Pass | ![screenshot](documentation/testing/features/open-profile.gif) | |
+| | Click on Check Requests | Redirection to own task list | Pass | ![screenshot](documentation/testing/features/check-requests.gif) | |
+| | Click on Logout | Redirection to sign-out page | Pass | ![screenshot](documentation/testing/features/sign-out.gif) | |
+| | Add /profile to the url to attempt brute-force entry | Redirection to sign-in page | Pass | ![screenshot](documentation/testing/features/brute-profile.png) | |
+| Signup | | | | | | 
+| | Enter a password without a username | Prompt user to enter a username | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
+| | Enter an existing username | Notify user that the username is taken | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
+| | Enter an invalid username | Notify user about invalid characters | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
+| | Enter an invalid email address | Prompt user to enter a valid email address | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
+| | Enter an invalid password | Prompt user to enter a valid password | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
+| | Create an account without email address | Create account, redirection to homepage | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
+| | Click on Sign-in | Redirection to login page | Pass | ![screenshot](documentation/testing/features/signup-sign-in.gif) | |
+|Sign In | | | | | | 
+| | Input password without a username | Prompt user to enter a username | Pass | ![screenshot](documentation/testing/features/sign-in.gif) | |
+| | Input a username and invalid password | Notify user that the details aren't correct | Pass | ![screenshot](documentation/testing/features/sign-in.gif) | |
+| | Input correct login details | Log user in, redirection to homepage, display success message below the header image | Pass | ![screenshot](documentation/testing/features/sign-in.gif) | |
+| | Click on Sign up | Redirection to signup page | Pass | ![screenshot](documentation/testing/features/sign-in-signup.gif) | |
+| Sign Out | | | | | | 
+| | Click on Sign Out button | User is signed out, redirection to the homepage, success message is displayed below header image | Pass | ![screenshot](documentation/testing/features/signed-out.gif) | |
+| Browse Requests | | | | | | 
+| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
+| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
+| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
+| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| Profile | | | | | | 
+| | When user has no profile, submit empty form | Prompt user to input value into the first empty field | Pass | ![screenshot](documentation/testing/features/profile.gif) | |
+| | When user has no profile, submit form with any fields being empty | Prompt user to input value into the first empty field | Pass | ![screenshot](documentation/testing/features/profile.gif) | |
+| | Add value to each field and submit forrm | Reloads the page, adds success message below the header image | Pass | ![screenshot](documentation/testing/features/profile.gif) | We have not enforced minimum character value, nor rules regarding certain fields not being allowed to have numberical values entered as some users might not want to add their private details |
+| | When user has an existing profile, update fields to not contain value |  Prompt user to input value into the first empty field | Pass | ![screenshot](documentation/testing/features/update-profile.gif) | |
+| | Update all values | Reloads the page, adds success message below the header image | Pass | ![screenshot](documentation/testing/features/update-profile.gif) | |
+
+| Create Task | | | | | | 
+| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
+| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
+| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
+| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| Own Tasks | | | | | | 
+| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
+| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
+| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
+| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| Task Display | | | | | | 
+| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
+| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
+| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
+| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| Ongoing Task | | | | | | 
+| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
+| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
+| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
+| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| Edit Task | | | | | | 
+| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
+| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
+| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
+| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| Delete Task | | | | | | 
+| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
+| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
+| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
+| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+
+
+
+
+
 | Contact | | | | | |
-| | Feature is expected to do X when the user does Y | Tested the feature by doing Y | The feature behaved as expected, and it did Y | Test concluded and passed | ![screenshot](documentation/feature07.png) |
-| | Feature is expected to do X when the user does Y | Tested the feature by doing Y | The feature did not respond to A, B, or C. | I did Z to the code because something was missing | ![screenshot](documentation/feature08.png) |
-| repeat for all remaining pages | x | x | x | x | x |
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Another way of performing defensive testing is a simple Pass/Fail for each test.
-The assessors prefer the above method, with the full test explained, but this is also acceptable in most cases.
-
-When in doubt, use the above method instead, and delete the table below.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-| Page | User Action | Expected Result | Pass/Fail | Comments |
-| --- | --- | --- | --- | --- |
-| Home | | | | |
-| | Click on Logo | Redirection to Home page | Pass | |
-| | Click on Home link in navbar | Redirection to Home page | Pass | |
-| Gallery | | | | |
-| | Click on Gallery link in navbar | Redirection to Gallery page | Pass | |
-| | Load gallery images | All images load as expected | Pass | |
-| Contact | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
+| | Click on Contact link in navbar | Redirection to Contact page | Pass | | |
+| | Enter first/last name | Field will accept freeform text | Pass | | |
+| | Enter valid email address | Field will only accept email address format | Pass | | |
+| | Enter message in textarea | Field will accept freeform text | Pass | | |
+| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return | |
 | Sign Up | | | | |
 | | Click on Sign Up button | Redirection to Sign Up page | Pass | |
 | | Enter valid email address | Field will only accept email address format | Pass | |
