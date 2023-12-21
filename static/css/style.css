@@ -24,7 +24,7 @@ body {
 .large-circle {
   min-width: 75px;
   max-width: 100px;
-  aspect-ratio: 1;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: #286638;
   margin: 0 auto;
