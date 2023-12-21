@@ -743,6 +743,7 @@ Use this space to discuss any differences between the local version you've devel
 | [django-allauth](https://docs.allauth.org/en/latest/account/configuration.html) | settings | making emails optional |#
 | [StackOverflow](https://stackoverflow.com/questions/25015711/time-data-does-not-match-format) | views | date handling between different formats |
 | [StackOverflow](https://stackoverflow.com/questions/51567878/how-do-i-attach-a-field-from-a-related-object-to-a-django-queryset) | entire site | troubleshooting location not displaying in tasks |
+| [StackOverflow](https://stackoverflow.com/questions/11754877/troubleshooting-related-field-has-invalid-lookup-icontains) | admin | searching a foreign key value |
 
 ### Media
 

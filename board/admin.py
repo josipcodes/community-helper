@@ -9,7 +9,7 @@ class TaskAdmin(admin.ModelAdmin):
     TaskAdmin class organises display, search and filter fields
     '''
     list_display = ('title', 'owner', 'created_date', 'status')
-    search_fields = ['title', 'description', 'owner']
+    search_fields = ['title', 'description', 'owner__username']
     list_filter = ('status', 'created_date', 'owner')
 
 
