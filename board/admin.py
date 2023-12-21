@@ -9,8 +9,8 @@ class TaskAdmin(admin.ModelAdmin):
     TaskAdmin class organises display, search and filter fields
     '''
     list_display = ('title', 'owner', 'created_date', 'status')
-    search_fields = ['title', 'description']
-    list_filter = ('status', 'created_date')
+    search_fields = ['title', 'description', 'owner']
+    list_filter = ('status', 'created_date', 'owner')
 
 
 @admin.register(Comment)
