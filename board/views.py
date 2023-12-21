@@ -135,7 +135,7 @@ def show_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     owner_location = Profile.objects.get(person=task.owner).location
     # if there's no helper, user can apply.
-    if task.helper == None:
+    if task.helper is None:
         # POST request, user is saved as helper
         if request.method == "POST":
             task.helper = request.user
@@ -143,7 +143,7 @@ def show_task(request, task_id):
             task.save()
             messages.success(request, "Task successfully accepted")
             return home(request)
-        # GET request 
+        # GET request
         context = {
             'id': task_id,
             'task': task,
@@ -163,7 +163,7 @@ def edit_task(request, task_id):
     '''
     task = get_object_or_404(Task, id=task_id)
     # owner can edit request is there is no helper.
-    if request.user == task.owner and task.helper == None:
+    if request.user == task.owner and task.helper is None:
         form = TaskForm(instance=task)
         # POST request
         if request.method == "POST":
@@ -173,7 +173,8 @@ def edit_task(request, task_id):
                 instance.updated_date = datetime.now()
                 instance.save()
                 messages.success(request, "Task updated successfully!")
-                # redirects to show_task as edit is only available when there is no helper associated.
+                # redirects to show_task, since
+                # edit is only available when there is no helper associated.
                 return redirect(show_task, task_id)
             # error display if form isn't valid.
             messages.error(request, "Something went wrong")
@@ -193,7 +194,7 @@ def delete_task(request, task_id):
     '''
     task = get_object_or_404(Task, id=task_id)
     # check if user is owner and there is no helper.
-    if request.user == task.owner and task.helper == None:
+    if request.user == task.owner and task.helper is None:
         # POST request
         if request.method == "POST":
             task.delete()
@@ -243,14 +244,16 @@ def show_ongoing_task(request, task_id):
     # obtaining all comments
     comments = task.comments.all()
     # check if helper exists
-    if task.helper != None:
+    if task.helper is not None:
         # check if user is owner or helper
-        if (request.user == task.owner or request.user == task.helper) and task.status == "Published":
+        if (
+            request.user == task.owner or request.user == task.helper
+                ) and task.status == "Published":
             # POST request
             if request.method == "POST":
                 form = CommentForm(request.POST)
-                    # below lines are a customized code obtained here:
-                    # https://www.youtube.com/watch?v=zJWhizYFKP0
+                # below lines are a customized code obtained here:
+                # https://www.youtube.com/watch?v=zJWhizYFKP0
                 instance = form.save(commit=False)
                 if form.is_valid():
                     # instance saves comment author and associated task
@@ -291,14 +294,17 @@ def archive_task(request, task_id):
         # POST request
         if request.method == "POST":
             # check if helper exists
-            if task.helper != None:
+            if task.helper is not None:
                 # status change
                 task.status = "Archived"
                 task.save()
                 messages.success(request, "Glad it got sorted!")
                 return redirect(list_own_tasks)
             # error display in case helper exists
-            messages.error(request, "You don't seem to have access to this action.")
+            messages.error(
+                request,
+                "You don't seem to have access to this action."
+                )
             return redirect(show_task, task_id)
         # GET request
         context = {
@@ -368,7 +374,7 @@ def edit_profile(request):
             form.instance.person = request.user
             form.save()
             messages.success(request, "Profile updated")
-            context={"form": form}
+            context = {"form": form}
             return render(request, "profile.html", context)
         # error display in case form isn't valid
         messages.error(request, "Error: Please try again")
@@ -382,4 +388,3 @@ def edit_profile(request):
         "form": form,
     }
     return render(request, "profile.html", context)
-

@@ -25,13 +25,22 @@ class TaskForm(ModelForm):
         }
 
         widgets = {
-            'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter the Title'}),
-            'description': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Enter the Description'}),
-            'category': forms.Select(attrs={'class':'form-control'}),
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the Title'
+                }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the Description'
+                }),
+            'category': forms.Select(attrs={'class': 'form-control'}),
             # datepicker created with the help of below:
             # https://stackoverflow.com/questions/
             # 3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django
-            'final_date': forms.widgets.DateInput(attrs={'class':'form-control', 'type': 'date'})
+            'final_date': forms.widgets.DateInput(attrs={
+                'class': 'form-control',
+                'type': 'date'
+                })
         }
 
 
@@ -51,7 +60,7 @@ class CommentForm(ModelForm):
         }
 
         widgets = {
-            'message': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Enter a Comment'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter a Comment'}),
         }
 
 
@@ -81,14 +90,27 @@ class ProfileForm(ModelForm):
             'location': 'General location',
             'country': 'Country',
         }
-        
+
         widgets = {
-            'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}),
-            'surname': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Last Name'}),
-            'address': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Address'}),
-            'city': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your City'}),
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Your Name'}),
+            'surname': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Your Last Name'
+                }),
+            'address': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Your Address'
+                }),
+            'city': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Your City'
+                }),
             'location': forms.TextInput(attrs={
-                'class':'form-control', 
-                'placeholder':'Your General Location; this will be visible to all potential helpers'}),
-            'country': forms.Select(attrs={'class':'form-control'}),
+                'class': 'form-control',
+                'placeholder': 
+                'Your General Location; this will be visible to all potential helpers'
+                }),
+            'country': forms.Select(attrs={'class': 'form-control'}),
         }
