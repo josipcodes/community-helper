@@ -99,10 +99,20 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 | Page | Mobile | Desktop | Notes |
 | --- | --- | --- | --- |
-| Home | ![screenshot](documentation/lighthouse-home-mobile.png) | ![screenshot](documentation/lighthouse-home-desktop.png) | Some minor warnings |
-| About | ![screenshot](documentation/lighthouse-about-mobile.png) | ![screenshot](documentation/lighthouse-about-desktop.png) | Some minor warnings |
-| Gallery | ![screenshot](documentation/lighthouse-gallery-mobile.png) | ![screenshot](documentation/lighthouse-gallery-desktop.png) | Slow response time due to large images |
-| x | x | x | repeat for any other tested pages/sizes |
+| Homepage | ![screenshot](documentation//testing/lighthouse/mobile-homepage.png) | ![screenshot](documentation//testing/lighthouse/desktop-homepage.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Signup | ![screenshot](documentation//testing/lighthouse/mobile-signup.png) | ![screenshot](documentation//testing/lighthouse/desktop-signup.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Login | ![screenshot](documentation//testing/lighthouse/mobile-login.png) | ![screenshot](documentation//testing/lighthouse/desktop-login.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Logout | ![screenshot](documentation//testing/lighthouse/mobile-logout.png) | ![screenshot](documentation//testing/lighthouse/desktop-logout.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Browse Tasks | ![screenshot](documentation//testing/lighthouse/mobile-browse.png) | ![screenshot](documentation//testing/lighthouse/desktop-browse.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Create a Task | ![screenshot](documentation//testing/lighthouse/mobile-create.png) | ![screenshot](documentation//testing/lighthouse/desktop-create.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Profile | ![screenshot](documentation//testing/lighthouse/mobile-profile.png) | ![screenshot](documentation//testing/lighthouse/desktop-profile.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Own Tasks | ![screenshot](documentation//testing/lighthouse/mobile-own.png) | ![screenshot](documentation//testing/lighthouse/desktop-own.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Show Task | ![screenshot](documentation//testing/lighthouse/mobile-show.png) | ![screenshot](documentation//testing/lighthouse/desktop-show.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Ongoing task | ![screenshot](documentation//testing/lighthouse/mobile-ongoing.png) | ![screenshot](documentation//testing/lighthouse/desktop-ongoing.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Edit Task | ![screenshot](documentation//testing/lighthouse/mobile-edit.png) | ![screenshot](documentation//testing/lighthouse/desktop-edit.png) | Render-blocking resources, image sizing, unused CSS, JS |
+| Delete Task | ![screenshot](documentation//testing/lighthouse/mobile-delete.png) | ![screenshot](documentation//testing/lighthouse/desktop-delete.png) | Render-blocking resources, image sizing, unused CSS, JS |
+
+To note, during Lighthouse Audit, Lighthouse was providing bingo-like numbers with their values changing significantly between each audit of the same page.
 
 ## Defensive Programming
 
