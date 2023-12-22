@@ -116,19 +116,6 @@ To note, during Lighthouse Audit, Lighthouse was providing bingo-like numbers wi
 
 ## Defensive Programming
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Expected Outcome / Test Performed / Result Received / Fixes Implemented
-
-- **Expected**: "Feature is expected to do X when the user does Y."
-- **Testing**: "Tested the feature by doing Y."
-- (either) **Result**: "The feature behaved as expected, and it did Y."
-- (or) **Result**: "The feature did not respond to A, B, or C."
-- **Fix**: "I did Z to the code because something was missing."
-
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 Defensive programming was manually tested with the below user acceptance testing:
 
 | Page | User Action | Expected Result | Pass/Fail | Screenshot | Comments |
@@ -245,6 +232,7 @@ Defensive programming was manually tested with the below user acceptance testing
 ### New Site Users
 
 | User Story | Screenshot |
+| --- | --- |
 | As a user, I can read about the website goal so that I can decide if I want to sign up. | ![screenshot](documentation/readme/features/homepage.png) |
 | As a potential user, I can view how many users/requests the website has so that I know if it's a real deal before signing up. | ![screenshot](documentation/readme/features/footer.png) |
 | As a user, I can register so that I can accept or post tasks/requests. | ![screenshot](documentation/testing/features/sign-in.gif) |
@@ -259,11 +247,15 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ### Mobile Users
 
+| User Story | Screenshot |
+| --- | --- |
 | As a mobile user, I can click a 'go back up' button so that I can return to the top of the page instantly and not have to scroll. | ![screenshot](documentation/testing/features/own-back-to-top.gif) |
 | As a user using a smaller desktop screen, I can clearly see the mission statement so that I know what the page is about. | ![screenshot](documentation/testing/features/mission-statement.png) |
 
 ### Returning Site Users
 
+| User Story | Screenshot |
+| --- | --- |
 | As a user, I can instantly recognise the Community Helper tab by it's favicon so that I avoid unnecessary clicks. | ![screenshot](documentation/readme/features/favicon.png) |
 | As a user, I can login so that I can check on the progress of my task/request or accept a task/request. | ![screenshot](documentation/testing/features/sign-in.gif) |
 | As a user, I can log out from the site so that I don't jeopardize my or someone else's information. | ![screenshot](documentation/testing/features/signed-out.gif) |
@@ -286,130 +278,63 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ### Site Admin
 
+| User Story | Screenshot |
+| --- | --- |
 | As an administrator, I can access admin panel so that I can monitor my page and edit necessary items. | ![screenshot](documentation/readme/features/admin.png) |
 
 ## Bugs
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+- Contents of a comment remain in the form after it has been published.
 
-This section is primarily used for JavaScript and Python applications,
-but feel free to use this section to document any HTML/CSS bugs you might run into.
+[Documented bug](https://github.com/josipcodes/community-helper/issues/43)
+    
+    - To fix this, I have added an empty `form` into the `context`, however, this fix was refactored later on.
 
-It's very important to document any bugs you've discovered while developing the project.
-Make sure to include any necessary steps you've implemented to fix the bug(s) as well.
+- `Pagination` is displayed over content.
 
-**PRO TIP**: screenshots of bugs are extremely helpful, and go a long way!
+[Documented bug](https://github.com/josipcodes/community-helper/issues/37)
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+    - To fix this, I have removed `fixed-bottom class` from the pagination `div`.
 
-- JS Uncaught ReferenceError: `foobar` is undefined/not defined
+- `Footer` covers content on <=575px width.
 
-    ![screenshot](documentation/bug01.png)
+[Documented bug](https://github.com/josipcodes/community-helper/issues/33)
 
-    - To fix this, I _____________________.
+    - To fix this, I have added `footer margin` using `CSS`.
 
-- JS `'let'` or `'const'` or `'template literal syntax'` or `'arrow function syntax (=>)'` is available in ES6 (use `'esversion: 11'`) or Mozilla JS extensions (use moz).
+- Styling changes when user is logged in or logged out.
 
-    ![screenshot](documentation/bug02.png)
+[Documented bug](https://github.com/josipcodes/community-helper/issues/29)
 
-    - To fix this, I _____________________.
+    - To fix this, I have created a class `task-link` and associted it with existing CSS rule regarding link display.
 
-- Python `'ModuleNotFoundError'` when trying to import module from imported package
+- Navbar links change position when user is logged in or logged out.
 
-    ![screenshot](documentation/bug03.png)
+[Documented bug](https://github.com/josipcodes/community-helper/issues/28)
 
-    - To fix this, I _____________________.
+    - To fix this, I have removed `me-auto class` from the affected `ul`.
 
-- Django `TemplateDoesNotExist` at /appname/path appname/template_name.html
+- Overflow x when user opens the dropdown menu.
 
-    ![screenshot](documentation/bug04.png)
+[Documented bug](https://github.com/josipcodes/community-helper/issues/22)
+[Related user story](https://github.com/josipcodes/community-helper/issues/21)
 
-    - To fix this, I _____________________.
+    - To present a true Agile approach, this bug was prioritised due to existence of a user story which presented a type of fix. As such, we have included a template which confirms user's username when logged in, depending on their screen size.
 
-- Python `E501 line too long` (93 > 79 characters)
+```
+    {% include "login_confirm.html" %}
 
-    ![screenshot](documentation/bug04.png)
-
-    - To fix this, I _____________________.
+    <span class="brand-color">
+        Logged in as {{ user.username }}
+    </span>
+```
 
 ### GitHub **Issues**
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-An improved way to manage bugs is to use the built-in **Issues** tracker on your GitHub repository.
-To access your Issues, click on the "Issues" tab at the top of your repository.
-Alternatively, use this link: https://github.com/josipcodes/community-helper/issues
-
-If using the Issues tracker for your bug management, you can simplify the documentation process.
-Issues allow you to directly paste screenshots into the issue without having to first save the screenshot locally,
-then uploading into your project.
-
-You can add labels to your issues (`bug`), assign yourself as the owner, and add comments/updates as you progress with fixing the issue(s).
-
-Once you've sorted the issue, you should then "Close" it.
-
-When showcasing your bug tracking for assessment, you can use the following format:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 **Fixed Bugs**
 
-All previously closed/fixed bugs can be tracked [here](https://github.com/josipcodes/community-helper/issues?q=is%3Aissue+is%3Aclosed).
-
-| Bug | Status |
-| --- | --- |
-| [JS Uncaught ReferenceError: `foobar` is undefined/not defined](https://github.com/josipcodes/community-helper/issues/1) | Closed |
-| [Python `'ModuleNotFoundError'` when trying to import module from imported package](https://github.com/josipcodes/community-helper/issues/2) | Closed |
-| [Django `TemplateDoesNotExist` at /appname/path appname/template_name.html](https://github.com/josipcodes/community-helper/issues/3) | Closed |
-
-**Open Issues**
-
-Any remaining open issues can be tracked [here](https://github.com/josipcodes/community-helper/issues).
-
-| Bug | Status |
-| --- | --- |
-| [JS `'let'` or `'const'` or `'template literal syntax'` or `'arrow function syntax (=>)'` is available in ES6 (use `'esversion: 11'`) or Mozilla JS extensions (use moz).](https://github.com/josipcodes/community-helper/issues/4) | Open |
-| [Python `E501 line too long` (93 > 79 characters)](https://github.com/josipcodes/community-helper/issues/5) | Open |
+All previously closed/fixed bugs can be tracked [here](https://github.com/josipcodes/community-helper/issues?q=label%3Abug+is%3Aclosed).
 
 ## Unfixed Bugs
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-You will need to mention unfixed bugs and why they were not fixed.
-This section should include shortcomings of the frameworks or technologies used.
-Although time can be a big variable to consider, paucity of time and difficulty understanding
-implementation is not a valid reason to leave bugs unfixed.
-
-If you've identified any unfixed bugs, no matter how small, be sure to list them here.
-It's better to be honest and list them, because if it's not documented and an assessor finds the issue,
-they need to know whether or not you're aware of them as well, and why you've not corrected/fixed them.
-
-Some examples:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-- On devices smaller than 375px, the page starts to have `overflow-x` scrolling.
-
-    ![screenshot](documentation/unfixed-bug01.png)
-
-    - Attempted fix: I tried to add additional media queries to handle this, but things started becoming too small to read.
-
-- For PP3, when using a helper `clear()` function, any text above the height of the terminal does not clear, and remains when you scroll up.
-
-    ![screenshot](documentation/unfixed-bug02.png)
-
-    - Attempted fix: I tried to adjust the terminal size, but it only resizes the actual terminal, not the allowable area for text.
-
-- When validating HTML with a semantic `section` element, the validator warns about lacking a header `h2-h6`. This is acceptable.
-
-    ![screenshot](documentation/unfixed-bug03.png)
-
-    - Attempted fix: this is a known warning and acceptable, and my section doesn't require a header since it's dynamically added via JS.
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-If you legitimately cannot find any unfixed bugs or warnings, then use the following sentence:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 There are no remaining bugs that I am aware of.
