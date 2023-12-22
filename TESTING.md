@@ -219,12 +219,13 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Click on 'I am sure, delete it' button | Redirection to the own task list, success message displays below the header image, task is no longer available in the own task section | Pass | ![screenshot](documentation/testing/features/own-task-deleted.gif) | |
 | | Manually input url leading to a task-deletion page for a task you're a helper on, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-helper-deleting-task.gif) | |
 | | Manually input url leading to a task-deletion page for a task which is not yours nor has a helper assigned, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-delete-task.gif) | |
+| | Manually input url leading to a task-deletion page for a task which you've previously archived, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-delete-archived.gif) | |
 | | When logged out, manually input url leading to a task-deletion page to attempt brute-force entry | Redirection to sign-in page | Pass | ![screenshot](documentation/testing/features/brute-delete-logged-out.gif) | |
 | Archive Task | | | | | | 
 | | Click on a 'Mark task as finished' button of which you're the owner and has assigned helper | Redirection to own task list, displays success message below the header image | Pass | ![screenshot](documentation/testing/features/archive-task.gif) | |
 | | Click on a 'Go back' button | Redirection to the ongoing task | Pass | ![screenshot](documentation/testing/features/archive-go-back.gif) | |
-| | Manually input url leading to a task-archiving page for an already archived task you own | Fail | ![screenshot](documentation/testing/features/archive-go-back.gif) | |
-| | Manually input url leading to a task-archiving page for a task you own but has no helper | Fail | ![screenshot](documentation/testing/features/archive-go-back.gif) | |
+| | Manually input url leading to a task-archiving page for an already archived task you own | Redirection to own task list, warning message displays below the header image | Fail | ![screenshot](documentation/testing/features/archive-fix.gif) | added a task.status condition in archive_task view, passed after the fix |
+| | Manually input url leading to a task-archiving page for a task you own but has no helper | Redirection to own task list, warning message displays below the header image | Fail | ![screenshot](documentation/testing/features/archive-fix.gif) | added a task.status condition in archive_task view, passed after the fix |
 | | Manually input url leading to a task-archiving page you are a helper on, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-archive.gif) | |
 | | Manually input url leading to a task-archiving page you are not associated with, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-archive.gif) | |
 | | When logged out, manually input url leading to a task-archiving page to attempt brute-force entry | Redirection to sign-in page | Pass | ![screenshot](documentation/testing/features/brute-archive.gif) | |
@@ -237,77 +238,55 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Manually input a url taking you to an ongoing task that you are not participating on | Redirection to own task list with warning message displayed below the header image | Pass | ![screenshot](documentation/testing/features/brute-ongoing.gif) | |
 | | Manually input a url taking you to an ongoing task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/brute-ongoing-logged-out.gif) | |
 | | Manually input a url taking you to an ongoing task which you previously marked as archived | Redirection to own task list, warning message displayed below the header image | Pass | ![screenshot](documentation/testing/features/brute-ongoing-archived.gif) | |
-
-
-
-
-
-
-
-
-
-
-
-
-
-| Contact | | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | | |
-| | Enter first/last name | Field will accept freeform text | Pass | | |
-| | Enter valid email address | Field will only accept email address format | Pass | | |
-| | Enter message in textarea | Field will accept freeform text | Pass | | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return | |
-| Sign Up | | | | |
-| | Click on Sign Up button | Redirection to Sign Up page | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter valid password (twice) | Field will only accept password format | Pass | |
-| | Click on Sign Up button | Asks user to confirm email page | Pass | Email sent to user |
-| | Confirm email | Redirects user to blank Sign In page | Pass | |
-| Log In | | | | |
-| | Click on the Login link | Redirection to Login page | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter valid password | Field will only accept password format | Pass | |
-| | Click Login button | Redirects user to home page | Pass | |
-| Log Out | | | | |
-| | Click Logout button | Redirects user to logout page | Pass | Confirms logout first |
-| | Click Confirm Logout button | Redirects user to home page | Pass | |
-| Profile | | | | |
-| | Click on Profile button | User will be redirected to the Profile page | Pass | |
-| | Click on the Edit button | User will be redirected to the edit profile page | Pass | |
-| | Click on the My Orders link | User will be redirected to the My Orders page | Pass | |
-| | Brute forcing the URL to get to another user's profile | User should be given an error | Pass | Redirects user back to own profile |
-| repeat for all remaining pages | x | x | x | x |
-
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Repeat for all other tests, as applicable to your own site.
-The aforementioned tests are just an example of a few different project scenarios.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+| | Open a task from 'Browse Requests' and replace 'display' in url with 'ongoing' | Redirection to own task list, warning message displayed below the header image | Pass | ![screenshot](documentation/testing/features/brute-display-ongoing.gif) | |
 
 ## User Story Testing
 
-🛑🛑🛑🛑🛑 START OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-Testing user stories is actually quite simple, once you've already got the stories defined on your README.
-
-Most of your project's **features** should already align with the **user stories**,
-so this should as simple as creating a table with the user story, matching with the re-used screenshot
-from the respective feature.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+### New Site Users
 
 | User Story | Screenshot |
-| --- | --- |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature01.png) |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature02.png) |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature03.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature04.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature05.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature06.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature07.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature08.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature09.png) |
-| repeat for all remaining user stories | x |
+| As a user, I can read about the website goal so that I can decide if I want to sign up. | ![screenshot](documentation/readme/features/homepage.png) |
+| As a potential user, I can view how many users/requests the website has so that I know if it's a real deal before signing up. | ![screenshot](documentation/readme/features/footer.png) |
+| As a user, I can register so that I can accept or post tasks/requests. | ![screenshot](documentation/testing/features/sign-in.gif) |
+| As a user, I can categorize my request so that I can receive help quicker. | ![screenshot](documentation/testing/features/create-task-update-profile.gif) |
+| As a user, I can choose a deadline of my request so that I don't receive help when not needed. | ![screenshot](documentation/testing/features/create-task-dates.gif) |
+| As a user, I can only choose future date for a deadline so that I don't accidentally choose a past date. | ![screenshot](documentation/testing/features/create-task-dates.gif) |
+| As a user, I can submit a request so that I can receive help from the community. | ![screenshot](documentation/testing/features/create-task-update-profile.gif) |
+| As a user, I can browse through requests so that I find a suitable one. | ![screenshot](documentation/testing/features/browse.gif) |
+| As a user, I can navigate through pages of requests so that I can find a suitable one in order to accept it. | ![screenshot](documentation/testing/features/pagination.gif) |
+| As a user, I can see the correct date of task creation/editing so that I know when the last change was made. | ![screenshot](documentation/testing/features/edit-task-fields.gif) |
+| As a user, I can accept someone's request so that I can help the community. | ![screenshot](documentation/testing/features/display-tasks-buttons.gif) |
+
+### Mobile Users
+
+| As a mobile user, I can click a 'go back up' button so that I can return to the top of the page instantly and not have to scroll. | ![screenshot](documentation/testing/features/own-back-to-top.gif) |
+| As a user using a smaller desktop screen, I can clearly see the mission statement so that I know what the page is about. | ![screenshot](documentation/testing/features/mission-statement.png) |
+
+### Returning Site Users
+
+| As a user, I can instantly recognise the Community Helper tab by it's favicon so that I avoid unnecessary clicks. | ![screenshot](documentation/readme/features/favicon.png) |
+| As a user, I can login so that I can check on the progress of my task/request or accept a task/request. | ![screenshot](documentation/testing/features/sign-in.gif) |
+| As a user, I can log out from the site so that I don't jeopardize my or someone else's information. | ![screenshot](documentation/testing/features/signed-out.gif) |
+| As a user, I can ensure my own privacy with login being required for any sensitive areas of the website so that I can be at ease with my information and information of others. | ![screenshot](documentation/testing/features/brute-display-logged-out.gif) |
+| As a user, I can filter through requests so that I save time while looking for a suitable one. | ![screenshot](documentation/testing/features/filter.gif) |
+| As a user, I can see the location of the owner so that I can decide if I want to open the task to read more about it and accept it. | ![screenshot](documentation/testing/features/display-tasks.gif) |
+| As a user, I can open an active request so that I can view it in full and decide if I want to accept it. | ![screenshot](documentation/testing/features/display-tasks.gif) |
+| As a user, I can see the same information when filtering as I would in a general task list so that I don't have to unnecessarily open all tasks to find out if they have an end date and their location. | ![screenshot](documentation/testing/features/filter.gif) |
+| As a user, I can clearly see when I'm logged in so that I know to logout when necessary. | ![screenshot](documentation/readme/features/login-confirm.png) |
+| As a user, I can navigate to a page with my active requests so that I can update them or be reminded of what needs doing. | ![screenshot](documentation/testing/features/check-requests.gif) |
+| As a user who submitted the request, I can mark it as done so that I can keep better track of my requests. | ![screenshot](documentation/testing/features/archive-task.gif) |
+| As a submitter/helper, I can comment on the request so that I can request an update/info. | ![screenshot](documentation/testing/features/ongoing-comment.gif) |
+| As a user, I can see that the comment form is visually similar to the task form so that I don't break the illusion of the brand. | ![screenshot](documentation/testing/features/ongoing-comment.gif) |
+| As a user who published a task, I can edit it so that I provide up to date information to a future helper. | ![screenshot](documentation/testing/features/edit-task-fields.gif) |
+| As a user who published a task, I can delete it so that I don't clog request list with something that is outdated/unneccessary. | ![screenshot](documentation/testing/features/own-task-deleted.gif) |
+| As a user, I can confirm that I want to delete my request so that I don't do it on accident. | ![screenshot](documentation/testing/features/own-task-deleted.gif) |
+| As a user, I can confirm that I want to mark a task as closed so that I don't do it accidentally. | ![screenshot](documentation/testing/features/archive-task.gif) |
+| As a user, I can enter relevant information in my profile so that I don't have to repeat myself later on. | ![screenshot](documentation/testing/features/profile.gif) |
+| As a user, I can see a notification that I've opened a page that doesn't exist so that I can navigate to where I actually wanted to go. | ![screenshot](documentation/readme/features/404.png) |
+
+### Site Admin
+
+| As an administrator, I can access admin panel so that I can monitor my page and edit necessary items. | ![screenshot](documentation/readme/features/admin.png) |
 
 ## Bugs
 
