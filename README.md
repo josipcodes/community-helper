@@ -39,7 +39,7 @@ Their combination shows a kind of strict playfulness that fits perfectly with wh
 
 - As a user, I can read about the website goal so that I can decide if I want to sign up.
 - As a potential user, I can view how many users/requests the website has so that I know if it's a real deal before signing up.
-- As a user, I can register so that I can accepted or post tasks/requests.
+- As a user, I can register so that I can accept or post tasks/requests.
 - As a user, I can categorize my request so that I can receive help quicker.
 - As a user, I can choose a deadline of my request so that I don't receive help when not needed.
 - As a user, I can only choose future date for a deadline so that I don't accidentally choose a past date.
@@ -59,7 +59,7 @@ Their combination shows a kind of strict playfulness that fits perfectly with wh
 - As a user, I can instantly recognise the Community Helper tab by it's favicon so that I avoid unnecessary clicks.
 - As a user, I can login so that I can check on the progress of my task/request or accept a task/request.
 - As a user, I can log out from the site so that I don't jeopardize my or someone else's information.
-- As a user, I can ensure my own privacy with login being required for any sensitive areas of the website so that I can be at easy with my information and information of others.
+- As a user, I can ensure my own privacy with login being required for any sensitive areas of the website so that I can be at ease with my information and information of others.
 - As a user, I can filter through requests so that I save time while looking for a suitable one.
 - As a user, I can see the location of the owner so that I can decide if I want to open the task to read more about it and accept it.
 - As a user, I can open an active request so that I can view it in full and decide if I want to accept it.
@@ -280,6 +280,18 @@ We have implemented a number of features for users' benefit with security and lo
     - Messages are displayed based on users' actions in order to help with action validation or to inform them of a lack of privileges.
 
 ![screenshot](documentation/readme/features/messages.png)
+
+- **Favicon**
+
+    - Favicon is displayed on the page tab for easy tab recognition.
+
+![screenshot](documentation/readme/features/favicon.png)
+
+- **Admin panel**
+
+    - Admin panel is only accessible by adding /admin to the page url.
+
+![screenshot](documentation/readme/features/admin.png)
 
 - **404 page**
 
