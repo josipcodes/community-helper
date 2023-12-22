@@ -136,7 +136,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | Home | | | | | |
 | | Click on Logo | Redirection to Home page | Pass | ![screenshot](documentation/testing/features/logo.gif) | |
 | | Click on Register | Redirection to signup page | Pass | ![screenshot](documentation/testing/features/register.gif) | |
-| | Click on Login | Redirection to signup page | Pass | ![screenshot](documentation/testing/features/login.gif) | |
+| | Click on Login | Redirection to login page | Pass | ![screenshot](documentation/testing/features/login.gif) | |
 | | Click on Browse Requests | Redirection to task list | Pass | ![screenshot](documentation/testing/features/browse.gif) | |
 | | Create a task | Updates Open requests in footer, adds a success message below the header image | Pass | ![screenshot](documentation/testing/features/new-task-footer.gif) | |
 | | Archive Task | Updates Successful requests in footer | Pass | ![screenshot](documentation/testing/features/successful-task-footer.gif) | |
@@ -146,14 +146,13 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Click on Your Profile | Redirection to the profile | Pass | ![screenshot](documentation/testing/features/open-profile.gif) | |
 | | Click on Check Requests | Redirection to own task list | Pass | ![screenshot](documentation/testing/features/check-requests.gif) | |
 | | Click on Logout | Redirection to sign-out page | Pass | ![screenshot](documentation/testing/features/sign-out.gif) | |
-| | Add /profile to the url to attempt brute-force entry | Redirection to sign-in page | Pass | ![screenshot](documentation/testing/features/brute-profile.png) | |
 | Signup | | | | | | 
 | | Enter a password without a username | Prompt user to enter a username | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
 | | Enter an existing username | Notify user that the username is taken | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
 | | Enter an invalid username | Notify user about invalid characters | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
 | | Enter an invalid email address | Prompt user to enter a valid email address | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
 | | Enter an invalid password | Prompt user to enter a valid password | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
-| | Create an account without email address | Create account, redirection to homepage | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
+| | Create an account with/out email address | Create account, redirection to homepage, success message displayed below the header image | Pass | ![screenshot](documentation/testing/features/signup.gif) | |
 | | Click on Sign-in | Redirection to login page | Pass | ![screenshot](documentation/testing/features/signup-sign-in.gif) | |
 |Sign In | | | | | | 
 | | Input password without a username | Prompt user to enter a username | Pass | ![screenshot](documentation/testing/features/sign-in.gif) | |
@@ -163,47 +162,89 @@ Defensive programming was manually tested with the below user acceptance testing
 | Sign Out | | | | | | 
 | | Click on Sign Out button | User is signed out, redirection to the homepage, success message is displayed below header image | Pass | ![screenshot](documentation/testing/features/signed-out.gif) | |
 | Browse Requests | | | | | | 
-| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
+| | Click on a task | Redirection to the task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
 | | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
 | | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
 | | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| | Task in the list has a deadline | Deadline is displayed | Pass | ![screenshot](documentation/testing/features/browse-dates.png) | |
+| | Task in the list doesn't have a deadline | Deadline isn't displayed | Pass | ![screenshot](documentation/testing/features/browse-dates.png) | |
 | Profile | | | | | | 
 | | When user has no profile, submit empty form | Prompt user to input value into the first empty field | Pass | ![screenshot](documentation/testing/features/profile.gif) | |
 | | When user has no profile, submit form with any fields being empty | Prompt user to input value into the first empty field | Pass | ![screenshot](documentation/testing/features/profile.gif) | |
-| | Add value to each field and submit forrm | Reloads the page, adds success message below the header image | Pass | ![screenshot](documentation/testing/features/profile.gif) | We have not enforced minimum character value, nor rules regarding certain fields not being allowed to have numberical values entered as some users might not want to add their private details |
+| | Add value to each field and submit form | Reloads the page, adds success message below the header image | Pass | ![screenshot](documentation/testing/features/profile.gif) | We have not enforced minimum character value, nor rules regarding certain fields not being allowed to have numberical values entered as some users might not want to add their private details |
 | | When user has an existing profile, update fields to not contain value |  Prompt user to input value into the first empty field | Pass | ![screenshot](documentation/testing/features/update-profile.gif) | |
 | | Update all values | Reloads the page, adds success message below the header image | Pass | ![screenshot](documentation/testing/features/update-profile.gif) | |
-
-| Create Task | | | | | | 
-| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
-| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
-| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
-| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| | When logged out, add /profile to the url to attempt brute-force entry | Redirection to login page | Pass | ![screenshot](documentation/testing/features/brute-profile.png) | |
+| Filter Task | | | | | | 
+| | Click filter without choosing a category | Displays a warning message | Pass | ![screenshot](documentation/testing/features/filter.gif) | |
+| | Click filter after choosing a valid category | Renders available tasks in the filtered category | Pass | ![screenshot](documentation/testing/features/filter.gif) | |
+| | Click filter after choosing a category without any tasks | Renders a notification stating there are no tasks in a chosen category | Pass | ![screenshot](documentation/testing/features/filter.gif) | |
+| | Click on a filtered task | Redirection to the task display | Pass | ![screenshot](documentation/testing/features/filter-task.gif) | |
+| | Filter categories for one with more than 3 tasks | Displays a 'Back to Top' button | Pass | ![screenshot](documentation/testing/features/filter-back-to-top.gif) | Use screen equal to or less than 767px wide |
+| | Filter categories for one with equal to or less than 3 tasks | Doesn't display a 'Back to Top' button | Pass | ![screenshot](documentation/testing/features/filter-back-to-top.gif) | Use screen equal to or less than 767px wide |
+| | Click 'Back To Top' button | Takes user to the top of the page | Pass | ![screenshot](documentation/testing/features/filter-back-to-top.gif) | Use screen equal to or less than 767px wide |
+| | When logged out, manually input url leading to a filter to attempt brute-force entry | Redirection to login page | Pass | ![screenshot](documentation/testing/features/brute-filter.gif) | |
 | Own Tasks | | | | | | 
-| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
-| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
-| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
-| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| | Click on a task you've created | Redirection to the task page | Pass | ![screenshot](documentation/testing/features/own-task-open.gif) | If the task has a helper, it is considered ongoing task, otherwise we're rendering display-task page |
+| | Click on a task you're helping on | Redirection to ongoing task page | Pass | ![screenshot](documentation/testing/features/own-task-open.gif) | |
+| | Use screen equal to or less than 767px wide when you have some tasks you are working on | Display 'Back To Top' button | Pass | ![screenshot](documentation/testing/features/own-back-to-top.gif) | |
+| | Use screen wider than 767px when you have some tasks you are working on | Doesn't display 'Back To Top' button | Pass | ![screenshot](documentation/testing/features/own-back-to-top.gif) | |
+| | Click 'Back To Top' button | Takes user to the top of the page | Pass | ![screenshot](documentation/testing/features/own-back-to-top.gif) | Use screen equal to or less than 767px wide |
+| | When you're not working on any tasks, click on 'Check Requests' | Displays notes stating there are no tasks in the list | Pass | ![screenshot](documentation/testing/features/own-none.png) | |
+| | When you're not working on any tasks, and in own task-list, click on "we're here for you" | Redirection to submission | Pass | ![screenshot](documentation/testing/features/own-none-links.gif) | |
+| | When you're not working on any tasks, and in own task-list, click on "here you go" | Redirection to general task list | Pass | ![screenshot](documentation/testing/features/own-none-links.gif) | |
+| | When not logged in, input a url taking you to the own task list | Redirection to login | Pass | ![screenshot](documentation/testing/features/brute-own.gif) | |
 | Task Display | | | | | | 
-| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
-| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
-| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
-| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
-| Ongoing Task | | | | | | 
-| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
-| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
-| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
-| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| | Click on a task in 'Browse Requests' which you are not an owner of | Displays task with 'Accept a Task' button | Pass | ![screenshot](documentation/testing/features/display-tasks.gif) | |
+| | Click on a task in 'Browse Requests' which you are an owner of | Displays task with 'Edit' and 'Delete' buttons | Pass | ![screenshot](documentation/testing/features/display-tasks.gif) | |
+| | Click on a task in 'Browse Requests' which you are not an owner of, then click 'Accept' button | Redirection to homepage, success message displayed below the header image | Pass | ![screenshot](documentation/testing/features/display-tasks-buttons.gif) | Secondary verification is available in the own task list where user can see they are now a helper on said task |
+| | Click on a task in 'Browse Requests' which you are an owner of, then click 'Edit' button | Redirection to edit-task page | Pass | ![screenshot](documentation/testing/features/display-tasks-buttons.gif) | |
+| | Click on a task in 'Browse Requests' which you are an owner of, then click 'Delete' button | Redirection to delete-task page | Pass | ![screenshot](documentation/testing/features/display-tasks-buttons.gif) | |
+| | When logged out, manually input url leading to a display-task to attempt brute-force entry | Redirection to sign-in page | Pass | ![screenshot](documentation/testing/features/brute-display-logged-out.gif) | |
+| Create Task | | | | | | 
+| | With a new account, leave each field blank and click submit | Prompts user to enter information into required fields (all except Deadline) | Pass | ![screenshot](documentation/testing/features/create-task-profile.gif) | |
+| | Click submit after entering valid info | Redirection to own tasks with task being visible there, success message displays below header image | Pass | ![screenshot](documentation/testing/features/create-task-profile.gif) | |
+| | With existing profile, add task information and change profile information before clicking Submit | Creates task, updates profile, success message displays below header image | Pass | ![screenshot](documentation/testing/features/create-task-update-profile.gif) |Profile update is visible by Location in the task, or in the Profile |
+| | Input valid data when creating a task, but set date to a past date manually | Prompts user to enter a valid date | Pass | ![screenshot](documentation/testing/features/create-task-dates.gif) | |
+| | Manually enter an url taking you to the submission page | Redirection to login | Pass | ![screenshot](documentation/testing/features/brute-submission.gif) | |
 | Edit Task | | | | | | 
-| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
-| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
-| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
-| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| | Leave Title, Description or Category empty and click Update button | Prompt user to input value | Pass | ![screenshot](documentation/testing/features/edit-task-fields.gif) | |
+| | Set a deadline to a past date manually and click Update button | Prompt user to input a current or future date | Pass | ![screenshot](documentation/testing/features/edit-task-fields.gif) | |
+| | Input new valid data into all fields and click Update button | Edits the task, displays success message below the header image, redirection to task display with new data visible. Date and time of update displays within the task. | Pass | ![screenshot](documentation/testing/features/edit-task-fields.gif) | |
+| | Clear deadline date and click Update button | Edits the task, displays success message below the header image, redirection to task display with new data visible. Date and time of update displays within the task. | Pass | ![screenshot](documentation/testing/features/clear-date.gif) | |
+| | Manually input url leading to a task-editing page for a task you're a helper on, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-edit-task.gif) | |
+| | Manually input url leading to a task-editing page for a task which is not yours nor has a helper assigned, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-edit-task.gif) | |
+| | When logged out, manually input url leading to a task-editing page to attempt brute-force entry | Redirection to sign-in page | Pass | ![screenshot](documentation/testing/features/brute-edit-task.gif) | |
 | Delete Task | | | | | | 
-| | Click on a task | Redirection to a task display | Pass | ![screenshot](documentation/testing/features/open-task.gif) | |
-| | Click on the Filter button | Redirection to task filtering | Pass | ![screenshot](documentation/testing/features/filter-button.gif) | |
-| | Click on a different page number | Redirection to another page of task list | Pass | ![screenshot](documentation/testing/features/pagination.gif) | |
-| | Click on a task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/login-redirect.gif) | |
+| | Click on 'I am sure, delete it' button | Redirection to the own task list, success message displays below the header image, task is no longer available in the own task section | Pass | ![screenshot](documentation/testing/features/own-task-deleted.gif) | |
+| | Manually input url leading to a task-deletion page for a task you're a helper on, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-helper-deleting-task.gif) | |
+| | Manually input url leading to a task-deletion page for a task which is not yours nor has a helper assigned, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-delete-task.gif) | |
+| | When logged out, manually input url leading to a task-deletion page to attempt brute-force entry | Redirection to sign-in page | Pass | ![screenshot](documentation/testing/features/brute-delete-logged-out.gif) | |
+| Archive Task | | | | | | 
+| | Click on a 'Mark task as finished' button of which you're the owner and has assigned helper | Redirection to own task list, displays success message below the header image | Pass | ![screenshot](documentation/testing/features/archive-task.gif) | |
+| | Click on a 'Go back' button | Redirection to the ongoing task | Pass | ![screenshot](documentation/testing/features/archive-go-back.gif) | |
+| | Manually input url leading to a task-archiving page for an already archived task you own | Fail | ![screenshot](documentation/testing/features/archive-go-back.gif) | |
+| | Manually input url leading to a task-archiving page for a task you own but has no helper | Fail | ![screenshot](documentation/testing/features/archive-go-back.gif) | |
+| | Manually input url leading to a task-archiving page you are a helper on, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-archive.gif) | |
+| | Manually input url leading to a task-archiving page you are not associated with, to attempt brute-force entry | Redirection to own task list, warning message displays below the header image | Pass | ![screenshot](documentation/testing/features/brute-archive.gif) | |
+| | When logged out, manually input url leading to a task-archiving page to attempt brute-force entry | Redirection to sign-in page | Pass | ![screenshot](documentation/testing/features/brute-archive.gif) | |
+| Ongoing Task | | | | | | 
+| | Input a comment and click Comment | Reloads the page, displays a comment below the Comment button, displays a success message below the header image. | Pass | ![screenshot](documentation/testing/features/ongoing-comment.gif) | |
+| | Open a task which you are an owner of and has a helper | 'Mark Task as Done' button is displayed | Pass | ![screenshot](documentation/testing/features/ongoing-comment.gif) | |
+| | Open a task which you are an owner of and has a helper, click 'Mark Task as Done' | Redirection to archive task page | Pass | ![screenshot](documentation/testing/features/ongoing-done.gif) | |
+| | Open a task which you are an owner of or a helper on, and task has both | Owner's location is displayed | Pass | ![screenshot](documentation/testing/features/ongoing-details.gif) | |
+| | Open a task which you are a helper on, and task has both | 'Mark Task as Done' button is not displayed | Pass | ![screenshot](documentation/testing/features/ongoing-details.gif) | |
+| | Manually input a url taking you to an ongoing task that you are not participating on | Redirection to own task list with warning message displayed below the header image | Pass | ![screenshot](documentation/testing/features/brute-ongoing.gif) | |
+| | Manually input a url taking you to an ongoing task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/brute-ongoing-logged-out.gif) | |
+| | Manually input a url taking you to an ongoing task which you previously marked as archived | Redirection to own task list, warning message displayed below the header image | Pass | ![screenshot](documentation/testing/features/brute-ongoing-archived.gif) | |
+
+
+
+
+
+
+
+
 
 
 
