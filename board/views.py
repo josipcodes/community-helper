@@ -290,7 +290,7 @@ def archive_task(request, task_id):
     '''
     task = get_object_or_404(Task, id=task_id)
     # ownership check
-    if request.user == task.owner:
+    if request.user == task.owner and task.status == "Ongoing":
         # POST request
         if request.method == "POST":
             # check if helper exists
