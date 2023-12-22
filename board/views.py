@@ -260,7 +260,6 @@ def show_ongoing_task(request, task_id):
                     instance.author = request.user
                     instance.post = task
                     instance.save()
-                    form = CommentForm()
                     messages.success(request, "Your comment was posted!")
                     return redirect(show_ongoing_task, task_id)
                 # error display if form isn't valid.
