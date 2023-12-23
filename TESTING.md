@@ -31,6 +31,7 @@ As such, W3C links are purely informational.
 | New Task | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcommunity-h3lp3r-3eca282c4ffe.herokuapp.com%2Fsubmission%2F) | ![screenshot](documentation/testing/html/new-task.png) | Nested form, fixed |
 | Ongoing Task | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcommunity-h3lp3r-3eca282c4ffe.herokuapp.com%2Fongoing-task%2F74) | ![screenshot](documentation/testing/html/ongoing-task.png) | Pass: No Errors |
 | Filter | [W3C](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fcommunity-h3lp3r-3eca282c4ffe.herokuapp.com%2Ffilter%2F) | ![screenshot](documentation/testing/html/filter.png) | Pass: No Errors |
+| Archive Task | [W3C](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fcommunity-h3lp3r-3eca282c4ffe.herokuapp.com%2Farchive-task%2F58) | ![screenshot](documentation/testing/html/archive-task.png) | Pass: No Errors |
 
 ### CSS
 
