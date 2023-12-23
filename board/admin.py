@@ -21,7 +21,7 @@ class CommentAdmin(admin.ModelAdmin):
     '''
     list_display = ('author', 'message', 'post', 'created_date')
     list_filter = ('author', 'created_date')
-    search_fields = ['author', 'message', 'post']
+    search_fields = ['author__username']
 
 
 @admin.register(Category)
@@ -41,9 +41,10 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('person', 'name', 'surname', 'location', 'city')
     list_filter = ('location', 'city')
     search_fields = [
-        'person',
+        'person__username',
         'name',
         'surname',
         'location',
         'city',
-        'country']
+        'country'
+    ]
