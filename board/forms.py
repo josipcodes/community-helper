@@ -60,7 +60,10 @@ class CommentForm(ModelForm):
         }
 
         widgets = {
-            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter a Comment'}),
+            'message': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter a Comment'
+                }),
         }
 
 
@@ -72,7 +75,8 @@ class ProfileForm(ModelForm):
         model = Profile
 
         # We are not using person as it's a foreign key pointing to a User.
-        # instead of removing person, I've decided that it's wiser to list needed fields.
+        # instead of removing person,
+        # I've decided that it's wiser to list needed fields.
         fields = [
             'name',
             'surname',
@@ -109,8 +113,9 @@ class ProfileForm(ModelForm):
                 }),
             'location': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 
-                'Your General Location; this will be visible to all potential helpers'
+                'placeholder':
+                '''Your General Location;
+                this will be visible to all potential helpers'''
                 }),
             'country': forms.Select(attrs={'class': 'form-control'}),
         }
