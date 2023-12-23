@@ -699,7 +699,7 @@ You can fork this repository by using the following steps:
 
 ### Local VS Deployment
 
-I am not aware of any differences between local and deployment versions.
+I am not aware of any differences between local and deployment versions other than local version using variables stored in `env.py` file while deployed version uses Heroku's `config vars`.
 
 ## Credits
 
