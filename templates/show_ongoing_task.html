@@ -81,10 +81,12 @@
                     {{ form.as_p }}
                     <div class="row">
                         <div class="col-4 ms-auto mb-2">
+                            <!-- submit button -->
                             <input class="btn btn-success" type="submit" value="Comment">
                         </div>
                     </div>
                 </form>
+                <!-- comment display -->
                 {% for comment in comments %}
                 <p class="brand-color">
                     From: {{ comment.author }} | 

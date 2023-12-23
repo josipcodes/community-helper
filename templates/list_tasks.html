@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<!-- task list section -->
 <section id="task-list">
     <div class="container">
         <div class="row">
@@ -20,6 +20,7 @@
                             <h3 class="brand-color">
                                 {{ task.title }}
                             </h3>
+                            <!-- most up-to-date date is displayed -->
                             <p class="brand-color mb-0">
                                 {% if task.created_date == task.updated_date %}
                                 <em>

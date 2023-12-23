@@ -2,6 +2,7 @@
 
 
 {% block content %}
+<!-- archive task section -->
 <section class="mb-3" id="archive-task">
     <div class="container">
         <div class="row">
@@ -9,6 +10,7 @@
                 Are you sure you want to mark this task as done?
             </h3>
             <div class="col-md-6 col-lg-4">
+                <!-- card displays task referenced to prevent confusion -->
                 <div class="card mb-3">
                     <div class="card-header">
                         <h3 class="brand-color">
@@ -40,11 +42,13 @@
                 </div>
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group ml-auto" role="group" aria-label="Archive task">
+                        <!-- archive task button -->
                         <form method="POST">
                             {% csrf_token %}
                             <input class="btn btn-warning" type="submit" value="Mark task as finished">
                         </form>
                     </div>
+                    <!-- go back button -->
                     <div class="btn-group ms-auto" role="group" aria-label="Go to an active task">
                         <a class="btn btn-success" href="{% url 'ongoing-task' task.id %}">
                             Go back

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<!-- edit task section -->
 <section id="edit-task" class="mb-5">
     <div class="container">
         <div class="row">
@@ -9,12 +9,14 @@
                 <h2 class="brand-color">
                     Edit Task
                 </h2>
+                <!-- edit form -->
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <br>
                     <div class="row">
                         <div class="col offset-9">
+                            <!-- edit button -->
                             <input class="btn btn-success ml-5" type="submit" value="Update">
                         </div>
                     </div>

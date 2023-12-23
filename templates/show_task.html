@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<!-- show task section -->
 <section id="show-task" class="mb-3">
     <div class="container">
         <div class="row">
@@ -62,6 +62,7 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="col offset-4 offset-sm-7 mt-3">
+                        <!-- submit button -->
                         <input class="btn btn-success ml-5" type="submit" value="Accept the Task">
                     </div>
                 </form>
