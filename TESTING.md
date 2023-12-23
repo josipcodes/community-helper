@@ -227,7 +227,15 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Manually input a url taking you to an ongoing task when logged out | Redirection to login | Pass | ![screenshot](documentation/testing/features/brute-ongoing-logged-out.gif) | |
 | | Manually input a url taking you to an ongoing task which you previously marked as archived | Redirection to own task list, warning message displayed below the header image | Pass | ![screenshot](documentation/testing/features/brute-ongoing-archived.gif) | |
 | | Open a task from 'Browse Requests' and replace 'display' in url with 'ongoing' | Redirection to own task list, warning message displayed below the header image | Pass | ![screenshot](documentation/testing/features/brute-display-ongoing.gif) | |
-
+| Admin | | | | | | 
+| | Input /admin at the end of the url when logged out | Redirection to admin login | Pass | ![screenshot](documentation/testing/features/admin-login.gif) | |
+| | When logged into admin, navigate to 'Categorys' | Opens 'Categorys' section | Pass | ![screenshot](documentation/testing/features/admin-sections.gif) | |
+| | When logged into admin, navigate to 'Comments' | Opens 'Comments' section | Pass | ![screenshot](documentation/testing/features/admin-sections.gif) | |
+| | When logged into admin, navigate to 'Profiles' | Opens 'Profiles' section | Pass | ![screenshot](documentation/testing/features/admin-sections.gif) | |
+| | When logged into admin, navigate to 'Tasks' | Opens 'Tasks' section | Pass | ![screenshot](documentation/testing/features//admin-sections.gif) | |
+| | When logged into admin, search 'a' in 'Comments' | Displays results where comment author's username contains 'a' | Pass | ![screenshot](documentation/testing/features/admin-search.gif) | |
+| | When logged into admin, search 'ad' in 'Profiles' | Displays results where comment author's profile contains 'ad' | Pass | ![screenshot](documentation/testing/features/admin-search.gif) | |
+| | When logged into admin, search 'ad' in 'Tasks' | Displays results where comment author's username, title or task description contain 'ad' | Pass | ![screenshot](documentation/testing/features/admin-search.gif) | |
 ## User Story Testing
 
 ### New Site Users
